@@ -29,9 +29,9 @@ type NfProfile struct {
 	NfStatus              NfStatus               `json:"NfStatus"`
 	CollocatedNfInstances []CollocatedNfInstance `json:"collocatedNfInstances,omitempty"`
 	HeartBeatTimer        *int32                 `json:"heartBeatTimer,omitempty"`
-	PlmnList              []PlmnId               `json:"plmnList,omitempty"`
+	PlmnList              *[]PlmnId              `json:"plmnList,omitempty"`
 	SnpnList              []PlmnIdNid            `json:"snpnList,omitempty"`
-	SNssais               []ExtSnssai            `json:"sNssais,omitempty"`
+	SNssais               *[]Snssai              `json:"sNssais,omitempty"`
 	PerPlmnSnssaiList     []PlmnSnssai           `json:"perPlmnSnssaiList,omitempty"`
 	NsiList               []string               `json:"nsiList,omitempty"`
 	// Fully Qualified Domain Name
@@ -44,7 +44,7 @@ type NfProfile struct {
 	AllowedSnpns     []PlmnIdNid `json:"allowedSnpns,omitempty"`
 	AllowedNfTypes   []NfType    `json:"allowedNfTypes,omitempty"`
 	AllowedNfDomains []string    `json:"allowedNfDomains,omitempty"`
-	AllowedNssais    []ExtSnssai `json:"allowedNssais,omitempty"`
+	AllowedNssais    *[]Snssai   `json:"allowedNssais,omitempty"`
 	// A map (list of key-value pairs) where a valid JSON pointer Id serves as key
 	AllowedRuleSet *map[string]RuleSet `json:"allowedRuleSet,omitempty"`
 	Priority       *int32              `json:"priority,omitempty"`
@@ -99,7 +99,7 @@ type NfProfile struct {
 	RecoveryTime         *time.Time `json:"recoveryTime,omitempty"`
 	NfServicePersistence *bool      `json:"NfServicePersistence,omitempty"`
 	// Deprecated
-	NfServices []NfService `json:"NfServices,omitempty"`
+	NfServices *[]NfService `json:"NfServices,omitempty"`
 	// A map (list of key-value pairs) where serviceInstanceId serves as key of NfService
 	NfServiceList                           *map[string]NfService             `json:"NfServiceList,omitempty"`
 	NfProfileChangesSupportInd              *bool                             `json:"NfProfileChangesSupportInd,omitempty"`
@@ -375,7 +375,7 @@ func (o *NfProfile) GetPlmnList() []PlmnId {
 		var ret []PlmnId
 		return ret
 	}
-	return o.PlmnList
+	return *o.PlmnList
 }
 
 // GetPlmnListOk returns a tuple with the PlmnList field value if set, nil otherwise
@@ -384,7 +384,7 @@ func (o *NfProfile) GetPlmnListOk() ([]PlmnId, bool) {
 	if o == nil || IsNil(o.PlmnList) {
 		return nil, false
 	}
-	return o.PlmnList, true
+	return *o.PlmnList, true
 }
 
 // HasPlmnList returns a boolean if a field has been set.
@@ -398,7 +398,7 @@ func (o *NfProfile) HasPlmnList() bool {
 
 // SetPlmnList gets a reference to the given []PlmnId and assigns it to the PlmnList field.
 func (o *NfProfile) SetPlmnList(v []PlmnId) {
-	o.PlmnList = v
+	*o.PlmnList = v
 }
 
 // GetSnpnList returns the SnpnList field value if set, zero value otherwise.
@@ -434,21 +434,21 @@ func (o *NfProfile) SetSnpnList(v []PlmnIdNid) {
 }
 
 // GetSNssais returns the SNssais field value if set, zero value otherwise.
-func (o *NfProfile) GetSNssais() []ExtSnssai {
+func (o *NfProfile) GetSNssais() []Snssai {
 	if o == nil || IsNil(o.SNssais) {
-		var ret []ExtSnssai
+		var ret []Snssai
 		return ret
 	}
-	return o.SNssais
+	return *o.SNssais
 }
 
 // GetSNssaisOk returns a tuple with the SNssais field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NfProfile) GetSNssaisOk() ([]ExtSnssai, bool) {
+func (o *NfProfile) GetSNssaisOk() ([]Snssai, bool) {
 	if o == nil || IsNil(o.SNssais) {
 		return nil, false
 	}
-	return o.SNssais, true
+	return *o.SNssais, true
 }
 
 // HasSNssais returns a boolean if a field has been set.
@@ -461,8 +461,8 @@ func (o *NfProfile) HasSNssais() bool {
 }
 
 // SetSNssais gets a reference to the given []ExtSnssai and assigns it to the SNssais field.
-func (o *NfProfile) SetSNssais(v []ExtSnssai) {
-	o.SNssais = v
+func (o *NfProfile) SetSNssais(v []Snssai) {
+	*o.SNssais = v
 }
 
 // GetPerPlmnSnssaiList returns the PerPlmnSnssaiList field value if set, zero value otherwise.
@@ -786,21 +786,21 @@ func (o *NfProfile) SetAllowedNfDomains(v []string) {
 }
 
 // GetAllowedNssais returns the AllowedNssais field value if set, zero value otherwise.
-func (o *NfProfile) GetAllowedNssais() []ExtSnssai {
+func (o *NfProfile) GetAllowedNssais() []Snssai {
 	if o == nil || IsNil(o.AllowedNssais) {
-		var ret []ExtSnssai
+		var ret []Snssai
 		return ret
 	}
-	return o.AllowedNssais
+	return *o.AllowedNssais
 }
 
 // GetAllowedNssaisOk returns a tuple with the AllowedNssais field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NfProfile) GetAllowedNssaisOk() ([]ExtSnssai, bool) {
+func (o *NfProfile) GetAllowedNssaisOk() ([]Snssai, bool) {
 	if o == nil || IsNil(o.AllowedNssais) {
 		return nil, false
 	}
-	return o.AllowedNssais, true
+	return *o.AllowedNssais, true
 }
 
 // HasAllowedNssais returns a boolean if a field has been set.
@@ -812,9 +812,9 @@ func (o *NfProfile) HasAllowedNssais() bool {
 	return false
 }
 
-// SetAllowedNssais gets a reference to the given []ExtSnssai and assigns it to the AllowedNssais field.
-func (o *NfProfile) SetAllowedNssais(v []ExtSnssai) {
-	o.AllowedNssais = v
+// SetAllowedNssais gets a reference to the given []Snssai and assigns it to the AllowedNssais field.
+func (o *NfProfile) SetAllowedNssais(v []Snssai) {
+	*o.AllowedNssais = v
 }
 
 // GetAllowedRuleSet returns the AllowedRuleSet field value if set, zero value otherwise.
@@ -1976,7 +1976,7 @@ func (o *NfProfile) GetNfServices() []NfService {
 		var ret []NfService
 		return ret
 	}
-	return o.NfServices
+	return *o.NfServices
 }
 
 // GetNfServicesOk returns a tuple with the NfServices field value if set, nil otherwise
@@ -1986,7 +1986,7 @@ func (o *NfProfile) GetNfServicesOk() ([]NfService, bool) {
 	if o == nil || IsNil(o.NfServices) {
 		return nil, false
 	}
-	return o.NfServices, true
+	return *o.NfServices, true
 }
 
 // HasNfServices returns a boolean if a field has been set.
@@ -2001,7 +2001,7 @@ func (o *NfProfile) HasNfServices() bool {
 // SetNfServices gets a reference to the given []NfService and assigns it to the NfServices field.
 // Deprecated
 func (o *NfProfile) SetNfServices(v []NfService) {
-	o.NfServices = v
+	*o.NfServices = v
 }
 
 // GetNfServiceList returns the NfServiceList field value if set, zero value otherwise.

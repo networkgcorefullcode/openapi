@@ -142,9 +142,9 @@ func (o *RuleSet) SetSnpns(v []PlmnIdNid) {
 }
 
 // GetNfTypes returns the NfTypes field value if set, zero value otherwise.
-func (o *RuleSet) GetNfTypes() []NFType {
+func (o *RuleSet) GetNfTypes() []NfType {
 	if o == nil || IsNil(o.NfTypes) {
-		var ret []NFType
+		var ret []NfType
 		return ret
 	}
 	return o.NfTypes
@@ -152,7 +152,7 @@ func (o *RuleSet) GetNfTypes() []NFType {
 
 // GetNfTypesOk returns a tuple with the NfTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuleSet) GetNfTypesOk() ([]NFType, bool) {
+func (o *RuleSet) GetNfTypesOk() ([]NfType, bool) {
 	if o == nil || IsNil(o.NfTypes) {
 		return nil, false
 	}
@@ -169,7 +169,7 @@ func (o *RuleSet) HasNfTypes() bool {
 }
 
 // SetNfTypes gets a reference to the given []NFType and assigns it to the NfTypes field.
-func (o *RuleSet) SetNfTypes(v []NFType) {
+func (o *RuleSet) SetNfTypes(v []NfType) {
 	o.NfTypes = v
 }
 

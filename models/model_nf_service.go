@@ -494,9 +494,9 @@ func (o *NfService) SetAllowedSnpns(v []PlmnIdNid) {
 }
 
 // GetAllowedNfTypes returns the AllowedNfTypes field value if set, zero value otherwise.
-func (o *NfService) GetAllowedNfTypes() []NFType {
+func (o *NfService) GetAllowedNfTypes() []NfType {
 	if o == nil || IsNil(o.AllowedNfTypes) {
-		var ret []NFType
+		var ret []NfType
 		return ret
 	}
 	return o.AllowedNfTypes
@@ -504,7 +504,7 @@ func (o *NfService) GetAllowedNfTypes() []NFType {
 
 // GetAllowedNfTypesOk returns a tuple with the AllowedNfTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NfService) GetAllowedNfTypesOk() ([]NFType, bool) {
+func (o *NfService) GetAllowedNfTypesOk() ([]NfType, bool) {
 	if o == nil || IsNil(o.AllowedNfTypes) {
 		return nil, false
 	}
@@ -521,7 +521,7 @@ func (o *NfService) HasAllowedNfTypes() bool {
 }
 
 // SetAllowedNfTypes gets a reference to the given []NFType and assigns it to the AllowedNfTypes field.
-func (o *NfService) SetAllowedNfTypes(v []NFType) {
+func (o *NfService) SetAllowedNfTypes(v []NfType) {
 	o.AllowedNfTypes = v
 }
 

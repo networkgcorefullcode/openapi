@@ -27,7 +27,7 @@ type LmfInfo struct {
 	ServingRatTypes        []RatType            `json:"servingRatTypes,omitempty"`
 	TaiList                []Tai                `json:"taiList,omitempty"`
 	TaiRangeList           []TaiRange           `json:"taiRangeList,omitempty"`
-	SupportedGADShapes     []SupportedGADShapes `json:"supportedGADShapes,omitempty"`
+	SupportedGADShapes     []SupportedGadShapes `json:"supportedGADShapes,omitempty"`
 	PruExistenceInfo       *PruExistenceInfo    `json:"pruExistenceInfo,omitempty"`
 	PruSupportInd          *bool                `json:"pruSupportInd,omitempty"`
 	RangingslposSupportInd *bool                `json:"rangingslposSupportInd,omitempty"`
@@ -289,9 +289,9 @@ func (o *LmfInfo) SetTaiRangeList(v []TaiRange) {
 }
 
 // GetSupportedGADShapes returns the SupportedGADShapes field value if set, zero value otherwise.
-func (o *LmfInfo) GetSupportedGADShapes() []SupportedGADShapes {
+func (o *LmfInfo) GetSupportedGADShapes() []SupportedGadShapes {
 	if o == nil || IsNil(o.SupportedGADShapes) {
-		var ret []SupportedGADShapes
+		var ret []SupportedGadShapes
 		return ret
 	}
 	return o.SupportedGADShapes
@@ -299,7 +299,7 @@ func (o *LmfInfo) GetSupportedGADShapes() []SupportedGADShapes {
 
 // GetSupportedGADShapesOk returns a tuple with the SupportedGADShapes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LmfInfo) GetSupportedGADShapesOk() ([]SupportedGADShapes, bool) {
+func (o *LmfInfo) GetSupportedGADShapesOk() ([]SupportedGadShapes, bool) {
 	if o == nil || IsNil(o.SupportedGADShapes) {
 		return nil, false
 	}
@@ -316,7 +316,7 @@ func (o *LmfInfo) HasSupportedGADShapes() bool {
 }
 
 // SetSupportedGADShapes gets a reference to the given []SupportedGADShapes and assigns it to the SupportedGADShapes field.
-func (o *LmfInfo) SetSupportedGADShapes(v []SupportedGADShapes) {
+func (o *LmfInfo) SetSupportedGADShapes(v []SupportedGadShapes) {
 	o.SupportedGADShapes = v
 }
 
