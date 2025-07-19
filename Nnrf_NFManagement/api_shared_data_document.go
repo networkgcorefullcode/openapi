@@ -21,49 +21,49 @@ import (
 	"github.com/omec-project/openapi/models"
 )
 
-// NFInstanceIDDocumentAPIService NFInstanceIDDocumentAPI service
-type NFInstanceIDDocumentAPIService service
+// SharedDataDocumentAPIService SharedDataDocumentAPI service
+type SharedDataDocumentAPIService service
 
-type ApiDeregisterNFInstanceRequest struct {
+type ApiDeleteSharedDataRequest struct {
 	ctx          context.Context
-	ApiService   *NFInstanceIDDocumentAPIService
-	nfInstanceID string
+	ApiService   *SharedDataDocumentAPIService
+	sharedDataId string
 }
 
-func (r ApiDeregisterNFInstanceRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeregisterNFInstanceExecute(r)
+func (r ApiDeleteSharedDataRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteSharedDataExecute(r)
 }
 
 /*
-DeregisterNFInstance Deregisters a given NF Instance
+DeleteSharedData Delete Shared Data identified by a given sharedDataId
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param nfInstanceID Unique ID of the NF Instance to deregister
-	@return ApiDeregisterNFInstanceRequest
+	@param sharedDataId Unique ID of the Shared Data to deregister
+	@return ApiDeleteSharedDataRequest
 */
-func (a *NFInstanceIDDocumentAPIService) DeregisterNFInstance(ctx context.Context, nfInstanceID string) ApiDeregisterNFInstanceRequest {
-	return ApiDeregisterNFInstanceRequest{
+func (a *SharedDataDocumentAPIService) DeleteSharedData(ctx context.Context, sharedDataId string) ApiDeleteSharedDataRequest {
+	return ApiDeleteSharedDataRequest{
 		ApiService:   a,
 		ctx:          ctx,
-		nfInstanceID: nfInstanceID,
+		sharedDataId: sharedDataId,
 	}
 }
 
 // Execute executes the request
-func (a *NFInstanceIDDocumentAPIService) DeregisterNFInstanceExecute(r ApiDeregisterNFInstanceRequest) (*http.Response, error) {
+func (a *SharedDataDocumentAPIService) DeleteSharedDataExecute(r ApiDeleteSharedDataRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NFInstanceIDDocumentAPIService.DeregisterNFInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedDataDocumentAPIService.DeleteSharedData")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/nf-instances/{nfInstanceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"nfInstanceID"+"}", url.PathEscape(parameterValueToString(r.nfInstanceID, "nfInstanceID")), -1)
+	localVarPath := localBasePath + "/shared-data/{sharedDataId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"sharedDataId"+"}", url.PathEscape(parameterValueToString(r.sharedDataId, "sharedDataId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -235,56 +235,56 @@ func (a *NFInstanceIDDocumentAPIService) DeregisterNFInstanceExecute(r ApiDeregi
 	return localVarHTTPResponse, nil
 }
 
-type ApiGetNFInstanceRequest struct {
+type ApiGetSharedDataRequest struct {
 	ctx               context.Context
-	ApiService        *NFInstanceIDDocumentAPIService
-	nfInstanceID      string
+	ApiService        *SharedDataDocumentAPIService
+	sharedDataId      string
 	requesterFeatures *string
 }
 
 // Features supported by the NF Service Consumer
-func (r ApiGetNFInstanceRequest) RequesterFeatures(requesterFeatures string) ApiGetNFInstanceRequest {
+func (r ApiGetSharedDataRequest) RequesterFeatures(requesterFeatures string) ApiGetSharedDataRequest {
 	r.requesterFeatures = &requesterFeatures
 	return r
 }
 
-func (r ApiGetNFInstanceRequest) Execute() (*models.NfProfile, *http.Response, error) {
-	return r.ApiService.GetNFInstanceExecute(r)
+func (r ApiGetSharedDataRequest) Execute() (*models.SharedData, *http.Response, error) {
+	return r.ApiService.GetSharedDataExecute(r)
 }
 
 /*
-GetNFInstance Read the profile of a given NF Instance
+GetSharedData Read the shared data identified by a given NF sharedDataId
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param nfInstanceID Unique ID of the NF Instance
-	@return ApiGetNFInstanceRequest
+	@param sharedDataId Unique ID of the Shared Data
+	@return ApiGetSharedDataRequest
 */
-func (a *NFInstanceIDDocumentAPIService) GetNFInstance(ctx context.Context, nfInstanceID string) ApiGetNFInstanceRequest {
-	return ApiGetNFInstanceRequest{
+func (a *SharedDataDocumentAPIService) GetSharedData(ctx context.Context, sharedDataId string) ApiGetSharedDataRequest {
+	return ApiGetSharedDataRequest{
 		ApiService:   a,
 		ctx:          ctx,
-		nfInstanceID: nfInstanceID,
+		sharedDataId: sharedDataId,
 	}
 }
 
 // Execute executes the request
 //
-//	@return NFProfile
-func (a *NFInstanceIDDocumentAPIService) GetNFInstanceExecute(r ApiGetNFInstanceRequest) (*models.NfProfile, *http.Response, error) {
+//	@return SharedData
+func (a *SharedDataDocumentAPIService) GetSharedDataExecute(r ApiGetSharedDataRequest) (*models.SharedData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *models.NfProfile
+		localVarReturnValue *models.SharedData
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NFInstanceIDDocumentAPIService.GetNFInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedDataDocumentAPIService.GetSharedData")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/nf-instances/{nfInstanceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"nfInstanceID"+"}", url.PathEscape(parameterValueToString(r.nfInstanceID, "nfInstanceID")), -1)
+	localVarPath := localBasePath + "/shared-data/{sharedDataId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"sharedDataId"+"}", url.PathEscape(parameterValueToString(r.sharedDataId, "sharedDataId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -490,75 +490,75 @@ func (a *NFInstanceIDDocumentAPIService) GetNFInstanceExecute(r ApiGetNFInstance
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRegisterNFInstanceRequest struct {
+type ApiRegisterSharedDataRequest struct {
 	ctx             context.Context
-	ApiService      *NFInstanceIDDocumentAPIService
-	nfInstanceID    string
-	nFProfile       *models.NfProfile
+	ApiService      *SharedDataDocumentAPIService
+	sharedDataId    string
+	sharedData      *models.SharedData
 	contentEncoding *string
 	acceptEncoding  *string
 }
 
-func (r ApiRegisterNFInstanceRequest) NFProfile(nFProfile models.NfProfile) ApiRegisterNFInstanceRequest {
-	r.nFProfile = &nFProfile
+func (r ApiRegisterSharedDataRequest) SharedData(sharedData models.SharedData) ApiRegisterSharedDataRequest {
+	r.sharedData = &sharedData
 	return r
 }
 
 // Content-Encoding, described in IETF RFC 9110
-func (r ApiRegisterNFInstanceRequest) ContentEncoding(contentEncoding string) ApiRegisterNFInstanceRequest {
+func (r ApiRegisterSharedDataRequest) ContentEncoding(contentEncoding string) ApiRegisterSharedDataRequest {
 	r.contentEncoding = &contentEncoding
 	return r
 }
 
 // Accept-Encoding, described in IETF RFC 9110
-func (r ApiRegisterNFInstanceRequest) AcceptEncoding(acceptEncoding string) ApiRegisterNFInstanceRequest {
+func (r ApiRegisterSharedDataRequest) AcceptEncoding(acceptEncoding string) ApiRegisterSharedDataRequest {
 	r.acceptEncoding = &acceptEncoding
 	return r
 }
 
-func (r ApiRegisterNFInstanceRequest) Execute() (*models.NfProfile, *http.Response, error) {
-	return r.ApiService.RegisterNFInstanceExecute(r)
+func (r ApiRegisterSharedDataRequest) Execute() (*models.SharedData, *http.Response, error) {
+	return r.ApiService.RegisterSharedDataExecute(r)
 }
 
 /*
-RegisterNFInstance Register a new NF Instance
+RegisterSharedData Register new Shared Data
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param nfInstanceID Unique ID of the NF Instance to register
-	@return ApiRegisterNFInstanceRequest
+	@param sharedDataId Unique ID of the Shared Data to register
+	@return ApiRegisterSharedDataRequest
 */
-func (a *NFInstanceIDDocumentAPIService) RegisterNFInstance(ctx context.Context, nfInstanceID string) ApiRegisterNFInstanceRequest {
-	return ApiRegisterNFInstanceRequest{
+func (a *SharedDataDocumentAPIService) RegisterSharedData(ctx context.Context, sharedDataId string) ApiRegisterSharedDataRequest {
+	return ApiRegisterSharedDataRequest{
 		ApiService:   a,
 		ctx:          ctx,
-		nfInstanceID: nfInstanceID,
+		sharedDataId: sharedDataId,
 	}
 }
 
 // Execute executes the request
 //
-//	@return NFProfile
-func (a *NFInstanceIDDocumentAPIService) RegisterNFInstanceExecute(r ApiRegisterNFInstanceRequest) (*models.NfProfile, *http.Response, error) {
+//	@return SharedData
+func (a *SharedDataDocumentAPIService) RegisterSharedDataExecute(r ApiRegisterSharedDataRequest) (*models.SharedData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *models.NfProfile
+		localVarReturnValue *models.SharedData
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NFInstanceIDDocumentAPIService.RegisterNFInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedDataDocumentAPIService.RegisterSharedData")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/nf-instances/{nfInstanceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"nfInstanceID"+"}", url.PathEscape(parameterValueToString(r.nfInstanceID, "nfInstanceID")), -1)
+	localVarPath := localBasePath + "/shared-data/{sharedDataId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"sharedDataId"+"}", url.PathEscape(parameterValueToString(r.sharedDataId, "sharedDataId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.nFProfile == nil {
-		return localVarReturnValue, nil, reportError("nFProfile is required and must be specified")
+	if r.sharedData == nil {
+		return localVarReturnValue, nil, reportError("sharedData is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -585,7 +585,7 @@ func (a *NFInstanceIDDocumentAPIService) RegisterNFInstanceExecute(r ApiRegister
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Encoding", r.acceptEncoding, "")
 	}
 	// body params
-	localVarPostBody = r.nFProfile
+	localVarPostBody = r.sharedData
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -631,7 +631,7 @@ func (a *NFInstanceIDDocumentAPIService) RegisterNFInstanceExecute(r ApiRegister
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v models.NFProfileRegistrationError
+			var v models.ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -766,76 +766,76 @@ func (a *NFInstanceIDDocumentAPIService) RegisterNFInstanceExecute(r ApiRegister
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateNFInstanceRequest struct {
+type ApiUpdateSharedDataRequest struct {
 	ctx             context.Context
-	ApiService      *NFInstanceIDDocumentAPIService
-	nfInstanceID    string
+	ApiService      *SharedDataDocumentAPIService
+	sharedDataId    string
 	patchItem       *[]models.PatchItem
 	contentEncoding *string
 	acceptEncoding  *string
 	ifMatch         *string
 }
 
-func (r ApiUpdateNFInstanceRequest) PatchItem(patchItem []models.PatchItem) ApiUpdateNFInstanceRequest {
+func (r ApiUpdateSharedDataRequest) PatchItem(patchItem []models.PatchItem) ApiUpdateSharedDataRequest {
 	r.patchItem = &patchItem
 	return r
 }
 
 // Content-Encoding, described in IETF RFC 9110
-func (r ApiUpdateNFInstanceRequest) ContentEncoding(contentEncoding string) ApiUpdateNFInstanceRequest {
+func (r ApiUpdateSharedDataRequest) ContentEncoding(contentEncoding string) ApiUpdateSharedDataRequest {
 	r.contentEncoding = &contentEncoding
 	return r
 }
 
 // Accept-Encoding, described in IETF RFC 9110
-func (r ApiUpdateNFInstanceRequest) AcceptEncoding(acceptEncoding string) ApiUpdateNFInstanceRequest {
+func (r ApiUpdateSharedDataRequest) AcceptEncoding(acceptEncoding string) ApiUpdateSharedDataRequest {
 	r.acceptEncoding = &acceptEncoding
 	return r
 }
 
 // Validator for conditional requests, as described in IETF RFC 9110, 13.1.1
-func (r ApiUpdateNFInstanceRequest) IfMatch(ifMatch string) ApiUpdateNFInstanceRequest {
+func (r ApiUpdateSharedDataRequest) IfMatch(ifMatch string) ApiUpdateSharedDataRequest {
 	r.ifMatch = &ifMatch
 	return r
 }
 
-func (r ApiUpdateNFInstanceRequest) Execute() (*models.NfProfile, *http.Response, error) {
-	return r.ApiService.UpdateNFInstanceExecute(r)
+func (r ApiUpdateSharedDataRequest) Execute() (*models.SharedData, *http.Response, error) {
+	return r.ApiService.UpdateSharedDataExecute(r)
 }
 
 /*
-UpdateNFInstance Update NF Instance profile
+UpdateSharedData Update Shared Data
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param nfInstanceID Unique ID of the NF Instance to update
-	@return ApiUpdateNFInstanceRequest
+	@param sharedDataId Unique ID of shared data to update
+	@return ApiUpdateSharedDataRequest
 */
-func (a *NFInstanceIDDocumentAPIService) UpdateNFInstance(ctx context.Context, nfInstanceID string) ApiUpdateNFInstanceRequest {
-	return ApiUpdateNFInstanceRequest{
+func (a *SharedDataDocumentAPIService) UpdateSharedData(ctx context.Context, sharedDataId string) ApiUpdateSharedDataRequest {
+	return ApiUpdateSharedDataRequest{
 		ApiService:   a,
 		ctx:          ctx,
-		nfInstanceID: nfInstanceID,
+		sharedDataId: sharedDataId,
 	}
 }
 
 // Execute executes the request
 //
-//	@return NFProfile
-func (a *NFInstanceIDDocumentAPIService) UpdateNFInstanceExecute(r ApiUpdateNFInstanceRequest) (*models.NfProfile, *http.Response, error) {
+//	@return SharedData
+func (a *SharedDataDocumentAPIService) UpdateSharedDataExecute(r ApiUpdateSharedDataRequest) (*models.SharedData, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *models.NfProfile
+		localVarReturnValue *models.SharedData
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NFInstanceIDDocumentAPIService.UpdateNFInstance")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedDataDocumentAPIService.UpdateSharedData")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/nf-instances/{nfInstanceID}"
-	localVarPath = strings.Replace(localVarPath, "{"+"nfInstanceID"+"}", url.PathEscape(parameterValueToString(r.nfInstanceID, "nfInstanceID")), -1)
+	localVarPath := localBasePath + "/shared-data/{sharedDataId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"sharedDataId"+"}", url.PathEscape(parameterValueToString(r.sharedDataId, "sharedDataId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

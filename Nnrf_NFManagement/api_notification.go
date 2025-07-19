@@ -35,15 +35,12 @@ NotificationApiService Notifies about updates to NSSAI availability information
 
 func (a *NotificationApiService) NotificationPost(ctx context.Context, nrfNotificationData NotificationData) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = strings.ToUpper("Post")
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
+		localVarHTTPMethod = strings.ToUpper("Post")
+		localVarPostBody   interface{}
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath()
+	localVarPath := a.client.cfg.Servers[0].URL
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -65,12 +62,13 @@ func (a *NotificationApiService) NotificationPost(ctx context.Context, nrfNotifi
 	// body params
 	localVarPostBody = &nrfNotificationData
 
-	r, err := openapi.PrepareRequest(ctx, a.client.cfg, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHTTPMethod, localVarPostBody,
+		localVarHeaderParams, localVarQueryParams, localVarFormParams, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	localVarHTTPResponse, err := openapi.CallAPI(a.client.cfg, r)
+	localVarHTTPResponse, err := a.client.callAPI(r)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarHTTPResponse, err
 	}

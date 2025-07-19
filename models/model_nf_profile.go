@@ -31,20 +31,20 @@ type NfProfile struct {
 	HeartBeatTimer        *int32                 `json:"heartBeatTimer,omitempty"`
 	PlmnList              *[]PlmnId              `json:"plmnList,omitempty"`
 	SnpnList              []PlmnIdNid            `json:"snpnList,omitempty"`
-	SNssais               *[]Snssai              `json:"sNssais,omitempty"`
+	SNssais               *[]ExtSnssai           `json:"sNssais,omitempty"`
 	PerPlmnSnssaiList     []PlmnSnssai           `json:"perPlmnSnssaiList,omitempty"`
 	NsiList               []string               `json:"nsiList,omitempty"`
 	// Fully Qualified Domain Name
 	Fqdn *string `json:"fqdn,omitempty"`
 	// Fully Qualified Domain Name
-	InterPlmnFqdn    *string     `json:"interPlmnFqdn,omitempty"`
-	Ipv4Addresses    []string    `json:"ipv4Addresses,omitempty"`
-	Ipv6Addresses    []Ipv6Addr  `json:"ipv6Addresses,omitempty"`
-	AllowedPlmns     []PlmnId    `json:"allowedPlmns,omitempty"`
-	AllowedSnpns     []PlmnIdNid `json:"allowedSnpns,omitempty"`
-	AllowedNfTypes   []NfType    `json:"allowedNfTypes,omitempty"`
-	AllowedNfDomains []string    `json:"allowedNfDomains,omitempty"`
-	AllowedNssais    *[]Snssai   `json:"allowedNssais,omitempty"`
+	InterPlmnFqdn    *string      `json:"interPlmnFqdn,omitempty"`
+	Ipv4Addresses    []string     `json:"ipv4Addresses,omitempty"`
+	Ipv6Addresses    []Ipv6Addr   `json:"ipv6Addresses,omitempty"`
+	AllowedPlmns     []PlmnId     `json:"allowedPlmns,omitempty"`
+	AllowedSnpns     []PlmnIdNid  `json:"allowedSnpns,omitempty"`
+	AllowedNfTypes   []NfType     `json:"allowedNfTypes,omitempty"`
+	AllowedNfDomains []string     `json:"allowedNfDomains,omitempty"`
+	AllowedNssais    *[]ExtSnssai `json:"allowedNssais,omitempty"`
 	// A map (list of key-value pairs) where a valid JSON pointer Id serves as key
 	AllowedRuleSet *map[string]RuleSet `json:"allowedRuleSet,omitempty"`
 	Priority       *int32              `json:"priority,omitempty"`
@@ -434,9 +434,9 @@ func (o *NfProfile) SetSnpnList(v []PlmnIdNid) {
 }
 
 // GetSNssais returns the SNssais field value if set, zero value otherwise.
-func (o *NfProfile) GetSNssais() []Snssai {
+func (o *NfProfile) GetSNssais() []ExtSnssai {
 	if o == nil || IsNil(o.SNssais) {
-		var ret []Snssai
+		var ret []ExtSnssai
 		return ret
 	}
 	return *o.SNssais
@@ -444,7 +444,7 @@ func (o *NfProfile) GetSNssais() []Snssai {
 
 // GetSNssaisOk returns a tuple with the SNssais field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NfProfile) GetSNssaisOk() ([]Snssai, bool) {
+func (o *NfProfile) GetSNssaisOk() ([]ExtSnssai, bool) {
 	if o == nil || IsNil(o.SNssais) {
 		return nil, false
 	}
@@ -461,7 +461,7 @@ func (o *NfProfile) HasSNssais() bool {
 }
 
 // SetSNssais gets a reference to the given []ExtSnssai and assigns it to the SNssais field.
-func (o *NfProfile) SetSNssais(v []Snssai) {
+func (o *NfProfile) SetSNssais(v []ExtSnssai) {
 	*o.SNssais = v
 }
 
@@ -786,9 +786,9 @@ func (o *NfProfile) SetAllowedNfDomains(v []string) {
 }
 
 // GetAllowedNssais returns the AllowedNssais field value if set, zero value otherwise.
-func (o *NfProfile) GetAllowedNssais() []Snssai {
+func (o *NfProfile) GetAllowedNssais() []ExtSnssai {
 	if o == nil || IsNil(o.AllowedNssais) {
-		var ret []Snssai
+		var ret []ExtSnssai
 		return ret
 	}
 	return *o.AllowedNssais
@@ -796,7 +796,7 @@ func (o *NfProfile) GetAllowedNssais() []Snssai {
 
 // GetAllowedNssaisOk returns a tuple with the AllowedNssais field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NfProfile) GetAllowedNssaisOk() ([]Snssai, bool) {
+func (o *NfProfile) GetAllowedNssaisOk() ([]ExtSnssai, bool) {
 	if o == nil || IsNil(o.AllowedNssais) {
 		return nil, false
 	}
@@ -813,7 +813,7 @@ func (o *NfProfile) HasAllowedNssais() bool {
 }
 
 // SetAllowedNssais gets a reference to the given []Snssai and assigns it to the AllowedNssais field.
-func (o *NfProfile) SetAllowedNssais(v []Snssai) {
+func (o *NfProfile) SetAllowedNssais(v []ExtSnssai) {
 	*o.AllowedNssais = v
 }
 

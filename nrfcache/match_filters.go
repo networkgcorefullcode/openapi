@@ -14,6 +14,7 @@ package nrfcache
 
 import (
 	"encoding/json"
+	"reflect"
 	"regexp"
 
 	"github.com/omec-project/openapi/Nnrf_NFDiscovery"
@@ -57,24 +58,25 @@ func MatchSmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 		matchCount := 0
 
 		for _, reqSnssai := range reqSnssais {
-			var snssai models.Snssai
+			var snssai models.ExtSnssai
 			err := json.Unmarshal([]byte(reqSnssai), &snssai)
 			if err != nil {
 				logger.NrfcacheLog.Errorf("error Unmarshaling nssai: %+v", err)
 				return false, err
 			}
-
 			// Snssai in the smfInfo has priority
 			if profile.SmfInfo != nil && profile.SmfInfo.SNssaiSmfInfoList != nil {
 				for _, s := range *profile.SmfInfo.SNssaiSmfInfoList {
-					if s.SNssai != nil && (*s.SNssai) == snssai {
+					if s.SNssai != nil && compareExtSnssai(*s.SNssai, snssai) {
 						matchCount++
+						break
 					}
 				}
 			} else if profile.AllowedNssais != nil {
 				for _, s := range *profile.AllowedNssais {
-					if s == snssai {
+					if compareExtSnssai(s, snssai) {
 						matchCount++
+						break
 					}
 				}
 			}
@@ -112,6 +114,20 @@ func MatchSmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 	}
 	logger.NrfcacheLog.Infof("smf match found, nfInstance Id %v", profile.NfInstanceId)
 	return true, nil
+}
+
+// compareExtSnssai compares two ExtSnssai structs, including their slice fields.
+func compareExtSnssai(a, b models.ExtSnssai) bool {
+	if a.Sst != b.Sst {
+		return false
+	}
+	if a.Sd != b.Sd {
+		return false
+	}
+	if !reflect.DeepEqual(a.SdRanges, b.SdRanges) {
+		return false
+	}
+	return true
 }
 
 func MatchSupiRange(supi string, supiRange []models.SupiRange) bool {

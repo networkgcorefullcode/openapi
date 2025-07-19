@@ -20,46 +20,40 @@ import (
 	"github.com/omec-project/openapi/models"
 )
 
-// SubscriptionsCollectionAPIService SubscriptionsCollectionAPI service
-type SubscriptionsCollectionAPIService service
+// SharedDataStoreAPIService SharedDataStoreAPI service
+type SharedDataStoreAPIService service
 
-type ApiCreateSubscriptionRequest struct {
-	ctx              context.Context
-	ApiService       *SubscriptionsCollectionAPIService
-	subscriptionData *models.SubscriptionData
-	contentEncoding  *string
-	acceptEncoding   *string
+type ApiGetSharedDataCollectionRequest struct {
+	ctx               context.Context
+	ApiService        *SharedDataStoreAPIService
+	sharedDataIds     *models.SharedDataIdList
+	supportedFeatures *string
 }
 
-func (r ApiCreateSubscriptionRequest) SubscriptionData(subscriptionData models.SubscriptionData) ApiCreateSubscriptionRequest {
-	r.subscriptionData = &subscriptionData
+// List of shared data IDs
+func (r ApiGetSharedDataCollectionRequest) SharedDataIds(sharedDataIds models.SharedDataIdList) ApiGetSharedDataCollectionRequest {
+	r.sharedDataIds = &sharedDataIds
 	return r
 }
 
-// Content-Encoding, described in IETF RFC 9110
-func (r ApiCreateSubscriptionRequest) ContentEncoding(contentEncoding string) ApiCreateSubscriptionRequest {
-	r.contentEncoding = &contentEncoding
+// Supported Features
+func (r ApiGetSharedDataCollectionRequest) SupportedFeatures(supportedFeatures string) ApiGetSharedDataCollectionRequest {
+	r.supportedFeatures = &supportedFeatures
 	return r
 }
 
-// Accept-Encoding, described in IETF RFC 9110
-func (r ApiCreateSubscriptionRequest) AcceptEncoding(acceptEncoding string) ApiCreateSubscriptionRequest {
-	r.acceptEncoding = &acceptEncoding
-	return r
-}
-
-func (r ApiCreateSubscriptionRequest) Execute() (*models.SubscriptionData, *http.Response, error) {
-	return r.ApiService.CreateSubscriptionExecute(r)
+func (r ApiGetSharedDataCollectionRequest) Execute() ([]models.SharedData, *http.Response, error) {
+	return r.ApiService.GetSharedDataCollectionExecute(r)
 }
 
 /*
-CreateSubscription Create a new subscription
+GetSharedDataCollection Retrieves a collection of Shared Data
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCreateSubscriptionRequest
+	@return ApiGetSharedDataCollectionRequest
 */
-func (a *SubscriptionsCollectionAPIService) CreateSubscription(ctx context.Context) ApiCreateSubscriptionRequest {
-	return ApiCreateSubscriptionRequest{
+func (a *SharedDataStoreAPIService) GetSharedDataCollection(ctx context.Context) ApiGetSharedDataCollectionRequest {
+	return ApiGetSharedDataCollectionRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -67,31 +61,35 @@ func (a *SubscriptionsCollectionAPIService) CreateSubscription(ctx context.Conte
 
 // Execute executes the request
 //
-//	@return SubscriptionData
-func (a *SubscriptionsCollectionAPIService) CreateSubscriptionExecute(r ApiCreateSubscriptionRequest) (*models.SubscriptionData, *http.Response, error) {
+//	@return []SharedData
+func (a *SharedDataStoreAPIService) GetSharedDataCollectionExecute(r ApiGetSharedDataCollectionRequest) ([]models.SharedData, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
+		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *models.SubscriptionData
+		localVarReturnValue []models.SharedData
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SubscriptionsCollectionAPIService.CreateSubscription")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SharedDataStoreAPIService.GetSharedDataCollection")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/subscriptions"
+	localVarPath := localBasePath + "/shared-data"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.subscriptionData == nil {
-		return localVarReturnValue, nil, reportError("subscriptionData is required and must be specified")
+	if r.sharedDataIds == nil {
+		return localVarReturnValue, nil, reportError("sharedDataIds is required and must be specified")
 	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "shared-data-ids", r.sharedDataIds, "")
+	if r.supportedFeatures != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "supported-features", r.supportedFeatures, "")
+	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -107,14 +105,6 @@ func (a *SubscriptionsCollectionAPIService) CreateSubscriptionExecute(r ApiCreat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.contentEncoding != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Content-Encoding", r.contentEncoding, "")
-	}
-	if r.acceptEncoding != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Encoding", r.acceptEncoding, "")
-	}
-	// body params
-	localVarPostBody = r.subscriptionData
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -136,28 +126,6 @@ func (a *SubscriptionsCollectionAPIService) CreateSubscriptionExecute(r ApiCreat
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 307 {
-			var v models.RedirectResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 308 {
-			var v models.RedirectResponse
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v models.ProblemDetails
