@@ -19,6 +19,7 @@ var _ MappedNullable = &Ipv6Prefix{}
 
 // Ipv6Prefix String identifying an IPv6 address prefix formatted according to clause 4 of RFC 5952. IPv6Prefix data type may contain an individual /128 IPv6 address.
 type Ipv6Prefix struct {
+	string *string
 }
 
 // NewIpv6Prefix instantiates a new Ipv6Prefix object
@@ -28,6 +29,20 @@ type Ipv6Prefix struct {
 func NewIpv6Prefix() *Ipv6Prefix {
 	this := Ipv6Prefix{}
 	return &this
+}
+
+func NewIpv6PrefixWithValue(val string) *Ipv6Prefix {
+	this := Ipv6Prefix{}
+	this.string = &val
+	return &this
+}
+
+func (o *Ipv6Prefix) GetValue() string {
+	if o == nil || IsNil(o.string) {
+		var ret string
+		return ret
+	}
+	return *o.string
 }
 
 // NewIpv6PrefixWithDefaults instantiates a new Ipv6Prefix object
