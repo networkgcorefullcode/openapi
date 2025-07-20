@@ -21,9 +21,9 @@ var _ MappedNullable = &SmfInfo{}
 
 // SmfInfo Information of an SMF NF Instance
 type SmfInfo struct {
-	SNssaiSmfInfoList *[]SnssaiSmfInfoItem `json:"sNssaiSmfInfoList"`
-	TaiList           *[]Tai               `json:"taiList,omitempty"`
-	TaiRangeList      *[]TaiRange          `json:"taiRangeList,omitempty"`
+	SNssaiSmfInfoList []SnssaiSmfInfoItem `json:"sNssaiSmfInfoList"`
+	TaiList           []Tai               `json:"taiList,omitempty"`
+	TaiRangeList      []TaiRange          `json:"taiRangeList,omitempty"`
 	// Fully Qualified Domain Name
 	PgwFqdn        *string      `json:"pgwFqdn,omitempty"`
 	PgwIpAddrList  []IpAddr     `json:"pgwIpAddrList,omitempty"`
@@ -45,7 +45,7 @@ type _SmfInfo SmfInfo
 // will change when the set of required properties is changed
 func NewSmfInfo(sNssaiSmfInfoList []SnssaiSmfInfoItem) *SmfInfo {
 	this := SmfInfo{}
-	*this.SNssaiSmfInfoList = sNssaiSmfInfoList
+	this.SNssaiSmfInfoList = sNssaiSmfInfoList
 	var smfOnboardingCapability bool = false
 	this.SmfOnboardingCapability = &smfOnboardingCapability
 	var smfUPRPCapability bool = false
@@ -72,7 +72,7 @@ func (o *SmfInfo) GetSNssaiSmfInfoList() []SnssaiSmfInfoItem {
 		return ret
 	}
 
-	return *o.SNssaiSmfInfoList
+	return o.SNssaiSmfInfoList
 }
 
 // GetSNssaiSmfInfoListOk returns a tuple with the SNssaiSmfInfoList field value
@@ -81,12 +81,12 @@ func (o *SmfInfo) GetSNssaiSmfInfoListOk() ([]SnssaiSmfInfoItem, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return *o.SNssaiSmfInfoList, true
+	return o.SNssaiSmfInfoList, true
 }
 
 // SetSNssaiSmfInfoList sets field value
 func (o *SmfInfo) SetSNssaiSmfInfoList(v []SnssaiSmfInfoItem) {
-	*o.SNssaiSmfInfoList = v
+	o.SNssaiSmfInfoList = v
 }
 
 // GetTaiList returns the TaiList field value if set, zero value otherwise.
@@ -95,7 +95,7 @@ func (o *SmfInfo) GetTaiList() []Tai {
 		var ret []Tai
 		return ret
 	}
-	return *o.TaiList
+	return o.TaiList
 }
 
 // GetTaiListOk returns a tuple with the TaiList field value if set, nil otherwise
@@ -104,7 +104,7 @@ func (o *SmfInfo) GetTaiListOk() ([]Tai, bool) {
 	if o == nil || IsNil(o.TaiList) {
 		return nil, false
 	}
-	return *o.TaiList, true
+	return o.TaiList, true
 }
 
 // HasTaiList returns a boolean if a field has been set.
@@ -118,7 +118,7 @@ func (o *SmfInfo) HasTaiList() bool {
 
 // SetTaiList gets a reference to the given []Tai and assigns it to the TaiList field.
 func (o *SmfInfo) SetTaiList(v []Tai) {
-	*o.TaiList = v
+	o.TaiList = v
 }
 
 // GetTaiRangeList returns the TaiRangeList field value if set, zero value otherwise.
@@ -127,7 +127,7 @@ func (o *SmfInfo) GetTaiRangeList() []TaiRange {
 		var ret []TaiRange
 		return ret
 	}
-	return *o.TaiRangeList
+	return o.TaiRangeList
 }
 
 // GetTaiRangeListOk returns a tuple with the TaiRangeList field value if set, nil otherwise
@@ -136,7 +136,7 @@ func (o *SmfInfo) GetTaiRangeListOk() ([]TaiRange, bool) {
 	if o == nil || IsNil(o.TaiRangeList) {
 		return nil, false
 	}
-	return *o.TaiRangeList, true
+	return o.TaiRangeList, true
 }
 
 // HasTaiRangeList returns a boolean if a field has been set.
@@ -150,7 +150,7 @@ func (o *SmfInfo) HasTaiRangeList() bool {
 
 // SetTaiRangeList gets a reference to the given []TaiRange and assigns it to the TaiRangeList field.
 func (o *SmfInfo) SetTaiRangeList(v []TaiRange) {
-	*o.TaiRangeList = v
+	o.TaiRangeList = v
 }
 
 // GetPgwFqdn returns the PgwFqdn field value if set, zero value otherwise.

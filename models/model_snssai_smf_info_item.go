@@ -21,9 +21,9 @@ var _ MappedNullable = &SnssaiSmfInfoItem{}
 
 // SnssaiSmfInfoItem Set of parameters supported by SMF for a given S-NSSAI
 type SnssaiSmfInfoItem struct {
-	SNssai           *ExtSnssai        `json:"sNssai"`
-	DnnSmfInfoList   *[]DnnSmfInfoItem `json:"dnnSmfInfoList,omitempty"`
-	DnnSmfInfoListId *int32            `json:"dnnSmfInfoListId,omitempty"`
+	SNssai           ExtSnssai        `json:"sNssai"`
+	DnnSmfInfoList   []DnnSmfInfoItem `json:"dnnSmfInfoList,omitempty"`
+	DnnSmfInfoListId *int32           `json:"dnnSmfInfoListId,omitempty"`
 }
 
 type _SnssaiSmfInfoItem SnssaiSmfInfoItem
@@ -52,7 +52,7 @@ func (o *SnssaiSmfInfoItem) GetSNssai() ExtSnssai {
 		return ret
 	}
 
-	return *o.SNssai
+	return o.SNssai
 }
 
 // GetSNssaiOk returns a tuple with the SNssai field value
@@ -61,12 +61,12 @@ func (o *SnssaiSmfInfoItem) GetSNssaiOk() (*ExtSnssai, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.SNssai, true
+	return &o.SNssai, true
 }
 
 // SetSNssai sets field value
 func (o *SnssaiSmfInfoItem) SetSNssai(v ExtSnssai) {
-	*o.SNssai = v
+	o.SNssai = v
 }
 
 // GetDnnSmfInfoList returns the DnnSmfInfoList field value if set, zero value otherwise.
@@ -75,7 +75,7 @@ func (o *SnssaiSmfInfoItem) GetDnnSmfInfoList() []DnnSmfInfoItem {
 		var ret []DnnSmfInfoItem
 		return ret
 	}
-	return *o.DnnSmfInfoList
+	return o.DnnSmfInfoList
 }
 
 // GetDnnSmfInfoListOk returns a tuple with the DnnSmfInfoList field value if set, nil otherwise
@@ -84,7 +84,7 @@ func (o *SnssaiSmfInfoItem) GetDnnSmfInfoListOk() ([]DnnSmfInfoItem, bool) {
 	if o == nil || IsNil(o.DnnSmfInfoList) {
 		return nil, false
 	}
-	return *o.DnnSmfInfoList, true
+	return o.DnnSmfInfoList, true
 }
 
 // HasDnnSmfInfoList returns a boolean if a field has been set.
@@ -98,7 +98,7 @@ func (o *SnssaiSmfInfoItem) HasDnnSmfInfoList() bool {
 
 // SetDnnSmfInfoList gets a reference to the given []DnnSmfInfoItem and assigns it to the DnnSmfInfoList field.
 func (o *SnssaiSmfInfoItem) SetDnnSmfInfoList(v []DnnSmfInfoItem) {
-	*o.DnnSmfInfoList = v
+	o.DnnSmfInfoList = v
 }
 
 // GetDnnSmfInfoListId returns the DnnSmfInfoListId field value if set, zero value otherwise.

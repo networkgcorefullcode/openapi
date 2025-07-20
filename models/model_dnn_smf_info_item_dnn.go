@@ -20,6 +20,13 @@ type DnnSmfInfoItemDnn struct {
 	string *string
 }
 
+func (dnn *DnnSmfInfoItemDnn) Get() string {
+	if dnn == nil || dnn.string == nil {
+		return ""
+	}
+	return *dnn.string
+}
+
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *DnnSmfInfoItemDnn) UnmarshalJSON(data []byte) error {
 	var err error
@@ -55,6 +62,10 @@ type NullableDnnSmfInfoItemDnn struct {
 
 func (v NullableDnnSmfInfoItemDnn) Get() *DnnSmfInfoItemDnn {
 	return v.value
+}
+
+func (v NullableDnnSmfInfoItemDnn) Get_String() DnnSmfInfoItemDnn {
+	return *v.value
 }
 
 func (v *NullableDnnSmfInfoItemDnn) Set(val *DnnSmfInfoItemDnn) {
