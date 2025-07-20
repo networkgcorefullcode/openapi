@@ -1454,7 +1454,7 @@ func (o *NfService) UnmarshalJSON(data []byte) (err error) {
 		"serviceName",
 		"versions",
 		"scheme",
-		"NfServiceStatus",
+		"nfServiceStatus",
 	}
 
 	allProperties := make(map[string]interface{})
