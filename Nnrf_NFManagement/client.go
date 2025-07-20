@@ -62,6 +62,8 @@ type APIClient struct {
 	SubscriptionIDDocumentAPI *SubscriptionIDDocumentAPIService
 
 	SubscriptionsCollectionAPI *SubscriptionsCollectionAPIService
+
+	NotificationApi *NotificationApiService
 }
 
 type service struct {
@@ -86,6 +88,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SharedDataStoreAPI = (*SharedDataStoreAPIService)(&c.common)
 	c.SubscriptionIDDocumentAPI = (*SubscriptionIDDocumentAPIService)(&c.common)
 	c.SubscriptionsCollectionAPI = (*SubscriptionsCollectionAPIService)(&c.common)
+	c.NotificationApi = (*NotificationApiService)(&c.common)
 
 	return c
 }
