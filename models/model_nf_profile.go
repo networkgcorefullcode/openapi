@@ -3798,8 +3798,8 @@ func (o *NfProfile) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"nfInstanceId",
-		"NfType",
-		"NfStatus",
+		"nfType",
+		"nfStatus",
 	}
 
 	allProperties := make(map[string]interface{})
