@@ -25,8 +25,8 @@ type NfProfile struct {
 	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
 	NfInstanceId          string                 `json:"nfInstanceId"`
 	NfInstanceName        *string                `json:"nfInstanceName,omitempty"`
-	NfType                NfType                 `json:"NfType"`
-	NfStatus              NfStatus               `json:"NfStatus"`
+	NfType                NfType                 `json:"nfType"`
+	NfStatus              NfStatus               `json:"nfStatus"`
 	CollocatedNfInstances []CollocatedNfInstance `json:"collocatedNfInstances,omitempty"`
 	HeartBeatTimer        *int32                 `json:"heartBeatTimer,omitempty"`
 	PlmnList              *[]PlmnId              `json:"plmnList,omitempty"`
@@ -97,14 +97,14 @@ type NfProfile struct {
 	CustomInfo  map[string]interface{} `json:"customInfo,omitempty"`
 	// string with format 'date-time' as defined in OpenAPI.
 	RecoveryTime         *time.Time `json:"recoveryTime,omitempty"`
-	NfServicePersistence *bool      `json:"NfServicePersistence,omitempty"`
+	NfServicePersistence *bool      `json:"nfServicePersistence,omitempty"`
 	// Deprecated
-	NfServices *[]NfService `json:"NfServices,omitempty"`
+	NfServices *[]NfService `json:"nfServices,omitempty"`
 	// A map (list of key-value pairs) where serviceInstanceId serves as key of NfService
-	NfServiceList                           *map[string]NfService             `json:"NfServiceList,omitempty"`
-	NfProfileChangesSupportInd              *bool                             `json:"NfProfileChangesSupportInd,omitempty"`
-	NfProfilePartialUpdateChangesSupportInd *bool                             `json:"NfProfilePartialUpdateChangesSupportInd,omitempty"`
-	NfProfileChangesInd                     *bool                             `json:"NfProfileChangesInd,omitempty"`
+	NfServiceList                           *map[string]NfService             `json:"nfServiceList,omitempty"`
+	NfProfileChangesSupportInd              *bool                             `json:"nfProfileChangesSupportInd,omitempty"`
+	NfProfilePartialUpdateChangesSupportInd *bool                             `json:"nfProfilePartialUpdateChangesSupportInd,omitempty"`
+	NfProfileChangesInd                     *bool                             `json:"nfProfileChangesInd,omitempty"`
 	DefaultNotificationSubscriptions        []DefaultNotificationSubscription `json:"defaultNotificationSubscriptions,omitempty"`
 	LmfInfo                                 *LmfInfo                          `json:"lmfInfo,omitempty"`
 	GmlcInfo                                *GmlcInfo                         `json:"gmlcInfo,omitempty"`
