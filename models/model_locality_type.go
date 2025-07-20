@@ -59,10 +59,6 @@ func (v *NullableLocalityType) Unset() {
 	v.isSet = false
 }
 
-func NewNullableLocalityType(val *LocalityType) *NullableLocalityType {
-	return &NullableLocalityType{value: val, isSet: true}
-}
-
 func (v NullableLocalityType) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
