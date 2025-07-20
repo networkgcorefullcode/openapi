@@ -16,35 +16,23 @@ import (
 )
 
 // LocalityType Type of locality description. An operator may define custom locality type values other  than those listed in this enumeration.
-type LocalityType struct {
-	string *string
-}
+type LocalityType string
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *LocalityType) UnmarshalJSON(data []byte) error {
-	var err error
-	// try to unmarshal JSON data into string
-	err = json.Unmarshal(data, &dst.string)
-	if err == nil {
-		jsonstring, _ := json.Marshal(dst.string)
-		if string(jsonstring) == "{}" { // empty struct
-			dst.string = nil
-		} else {
-			return nil // data stored in dst.string, return on the first match
-		}
-	} else {
-		dst.string = nil
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return fmt.Errorf("data failed to unmarshal into LocalityType: %w", err)
 	}
-
-	return fmt.Errorf("data failed to match schemas in anyOf(LocalityType)")
+	*dst = LocalityType(s)
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *LocalityType) MarshalJSON() ([]byte, error) {
-	if src.string != nil {
-		return json.Marshal(&src.string)
+	if src != nil {
+		return json.Marshal(string(*src))
 	}
-
 	return nil, nil // no data in anyOf schemas
 }
 
@@ -82,4 +70,7 @@ func (v NullableLocalityType) MarshalJSON() ([]byte, error) {
 func (v *NullableLocalityType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
+}
+func NewNullableLocalityType(val *LocalityType) *NullableLocalityType {
+	return &NullableLocalityType{value: val, isSet: true}
 }

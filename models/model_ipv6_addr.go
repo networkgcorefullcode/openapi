@@ -14,31 +14,12 @@ import (
 	"encoding/json"
 )
 
-// checks if the Ipv6Addr type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Ipv6Addr{}
-
 // Ipv6Addr String identifying an IPv6 address formatted according to clause 4 of RFC5952. The mixed IPv4 IPv6 notation according to clause 5 of RFC5952 shall not be used.
-type Ipv6Addr struct {
-	string *string
-}
-
-// ToMap implements the MappedNullable interface for Ipv6Addr
-func (a Ipv6Addr) ToMap() (map[string]interface{}, error) {
-	m := make(map[string]interface{})
-	if a.string != nil {
-		m["string"] = *a.string
-	} else {
-		m["string"] = nil
-	}
-	return m, nil
-}
+type Ipv6Addr string
 
 // MarshalJSON serializa Ipv6Addr como un string plano
 func (a Ipv6Addr) MarshalJSON() ([]byte, error) {
-	if a.string == nil {
-		return json.Marshal("")
-	}
-	return json.Marshal(*a.string)
+	return json.Marshal(string(a))
 }
 
 // UnmarshalJSON deserializa un string plano a Ipv6Addr
@@ -47,7 +28,7 @@ func (a *Ipv6Addr) UnmarshalJSON(data []byte) error {
 	if err := json.Unmarshal(data, &s); err != nil {
 		return err
 	}
-	a.string = &s
+	*a = Ipv6Addr(s)
 	return nil
 }
 
@@ -56,7 +37,7 @@ func (a *Ipv6Addr) UnmarshalJSON(data []byte) error {
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
 func NewIpv6Addr() *Ipv6Addr {
-	this := Ipv6Addr{}
+	this := Ipv6Addr("")
 	return &this
 }
 
@@ -64,7 +45,7 @@ func NewIpv6Addr() *Ipv6Addr {
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
 func NewIpv6AddrWithDefaults() *Ipv6Addr {
-	this := Ipv6Addr{}
+	this := Ipv6Addr("")
 	return &this
 }
 

@@ -16,35 +16,23 @@ import (
 )
 
 // RuleSetAction Specifies whether access/scope is allowed or denied for a specific NF-Consumer.
-type RuleSetAction struct {
-	string *string
-}
+type RuleSetAction string
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *RuleSetAction) UnmarshalJSON(data []byte) error {
-	var err error
-	// try to unmarshal JSON data into string
-	err = json.Unmarshal(data, &dst.string)
-	if err == nil {
-		jsonstring, _ := json.Marshal(dst.string)
-		if string(jsonstring) == "{}" { // empty struct
-			dst.string = nil
-		} else {
-			return nil // data stored in dst.string, return on the first match
-		}
-	} else {
-		dst.string = nil
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return fmt.Errorf("data failed to unmarshal into RuleSetAction: %w", err)
 	}
-
-	return fmt.Errorf("data failed to match schemas in anyOf(RuleSetAction)")
+	*dst = RuleSetAction(s)
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *RuleSetAction) MarshalJSON() ([]byte, error) {
-	if src.string != nil {
-		return json.Marshal(&src.string)
+	if src != nil {
+		return json.Marshal(string(*src))
 	}
-
 	return nil, nil // no data in anyOf schemas
 }
 

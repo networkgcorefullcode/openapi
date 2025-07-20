@@ -16,35 +16,23 @@ import (
 )
 
 // NwdafEvent Describes the NWDAF Events.   Possible values are: - SLICE_LOAD_LEVEL: Indicates that the event subscribed is load level information of Network   Slice. - NETWORK_PERFORMANCE: Indicates that the event subscribed is network performance   information. - NF_LOAD: Indicates that the event subscribed is load level and status of one or several   Network Functions. - SERVICE_EXPERIENCE: Indicates that the event subscribed is service experience. - UE_MOBILITY: Indicates that the event subscribed is UE mobility information. - UE_COMMUNICATION: Indicates that the event subscribed is UE communication information. - QOS_SUSTAINABILITY: Indicates that the event subscribed is QoS sustainability. - ABNORMAL_BEHAVIOUR: Indicates that the event subscribed is abnormal behaviour. - USER_DATA_CONGESTION: Indicates that the event subscribed is user data congestion   information. - NSI_LOAD_LEVEL: Indicates that the event subscribed is load level information of Network   Slice and the optionally associated Network Slice Instance. - DN_PERFORMANCE: Indicates that the event subscribed is DN performance information. - DISPERSION: Indicates that the event subscribed is dispersion information. - RED_TRANS_EXP: Indicates that the event subscribed is redundant transmission experience. - WLAN_PERFORMANCE: Indicates that the event subscribed is WLAN performance. - SM_CONGESTION: Indicates the Session Management Congestion Control Experience information   for specific DNN and/or S-NSSAI. - PFD_DETERMINATION: Indicates that the event subscribed is the PFD Determination nformation   for known application identifier(s). - PDU_SESSION_TRAFFIC: Indicates that the event subscribed is the PDU Session traffic   information. - E2E_DATA_VOL_TRANS_TIME: Indicates that the event subscribed is of E2E data volume    transfer time. - MOVEMENT_BEHAVIOUR: Indicates that the event subscribed is the Movement Behaviour   information. - LOC_ACCURACY: Indicates that the event subscribed is of location accuracy. - RELATIVE_PROXIMITY: Indicates that the event subscribed is the Relative Proximity   information. - SIGNALLING_STORM: Indicates that the event subscribed is the Signalling Storm information.
-type NwdafEvent struct {
-	string *string
-}
+type NwdafEvent string
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *NwdafEvent) UnmarshalJSON(data []byte) error {
-	var err error
-	// try to unmarshal JSON data into string
-	err = json.Unmarshal(data, &dst.string)
-	if err == nil {
-		jsonstring, _ := json.Marshal(dst.string)
-		if string(jsonstring) == "{}" { // empty struct
-			dst.string = nil
-		} else {
-			return nil // data stored in dst.string, return on the first match
-		}
-	} else {
-		dst.string = nil
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return fmt.Errorf("data failed to unmarshal into NwdafEvent: %w", err)
 	}
-
-	return fmt.Errorf("data failed to match schemas in anyOf(NwdafEvent)")
+	*dst = NwdafEvent(s)
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *NwdafEvent) MarshalJSON() ([]byte, error) {
-	if src.string != nil {
-		return json.Marshal(&src.string)
+	if src != nil {
+		return json.Marshal(string(*src))
 	}
-
 	return nil, nil // no data in anyOf schemas
 }
 

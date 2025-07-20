@@ -99,9 +99,7 @@ func MatchSmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 			for _, s := range profile.SmfInfo.SNssaiSmfInfoList {
 				if s.DnnSmfInfoList != nil {
 					for _, d := range s.DnnSmfInfoList {
-						var value models.NullableDnnSmfInfoItemDnn
-						value.Set(&d.Dnn)
-						if value.Get().Get() == opts.Dnn.Value() || value.Get().Get() == "*" {
+						if string(d.Dnn) == opts.Dnn.Value() || string(d.Dnn) == "*" {
 							dnnMatched = true
 							break matchDnnLoop
 						}

@@ -16,40 +16,22 @@ import (
 )
 
 // DnnSmfInfoItemDnn struct for DnnSmfInfoItemDnn
-type DnnSmfInfoItemDnn struct {
-	string *string
-}
-
-func (dnn *DnnSmfInfoItemDnn) Get() string {
-	if dnn == nil || dnn.string == nil {
-		return ""
-	}
-	return *dnn.string
-}
+type DnnSmfInfoItemDnn string
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *DnnSmfInfoItemDnn) UnmarshalJSON(data []byte) error {
-	var err error
-	// try to unmarshal JSON data into string
-	err = json.Unmarshal(data, &dst.string)
-	if err == nil {
-		jsonstring, _ := json.Marshal(dst.string)
-		if string(jsonstring) == "{}" { // empty struct
-			dst.string = nil
-		} else {
-			return nil // data stored in dst.string, return on the first match
-		}
-	} else {
-		dst.string = nil
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return fmt.Errorf("data failed to unmarshal into DnnSmfInfoItemDnn: %w", err)
 	}
-
-	return fmt.Errorf("data failed to match schemas in anyOf(DnnSmfInfoItemDnn)")
+	*dst = DnnSmfInfoItemDnn(s)
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src *DnnSmfInfoItemDnn) MarshalJSON() ([]byte, error) {
-	if src.string != nil {
-		return json.Marshal(&src.string)
+	if src != nil {
+		return json.Marshal(string(*src))
 	}
 
 	return nil, nil // no data in anyOf schemas
