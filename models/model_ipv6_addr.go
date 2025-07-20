@@ -22,6 +22,35 @@ type Ipv6Addr struct {
 	string *string
 }
 
+// ToMap implements the MappedNullable interface for Ipv6Addr
+func (a Ipv6Addr) ToMap() (map[string]interface{}, error) {
+	m := make(map[string]interface{})
+	if a.string != nil {
+		m["string"] = *a.string
+	} else {
+		m["string"] = nil
+	}
+	return m, nil
+}
+
+// MarshalJSON serializa Ipv6Addr como un string plano
+func (a Ipv6Addr) MarshalJSON() ([]byte, error) {
+	if a.string == nil {
+		return json.Marshal("")
+	}
+	return json.Marshal(*a.string)
+}
+
+// UnmarshalJSON deserializa un string plano a Ipv6Addr
+func (a *Ipv6Addr) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	a.string = &s
+	return nil
+}
+
 // NewIpv6Addr instantiates a new Ipv6Addr object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
@@ -37,19 +66,6 @@ func NewIpv6Addr() *Ipv6Addr {
 func NewIpv6AddrWithDefaults() *Ipv6Addr {
 	this := Ipv6Addr{}
 	return &this
-}
-
-func (o Ipv6Addr) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o Ipv6Addr) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	return toSerialize, nil
 }
 
 type NullableIpv6Addr struct {
