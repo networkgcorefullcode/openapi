@@ -37,9 +37,9 @@ func NewNfInfoWithDefaults() *NfInfo {
 }
 
 // GetNfType returns the NfType field value if set, zero value otherwise.
-func (o *NfInfo) GetNfType() NFType {
+func (o *NfInfo) GetNfType() NfType {
 	if o == nil || IsNil(o.NfType) {
-		var ret NFType
+		var ret NfType
 		return ret
 	}
 	return *o.NfType
@@ -47,7 +47,7 @@ func (o *NfInfo) GetNfType() NFType {
 
 // GetNfTypeOk returns a tuple with the NfType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NfInfo) GetNfTypeOk() (*NFType, bool) {
+func (o *NfInfo) GetNfTypeOk() (*NfType, bool) {
 	if o == nil || IsNil(o.NfType) {
 		return nil, false
 	}
@@ -63,8 +63,8 @@ func (o *NfInfo) HasNfType() bool {
 	return false
 }
 
-// SetNfType gets a reference to the given NFType and assigns it to the NfType field.
-func (o *NfInfo) SetNfType(v NFType) {
+// SetNfType gets a reference to the given NfType and assigns it to the NfType field.
+func (o *NfInfo) SetNfType(v NfType) {
 	o.NfType = &v
 }
 

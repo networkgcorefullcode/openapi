@@ -20,7 +20,7 @@ import (
 
 type NfType string
 
-// List of NFType
+// List of NfType
 const (
 	NfType_NRF      NfType = "NRF"
 	NfType_UDM      NfType = "UDM"
@@ -56,7 +56,7 @@ func (dst *NfType) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	return fmt.Errorf("data failed to match schemas in anyOf(NFType)")
+	return fmt.Errorf("data failed to match schemas in anyOf(NfType)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
