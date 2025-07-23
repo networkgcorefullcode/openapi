@@ -21,9 +21,6 @@ import (
 	"fmt"
 )
 
-// checks if the PccQos type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PccQos{}
-
 // PccQos struct for PccQos
 type PccQos struct {
 	FiveQi  int32  `json:"fiveQi"`

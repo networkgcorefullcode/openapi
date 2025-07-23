@@ -21,9 +21,6 @@ import (
 	"fmt"
 )
 
-// checks if the PlmnSnssai type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PlmnSnssai{}
-
 // PlmnSnssai struct for PlmnSnssai
 type PlmnSnssai struct {
 	PlmnId     PlmnId   `json:"plmnId"`

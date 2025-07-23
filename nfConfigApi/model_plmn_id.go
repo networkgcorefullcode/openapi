@@ -21,9 +21,6 @@ import (
 	"fmt"
 )
 
-// checks if the PlmnId type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PlmnId{}
-
 // PlmnId struct for PlmnId
 type PlmnId struct {
 	Mcc string `json:"mcc"`

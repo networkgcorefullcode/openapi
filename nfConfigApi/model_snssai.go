@@ -21,9 +21,6 @@ import (
 	"fmt"
 )
 
-// checks if the Snssai type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Snssai{}
-
 // Snssai struct for Snssai
 type Snssai struct {
 	Sst int32   `json:"sst"`

@@ -29,15 +29,8 @@ To regenerate nfConfig client and models after updating `webconsole-api.yaml`, r
 
 ```
 npx openapi-generator-cli generate \
-  -i ./nfConfigApi/webconsole-api.yaml \
-  -t ./nfConfigApi/openapi-generator-cli-templates \
+  -i ./webconsole-api.yaml \
   -g go \
   -o ./nfConfigApi \
-  --additional-properties=packageName=nfConfigApi,validateRequired=true,enumClassPrefix=true
-```
-
-To format the code after generating the nfConfig client and models, run:
-
-```
-gofumpt -l -w ./nfConfigApi
+  --additional-properties=packageName=nfConfigApi,validateRequired=true
 ```

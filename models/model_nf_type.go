@@ -15,7 +15,7 @@ package models
 
 type NfType string
 
-// List of NfType
+// List of NFType
 const (
 	NfType_NRF      NfType = "NRF"
 	NfType_UDM      NfType = "UDM"
