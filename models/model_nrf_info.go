@@ -14,13 +14,49 @@
 package models
 
 type NrfInfo struct {
-	ServedUdrInfo  map[string]UdrInfo  `json:"servedUdrInfo,omitempty" yaml:"servedUdrInfo" bson:"servedUdrInfo" mapstructure:"ServedUdrInfo"`
-	ServedUdmInfo  map[string]UdmInfo  `json:"servedUdmInfo,omitempty" yaml:"servedUdmInfo" bson:"servedUdmInfo" mapstructure:"ServedUdmInfo"`
-	ServedAusfInfo map[string]AusfInfo `json:"servedAusfInfo,omitempty" yaml:"servedAusfInfo" bson:"servedAusfInfo" mapstructure:"ServedAusfInfo"`
-	ServedAmfInfo  map[string]AmfInfo  `json:"servedAmfInfo,omitempty" yaml:"servedAmfInfo" bson:"servedAmfInfo" mapstructure:"ServedAmfInfo"`
-	ServedSmfInfo  map[string]SmfInfo  `json:"servedSmfInfo,omitempty" yaml:"servedSmfInfo" bson:"servedSmfInfo" mapstructure:"ServedSmfInfo"`
-	ServedUpfInfo  map[string]UpfInfo  `json:"servedUpfInfo,omitempty" yaml:"servedUpfInfo" bson:"servedUpfInfo" mapstructure:"ServedUpfInfo"`
-	ServedPcfInfo  map[string]PcfInfo  `json:"servedPcfInfo,omitempty" yaml:"servedPcfInfo" bson:"servedPcfInfo" mapstructure:"ServedPcfInfo"`
-	ServedBsfInfo  map[string]BsfInfo  `json:"servedBsfInfo,omitempty" yaml:"servedBsfInfo" bson:"servedBsfInfo" mapstructure:"ServedBsfInfo"`
-	ServedChfInfo  map[string]ChfInfo  `json:"servedChfInfo,omitempty" yaml:"servedChfInfo" bson:"servedChfInfo" mapstructure:"ServedChfInfo"`
+	ServedUdrInfo        map[string]UdrInfo                                          `json:"servedUdrInfo,omitempty" yaml:"servedUdrInfo" bson:"servedUdrInfo" mapstructure:"ServedUdrInfo"`
+	ServedUdmInfo        map[string]UdmInfo                                          `json:"servedUdmInfo,omitempty" yaml:"servedUdmInfo" bson:"servedUdmInfo" mapstructure:"ServedUdmInfo"`
+	ServedAusfInfo       map[string]AusfInfo                                         `json:"servedAusfInfo,omitempty" yaml:"servedAusfInfo" bson:"servedAusfInfo" mapstructure:"ServedAusfInfo"`
+	ServedAmfInfo        map[string]AmfInfo                                          `json:"servedAmfInfo,omitempty" yaml:"servedAmfInfo" bson:"servedAmfInfo" mapstructure:"ServedAmfInfo"`
+	ServedSmfInfo        map[string]SmfInfo                                          `json:"servedSmfInfo,omitempty" yaml:"servedSmfInfo" bson:"servedSmfInfo" mapstructure:"ServedSmfInfo"`
+	ServedUpfInfo        map[string]UpfInfo                                          `json:"servedUpfInfo,omitempty" yaml:"servedUpfInfo" bson:"servedUpfInfo" mapstructure:"ServedUpfInfo"`
+	ServedPcfInfo        map[string]PcfInfo                                          `json:"servedPcfInfo,omitempty" yaml:"servedPcfInfo" bson:"servedPcfInfo" mapstructure:"ServedPcfInfo"`
+	ServedBsfInfo        map[string]BsfInfo                                          `json:"servedBsfInfo,omitempty" yaml:"servedBsfInfo" bson:"servedBsfInfo" mapstructure:"ServedBsfInfo"`
+	ServedChfInfo        map[string]ChfInfo                                          `json:"servedChfInfo,omitempty" yaml:"servedChfInfo" bson:"servedChfInfo" mapstructure:"ServedChfInfo"`
+	ServedUdrInfoList    *map[string]map[string]NrfInfoServedUdrInfoValue            `json:"servedUdrInfoList,omitempty"`
+	ServedUdmInfoList    *map[string]map[string]NrfInfoServedUdmInfoValue            `json:"servedUdmInfoList,omitempty"`
+	ServedAusfInfoList   *map[string]map[string]NrfInfoServedAusfInfoValue           `json:"servedAusfInfoList,omitempty"`
+	ServedAmfInfoList    *map[string]map[string]NrfInfoServedAmfInfoValue            `json:"servedAmfInfoList,omitempty"`
+	ServedSmfInfoList    *map[string]map[string]NrfInfoServedSmfInfoValue            `json:"servedSmfInfoList,omitempty"`
+	ServedUpfInfoList    *map[string]map[string]NrfInfoServedUpfInfoValue            `json:"servedUpfInfoList,omitempty"`
+	ServedPcfInfoList    *map[string]map[string]NrfInfoServedPcfInfoValue            `json:"servedPcfInfoList,omitempty"`
+	ServedBsfInfoList    *map[string]map[string]NrfInfoServedBsfInfoValue            `json:"servedBsfInfoList,omitempty"`
+	ServedChfInfoList    *map[string]map[string]NrfInfoServedChfInfoValue            `json:"servedChfInfoList,omitempty"`
+	ServedNefInfo        *map[string]NefInfo                                         `json:"servedNefInfo,omitempty"`
+	ServedNwdafInfo      *map[string]NrfInfoServedNwdafInfoValue                     `json:"servedNwdafInfo,omitempty"`
+	ServedNwdafInfoList  *map[string]map[string]NwdafInfo                            `json:"servedNwdafInfoList,omitempty"`
+	ServedPcscfInfoList  *map[string]map[string]NrfInfoServedPcscfInfoListValueValue `json:"servedPcscfInfoList,omitempty"`
+	ServedGmlcInfo       *map[string]GmlcInfo                                        `json:"servedGmlcInfo,omitempty"`
+	ServedLmfInfo        *map[string]LmfInfo                                         `json:"servedLmfInfo,omitempty"`
+	ServedNfInfo         *map[string]NfInfo                                          `json:"servedNfInfo,omitempty"`
+	ServedHssInfoList    *map[string]map[string]NrfInfoServedHssInfoListValueValue   `json:"servedHssInfoList,omitempty"`
+	ServedUdsfInfo       *map[string]UdsfInfo                                        `json:"servedUdsfInfo,omitempty"`
+	ServedUdsfInfoList   *map[string]map[string]NrfInfoServedUdsfInfoValue           `json:"servedUdsfInfoList,omitempty"`
+	ServedScpInfoList    *map[string]ScpInfo                                         `json:"servedScpInfoList,omitempty"`
+	ServedSeppInfoList   *map[string]SeppInfo                                        `json:"servedSeppInfoList,omitempty"`
+	ServedAanfInfoList   *map[string]map[string]NrfInfoServedAanfInfoListValueValue  `json:"servedAanfInfoList,omitempty"`
+	Served5gDdnmfInfo    *map[string]Model5GDdnmfInfo                                `json:"served5gDdnmfInfo,omitempty"`
+	ServedMfafInfoList   *map[string]MfafInfo                                        `json:"servedMfafInfoList,omitempty"`
+	ServedEasdfInfoList  *map[string]map[string]EasdfInfo                            `json:"servedEasdfInfoList,omitempty"`
+	ServedDccfInfoList   *map[string]DccfInfo                                        `json:"servedDccfInfoList,omitempty"`
+	ServedMbSmfInfoList  *map[string]map[string]NrfInfoServedMbSmfInfoListValueValue `json:"servedMbSmfInfoList,omitempty"`
+	ServedTsctsfInfoList *map[string]map[string]TsctsfInfo                           `json:"servedTsctsfInfoList,omitempty"`
+	ServedMbUpfInfoList  *map[string]map[string]MbUpfInfo                            `json:"servedMbUpfInfoList,omitempty"`
+	ServedTrustAfInfo    *map[string]TrustAfInfo                                     `json:"servedTrustAfInfo,omitempty"`
+	ServedNssaafInfo     *map[string]NssaafInfo                                      `json:"servedNssaafInfo,omitempty"`
+	ServedDcsfInfo       *map[string]DcsfInfo                                        `json:"servedDcsfInfo,omitempty"`
+	ServedMfInfo         *map[string]MfInfo                                          `json:"servedMfInfo,omitempty"`
+	ServedMrfInfo        *map[string]MrfInfo                                         `json:"servedMrfInfo,omitempty"`
+	ServedMrfpInfo       *map[string]MrfpInfo                                        `json:"servedMrfpInfo,omitempty"`
+	ServedImsasInfo      *map[string]ImsasInfo                                       `json:"servedImsasInfo,omitempty"`
 }

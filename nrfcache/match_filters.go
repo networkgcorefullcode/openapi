@@ -21,6 +21,19 @@ import (
 	"github.com/omec-project/openapi/models"
 )
 
+// compareExtSnssai compares two ExtSnssai structs for equality, ignoring slice fields that cannot be compared directly.
+func compareExtSnssai(a, b models.ExtSnssai) bool {
+	// Compare Sst and Sd fields (add more fields if needed)
+	if a.Sst != b.Sst {
+		return false
+	}
+	if a.Sd != b.Sd {
+		return false
+	}
+	// If there are other comparable fields, add them here.
+	return true
+}
+
 type MatchFilter func(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFInstancesParamOpts) (bool, error)
 
 type MatchFilters map[models.NfType]MatchFilter
@@ -67,13 +80,13 @@ func MatchSmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 			// Snssai in the smfInfo has priority
 			if profile.SmfInfo != nil && profile.SmfInfo.SNssaiSmfInfoList != nil {
 				for _, s := range *profile.SmfInfo.SNssaiSmfInfoList {
-					if s.SNssai != nil && (*s.SNssai) == snssai {
+					if s.SNssai != nil && compareExtSnssai(*s.SNssai, snssai) {
 						matchCount++
 					}
 				}
 			} else if profile.AllowedNssais != nil {
 				for _, s := range *profile.AllowedNssais {
-					if s == snssai {
+					if compareExtSnssai(s, snssai) {
 						matchCount++
 					}
 				}

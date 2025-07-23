@@ -14,4 +14,10 @@
 package models
 
 // DcsfInfo represents DCSF information
-type DcsfInfo struct{}
+type DcsfInfo struct {
+	ImsDomianNameList        []string        `json:"imsDomianNameList,omitempty"`
+	ImsiRanges               []ImsiRange     `json:"imsiRanges,omitempty"`
+	ImsPrivateIdentityRanges []IdentityRange `json:"imsPrivateIdentityRanges,omitempty"`
+	ImsPublicIdentityRanges  []IdentityRange `json:"imsPublicIdentityRanges,omitempty"`
+	MsisdnRanges             []IdentityRange `json:"msisdnRanges,omitempty"`
+}

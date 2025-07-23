@@ -13,6 +13,10 @@
 
 package models
 
+import (
+	"encoding/json"
+)
+
 type PduSessionType string
 
 // List of PduSessionType
@@ -23,3 +27,54 @@ const (
 	PduSessionType_UNSTRUCTURED PduSessionType = "UNSTRUCTURED"
 	PduSessionType_ETHERNET     PduSessionType = "ETHERNET"
 )
+
+// UnmarshalJSON implements the json.Unmarshaler interface for PduSessionType
+func (dst *PduSessionType) UnmarshalJSON(data []byte) error {
+	var s string
+	if err := json.Unmarshal(data, &s); err != nil {
+		return err
+	}
+	*dst = PduSessionType(s)
+	return nil
+}
+
+// MarshalJSON implements the json.Marshaler interface for PduSessionType
+func (src PduSessionType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(string(src))
+}
+
+type NullablePduSessionType struct {
+	value *PduSessionType
+	isSet bool
+}
+
+func (v NullablePduSessionType) Get() *PduSessionType {
+	return v.value
+}
+
+func (v *NullablePduSessionType) Set(val *PduSessionType) {
+	v.value = val
+	v.isSet = true
+}
+
+func (v NullablePduSessionType) IsSet() bool {
+	return v.isSet
+}
+
+func (v *NullablePduSessionType) Unset() {
+	v.value = nil
+	v.isSet = false
+}
+
+func NewNullablePduSessionType(val *PduSessionType) *NullablePduSessionType {
+	return &NullablePduSessionType{value: val, isSet: true}
+}
+
+func (v NullablePduSessionType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(v.value)
+}
+
+func (v *NullablePduSessionType) UnmarshalJSON(src []byte) error {
+	v.isSet = true
+	return json.Unmarshal(src, &v.value)
+}

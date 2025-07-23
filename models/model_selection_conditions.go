@@ -14,4 +14,7 @@
 package models
 
 // SelectionConditions represents selection conditions
-type SelectionConditions struct{}
+type SelectionConditions struct {
+	ConditionGroup *ConditionGroup
+	ConditionItem  *ConditionItem
+}

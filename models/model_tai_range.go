@@ -13,7 +13,207 @@
 
 package models
 
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+)
+
 type TaiRange struct {
 	PlmnId       *PlmnId    `json:"plmnId" yaml:"plmnId" bson:"plmnId" mapstructure:"PlmnId"`
 	TacRangeList []TacRange `json:"tacRangeList" yaml:"tacRangeList" bson:"tacRangeList" mapstructure:"TacRangeList"`
+	Nid          *string    `json:"nid,omitempty"`
+}
+
+type _TaiRange TaiRange
+
+// NewTaiRange instantiates a new TaiRange object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewTaiRange(plmnId PlmnId, tacRangeList []TacRange) *TaiRange {
+	this := TaiRange{}
+	this.PlmnId = &plmnId
+	this.TacRangeList = tacRangeList
+	return &this
+}
+
+// NewTaiRangeWithDefaults instantiates a new TaiRange object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewTaiRangeWithDefaults() *TaiRange {
+	this := TaiRange{}
+	return &this
+}
+
+// GetPlmnId returns the PlmnId field value
+func (o *TaiRange) GetPlmnId() PlmnId {
+	if o == nil || o.PlmnId == nil {
+		var ret PlmnId
+		return ret
+	}
+
+	return *o.PlmnId
+}
+
+// GetPlmnIdOk returns a tuple with the PlmnId field value
+// and a boolean to check if the value has been set.
+func (o *TaiRange) GetPlmnIdOk() (*PlmnId, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PlmnId, true
+}
+
+// SetPlmnId sets field value
+func (o *TaiRange) SetPlmnId(v PlmnId) {
+	o.PlmnId = &v
+}
+
+// GetTacRangeList returns the TacRangeList field value
+func (o *TaiRange) GetTacRangeList() []TacRange {
+	if o == nil {
+		var ret []TacRange
+		return ret
+	}
+
+	return o.TacRangeList
+}
+
+// GetTacRangeListOk returns a tuple with the TacRangeList field value
+// and a boolean to check if the value has been set.
+func (o *TaiRange) GetTacRangeListOk() ([]TacRange, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TacRangeList, true
+}
+
+// SetTacRangeList sets field value
+func (o *TaiRange) SetTacRangeList(v []TacRange) {
+	o.TacRangeList = v
+}
+
+// GetNid returns the Nid field value if set, zero value otherwise.
+func (o *TaiRange) GetNid() string {
+	if o == nil || IsNil(o.Nid) {
+		var ret string
+		return ret
+	}
+	return *o.Nid
+}
+
+// GetNidOk returns a tuple with the Nid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TaiRange) GetNidOk() (*string, bool) {
+	if o == nil || IsNil(o.Nid) {
+		return nil, false
+	}
+	return o.Nid, true
+}
+
+// HasNid returns a boolean if a field has been set.
+func (o *TaiRange) HasNid() bool {
+	if o != nil && !IsNil(o.Nid) {
+		return true
+	}
+
+	return false
+}
+
+// SetNid gets a reference to the given string and assigns it to the Nid field.
+func (o *TaiRange) SetNid(v string) {
+	o.Nid = &v
+}
+
+func (o TaiRange) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o TaiRange) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["plmnId"] = o.PlmnId
+	toSerialize["tacRangeList"] = o.TacRangeList
+	if !IsNil(o.Nid) {
+		toSerialize["nid"] = o.Nid
+	}
+	return toSerialize, nil
+}
+
+func (o *TaiRange) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"plmnId",
+		"tacRangeList",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTaiRange := _TaiRange{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTaiRange)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TaiRange(varTaiRange)
+
+	return err
+}
+
+type NullableTaiRange struct {
+	value *TaiRange
+	isSet bool
+}
+
+func (v NullableTaiRange) Get() *TaiRange {
+	return v.value
+}
+
+func (v *NullableTaiRange) Set(val *TaiRange) {
+	v.value = val
+	v.isSet = true
+}
+
+func (v NullableTaiRange) IsSet() bool {
+	return v.isSet
+}
+
+func (v *NullableTaiRange) Unset() {
+	v.value = nil
+	v.isSet = false
+}
+
+func NewNullableTaiRange(val *TaiRange) *NullableTaiRange {
+	return &NullableTaiRange{value: val, isSet: true}
+}
+
+func (v NullableTaiRange) MarshalJSON() ([]byte, error) {
+	return json.Marshal(v.value)
+}
+
+func (v *NullableTaiRange) UnmarshalJSON(src []byte) error {
+	v.isSet = true
+	return json.Unmarshal(src, &v.value)
 }

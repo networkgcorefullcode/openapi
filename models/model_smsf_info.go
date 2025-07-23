@@ -14,6 +14,8 @@
 package models
 
 type SmsfInfo struct {
-	SmsfInstanceId string  `json:"smsfInstanceId" yaml:"smsfInstanceId" bson:"smsfInstanceId" mapstructure:"SmsfInstanceId"`
-	PlmnId         *PlmnId `json:"plmnId" yaml:"plmnId" bson:"plmnId" mapstructure:"PlmnId"`
+	RoamingUeInd        *bool       `json:"roamingUeInd,omitempty"`
+	RemotePlmnRangeList []PlmnRange `json:"remotePlmnRangeList,omitempty"`
+	SmsfInstanceId      string      `json:"smsfInstanceId" yaml:"smsfInstanceId" bson:"smsfInstanceId" mapstructure:"SmsfInstanceId"`
+	PlmnId              *PlmnId     `json:"plmnId" yaml:"plmnId" bson:"plmnId" mapstructure:"PlmnId"`
 }

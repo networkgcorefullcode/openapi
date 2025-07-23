@@ -14,4 +14,6 @@
 package models
 
 // ImsasInfo represents IMSAS information
-type ImsasInfo struct{}
+type ImsasInfo struct {
+	ImsEventList []ImsEvent `json:"imsEventList"`
+}

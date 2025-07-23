@@ -14,8 +14,15 @@
 package models
 
 type DefaultNotificationSubscription struct {
-	NotificationType   NotificationType   `json:"notificationType" yaml:"notificationType" bson:"notificationType" mapstructure:"NotificationType"`
-	CallbackUri        string             `json:"callbackUri" yaml:"callbackUri" bson:"callbackUri" mapstructure:"CallbackUri"`
-	N1MessageClass     N1MessageClass     `json:"n1MessageClass,omitempty" yaml:"n1MessageClass" bson:"n1MessageClass" mapstructure:"N1MessageClass"`
-	N2InformationClass N2InformationClass `json:"n2InformationClass,omitempty" yaml:"n2InformationClass" bson:"n2InformationClass" mapstructure:"N2InformationClass"`
+	NotificationType     NotificationType              `json:"notificationType" yaml:"notificationType" bson:"notificationType" mapstructure:"NotificationType"`
+	CallbackUri          string                        `json:"callbackUri" yaml:"callbackUri" bson:"callbackUri" mapstructure:"CallbackUri"`
+	N1MessageClass       N1MessageClass                `json:"n1MessageClass,omitempty" yaml:"n1MessageClass" bson:"n1MessageClass" mapstructure:"N1MessageClass"`
+	N2InformationClass   N2InformationClass            `json:"n2InformationClass,omitempty" yaml:"n2InformationClass" bson:"n2InformationClass" mapstructure:"N2InformationClass"`
+	InterPlmnCallbackUri *string                       `json:"interPlmnCallbackUri,omitempty"`
+	Versions             []string                      `json:"versions,omitempty"`
+	Binding              *string                       `json:"binding,omitempty"`
+	AcceptedEncoding     *string                       `json:"acceptedEncoding,omitempty"`
+	SupportedFeatures    *string                       `json:"supportedFeatures,omitempty"`
+	ServiceInfoList      *map[string]DefSubServiceInfo `json:"serviceInfoList,omitempty"`
+	CallbackUriPrefix    *string                       `json:"callbackUriPrefix,omitempty"`
 }

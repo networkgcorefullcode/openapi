@@ -13,7 +13,220 @@
 
 package models
 
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+)
+
 type SnssaiSmfInfoItem struct {
-	SNssai         *ExtSnssai        `json:"sNssai" yaml:"sNssai" bson:"sNssai" mapstructure:"SNssai"`
-	DnnSmfInfoList *[]DnnSmfInfoItem `json:"dnnSmfInfoList" yaml:"dnnSmfInfoList" bson:"dnnSmfInfoList" mapstructure:"DnnSmfInfoList"`
+	SNssai           *ExtSnssai        `json:"sNssai" yaml:"sNssai" bson:"sNssai" mapstructure:"SNssai"`
+	DnnSmfInfoList   *[]DnnSmfInfoItem `json:"dnnSmfInfoList" yaml:"dnnSmfInfoList" bson:"dnnSmfInfoList" mapstructure:"DnnSmfInfoList"`
+	DnnSmfInfoListId *int32            `json:"dnnSmfInfoListId,omitempty"`
+}
+
+type _SnssaiSmfInfoItem SnssaiSmfInfoItem
+
+// NewSnssaiSmfInfoItem instantiates a new SnssaiSmfInfoItem object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewSnssaiSmfInfoItem(sNssai ExtSnssai) *SnssaiSmfInfoItem {
+	this := SnssaiSmfInfoItem{}
+	this.SNssai = &sNssai
+	return &this
+}
+
+// NewSnssaiSmfInfoItemWithDefaults instantiates a new SnssaiSmfInfoItem object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewSnssaiSmfInfoItemWithDefaults() *SnssaiSmfInfoItem {
+	this := SnssaiSmfInfoItem{}
+	return &this
+}
+
+// GetSNssai returns the SNssai field value if set, zero value otherwise
+func (o *SnssaiSmfInfoItem) GetSNssai() ExtSnssai {
+	if o == nil || o.SNssai == nil {
+		var ret ExtSnssai
+		return ret
+	}
+	return *o.SNssai
+}
+
+// GetSNssaiOk returns a tuple with the SNssai field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnssaiSmfInfoItem) GetSNssaiOk() (*ExtSnssai, bool) {
+	if o == nil || o.SNssai == nil {
+		return nil, false
+	}
+	return o.SNssai, true
+}
+
+// SetSNssai sets field value
+func (o *SnssaiSmfInfoItem) SetSNssai(v ExtSnssai) {
+	o.SNssai = &v
+}
+
+// GetDnnSmfInfoList returns the DnnSmfInfoList field value if set, zero value otherwise.
+func (o *SnssaiSmfInfoItem) GetDnnSmfInfoList() []DnnSmfInfoItem {
+	if o == nil || IsNil(o.DnnSmfInfoList) {
+		var ret []DnnSmfInfoItem
+		return ret
+	}
+	return *o.DnnSmfInfoList
+}
+
+// GetDnnSmfInfoListOk returns a tuple with the DnnSmfInfoList field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnssaiSmfInfoItem) GetDnnSmfInfoListOk() ([]DnnSmfInfoItem, bool) {
+	if o == nil || IsNil(o.DnnSmfInfoList) {
+		return nil, false
+	}
+	return *o.DnnSmfInfoList, true
+}
+
+// HasDnnSmfInfoList returns a boolean if a field has been set.
+func (o *SnssaiSmfInfoItem) HasDnnSmfInfoList() bool {
+	if o != nil && !IsNil(o.DnnSmfInfoList) {
+		return true
+	}
+
+	return false
+}
+
+// SetDnnSmfInfoList gets a reference to the given []DnnSmfInfoItem and assigns it to the DnnSmfInfoList field.
+func (o *SnssaiSmfInfoItem) SetDnnSmfInfoList(v []DnnSmfInfoItem) {
+	o.DnnSmfInfoList = &v
+}
+
+// GetDnnSmfInfoListId returns the DnnSmfInfoListId field value if set, zero value otherwise.
+func (o *SnssaiSmfInfoItem) GetDnnSmfInfoListId() int32 {
+	if o == nil || IsNil(o.DnnSmfInfoListId) {
+		var ret int32
+		return ret
+	}
+	return *o.DnnSmfInfoListId
+}
+
+// GetDnnSmfInfoListIdOk returns a tuple with the DnnSmfInfoListId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SnssaiSmfInfoItem) GetDnnSmfInfoListIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.DnnSmfInfoListId) {
+		return nil, false
+	}
+	return o.DnnSmfInfoListId, true
+}
+
+// HasDnnSmfInfoListId returns a boolean if a field has been set.
+func (o *SnssaiSmfInfoItem) HasDnnSmfInfoListId() bool {
+	if o != nil && !IsNil(o.DnnSmfInfoListId) {
+		return true
+	}
+
+	return false
+}
+
+// SetDnnSmfInfoListId gets a reference to the given int32 and assigns it to the DnnSmfInfoListId field.
+func (o *SnssaiSmfInfoItem) SetDnnSmfInfoListId(v int32) {
+	o.DnnSmfInfoListId = &v
+}
+
+func (o SnssaiSmfInfoItem) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SnssaiSmfInfoItem) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["sNssai"] = o.SNssai
+	if !IsNil(o.DnnSmfInfoList) {
+		toSerialize["dnnSmfInfoList"] = o.DnnSmfInfoList
+	}
+	if !IsNil(o.DnnSmfInfoListId) {
+		toSerialize["dnnSmfInfoListId"] = o.DnnSmfInfoListId
+	}
+	return toSerialize, nil
+}
+
+func (o *SnssaiSmfInfoItem) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"sNssai",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSnssaiSmfInfoItem := _SnssaiSmfInfoItem{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSnssaiSmfInfoItem)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SnssaiSmfInfoItem(varSnssaiSmfInfoItem)
+
+	return err
+}
+
+type NullableSnssaiSmfInfoItem struct {
+	value *SnssaiSmfInfoItem
+	isSet bool
+}
+
+func (v *NullableSnssaiSmfInfoItem) Get() *SnssaiSmfInfoItem {
+	if v == nil {
+		return nil
+	}
+	return v.value
+}
+
+func (v *NullableSnssaiSmfInfoItem) Set(val *SnssaiSmfInfoItem) {
+	v.value = val
+	v.isSet = true
+}
+
+func (v *NullableSnssaiSmfInfoItem) IsSet() bool {
+	if v == nil {
+		return false
+	}
+	return v.isSet
+}
+
+func (v *NullableSnssaiSmfInfoItem) Unset() {
+	v.value = nil
+	v.isSet = false
+}
+
+func NewNullableSnssaiSmfInfoItem(val *SnssaiSmfInfoItem) *NullableSnssaiSmfInfoItem {
+	return &NullableSnssaiSmfInfoItem{value: val, isSet: true}
+}
+
+func (v NullableSnssaiSmfInfoItem) MarshalJSON() ([]byte, error) {
+	return json.Marshal(v.value)
+}
+
+func (v *NullableSnssaiSmfInfoItem) UnmarshalJSON(src []byte) error {
+	v.isSet = true
+	return json.Unmarshal(src, &v.value)
 }

@@ -14,4 +14,7 @@
 package models
 
 // AdrfInfo represents ADRF information
-type AdrfInfo struct{}
+type AdrfInfo struct {
+	MlModelStorageInd *bool `json:"mlModelStorageInd,omitempty"`
+	DataStorageInd    *bool `json:"dataStorageInd,omitempty"`
+}

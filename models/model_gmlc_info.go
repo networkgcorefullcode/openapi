@@ -14,4 +14,7 @@
 package models
 
 // GmlcInfo represents GMLC information
-type GmlcInfo struct{}
+type GmlcInfo struct {
+	ServingClientTypes []ExternalClientType `json:"servingClientTypes,omitempty"`
+	GmlcNumbers        []string             `json:"gmlcNumbers,omitempty"`
+}

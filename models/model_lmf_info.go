@@ -14,4 +14,18 @@
 package models
 
 // LmfInfo represents LMF information
-type LmfInfo struct{}
+type LmfInfo struct {
+	ServingClientTypes     []ExternalClientType `json:"servingClientTypes,omitempty"`
+	LmfId                  *string              `json:"lmfId,omitempty"`
+	ServingAccessTypes     []AccessType         `json:"servingAccessTypes,omitempty"`
+	ServingAnNodeTypes     []AnNodeType         `json:"servingAnNodeTypes,omitempty"`
+	ServingRatTypes        []RatType            `json:"servingRatTypes,omitempty"`
+	TaiList                []Tai                `json:"taiList,omitempty"`
+	TaiRangeList           []TaiRange           `json:"taiRangeList,omitempty"`
+	SupportedGADShapes     []SupportedGADShapes `json:"supportedGADShapes,omitempty"`
+	PruExistenceInfo       *PruExistenceInfo    `json:"pruExistenceInfo,omitempty"`
+	PruSupportInd          *bool                `json:"pruSupportInd,omitempty"`
+	RangingslposSupportInd *bool                `json:"rangingslposSupportInd,omitempty"`
+	// user plane positioning capability is supported by the LMF
+	UpPositioningInd *bool `json:"upPositioningInd,omitempty"`
+}

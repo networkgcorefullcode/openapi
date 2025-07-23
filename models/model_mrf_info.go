@@ -14,4 +14,6 @@
 package models
 
 // MrfInfo represents MRF information
-type MrfInfo struct{}
+type MrfInfo struct {
+	MediaCapabilityList []string `json:"mediaCapabilityList,omitempty"`
+}
