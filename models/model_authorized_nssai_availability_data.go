@@ -16,7 +16,7 @@ package models
 type AuthorizedNssaiAvailabilityData struct {
 	Tai *Tai `json:"tai" bson:"tai"`
 
-	SupportedSnssaiList []Snssai `json:"supportedSnssaiList" bson:"supportedSnssaiList"`
+	SupportedSnssaiList []ExtSnssai `json:"supportedSnssaiList" bson:"supportedSnssaiList"`
 
 	RestrictedSnssaiList []RestrictedSnssai `json:"restrictedSnssaiList,omitempty" bson:"restrictedSnssaiList"`
 }

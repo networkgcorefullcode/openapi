@@ -40,98 +40,86 @@ func NewIdentityRangeWithDefaults() *IdentityRange {
 
 // GetStart returns the Start field value if set, zero value otherwise.
 func (o *IdentityRange) GetStart() string {
-	if o == nil || IsNil(o.Start) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Start
+	return o.Start
 }
 
 // GetStartOk returns a tuple with the Start field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityRange) GetStartOk() (*string, bool) {
-	if o == nil || IsNil(o.Start) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Start, true
+	return &o.Start, true
 }
 
 // HasStart returns a boolean if a field has been set.
 func (o *IdentityRange) HasStart() bool {
-	if o != nil && !IsNil(o.Start) {
-		return true
-	}
-
-	return false
+	return o != nil && o.Start != ""
 }
 
 // SetStart gets a reference to the given string and assigns it to the Start field.
 func (o *IdentityRange) SetStart(v string) {
-	o.Start = &v
+	o.Start = v
 }
 
 // GetEnd returns the End field value if set, zero value otherwise.
 func (o *IdentityRange) GetEnd() string {
-	if o == nil || IsNil(o.End) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.End
+	return o.End
 }
 
 // GetEndOk returns a tuple with the End field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityRange) GetEndOk() (*string, bool) {
-	if o == nil || IsNil(o.End) {
+	if o == nil {
 		return nil, false
 	}
-	return o.End, true
+	return &o.End, true
 }
 
 // HasEnd returns a boolean if a field has been set.
 func (o *IdentityRange) HasEnd() bool {
-	if o != nil && !IsNil(o.End) {
-		return true
-	}
-
-	return false
+	return o != nil && o.End != ""
 }
 
 // SetEnd gets a reference to the given string and assigns it to the End field.
 func (o *IdentityRange) SetEnd(v string) {
-	o.End = &v
+	o.End = v
 }
 
 // GetPattern returns the Pattern field value if set, zero value otherwise.
 func (o *IdentityRange) GetPattern() string {
-	if o == nil || IsNil(o.Pattern) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Pattern
+	return o.Pattern
 }
 
 // GetPatternOk returns a tuple with the Pattern field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *IdentityRange) GetPatternOk() (*string, bool) {
-	if o == nil || IsNil(o.Pattern) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Pattern, true
+	return &o.Pattern, true
 }
 
 // HasPattern returns a boolean if a field has been set.
 func (o *IdentityRange) HasPattern() bool {
-	if o != nil && !IsNil(o.Pattern) {
-		return true
-	}
-
-	return false
+	return o != nil && o.Pattern != ""
 }
 
 // SetPattern gets a reference to the given string and assigns it to the Pattern field.
 func (o *IdentityRange) SetPattern(v string) {
-	o.Pattern = &v
+	o.Pattern = v
 }
 
 func (o IdentityRange) MarshalJSON() ([]byte, error) {
@@ -144,13 +132,13 @@ func (o IdentityRange) MarshalJSON() ([]byte, error) {
 
 func (o IdentityRange) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Start) {
+	if o.Start != "" {
 		toSerialize["start"] = o.Start
 	}
-	if !IsNil(o.End) {
+	if o.End != "" {
 		toSerialize["end"] = o.End
 	}
-	if !IsNil(o.Pattern) {
+	if o.Pattern != "" {
 		toSerialize["pattern"] = o.Pattern
 	}
 	return toSerialize, nil

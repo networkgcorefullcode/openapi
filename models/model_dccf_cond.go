@@ -24,7 +24,7 @@ type DccfCond struct {
 	ConditionType      string     `json:"conditionType"`
 	TaiList            []Tai      `json:"taiList,omitempty"`
 	TaiRangeList       []TaiRange `json:"taiRangeList,omitempty"`
-	ServingNfTypeList  []NFType   `json:"servingNfTypeList,omitempty"`
+	ServingNfTypeList  []NfType   `json:"servingNfTypeList,omitempty"`
 	ServingNfSetIdList []string   `json:"servingNfSetIdList,omitempty"`
 }
 
@@ -137,9 +137,9 @@ func (o *DccfCond) SetTaiRangeList(v []TaiRange) {
 }
 
 // GetServingNfTypeList returns the ServingNfTypeList field value if set, zero value otherwise.
-func (o *DccfCond) GetServingNfTypeList() []NFType {
+func (o *DccfCond) GetServingNfTypeList() []NfType {
 	if o == nil || IsNil(o.ServingNfTypeList) {
-		var ret []NFType
+		var ret []NfType
 		return ret
 	}
 	return o.ServingNfTypeList
@@ -147,7 +147,7 @@ func (o *DccfCond) GetServingNfTypeList() []NFType {
 
 // GetServingNfTypeListOk returns a tuple with the ServingNfTypeList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DccfCond) GetServingNfTypeListOk() ([]NFType, bool) {
+func (o *DccfCond) GetServingNfTypeListOk() ([]NfType, bool) {
 	if o == nil || IsNil(o.ServingNfTypeList) {
 		return nil, false
 	}
@@ -164,7 +164,7 @@ func (o *DccfCond) HasServingNfTypeList() bool {
 }
 
 // SetServingNfTypeList gets a reference to the given []NFType and assigns it to the ServingNfTypeList field.
-func (o *DccfCond) SetServingNfTypeList(v []NFType) {
+func (o *DccfCond) SetServingNfTypeList(v []NfType) {
 	o.ServingNfTypeList = v
 }
 

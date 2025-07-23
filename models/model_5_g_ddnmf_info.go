@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the Model5GDdnmfInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Model5GDdnmfInfo{}
-
 // Model5GDdnmfInfo Information of an 5G DDNMF NF Instance
 type Model5GDdnmfInfo struct {
 	PlmnId PlmnId `json:"plmnId"`
