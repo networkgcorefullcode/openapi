@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the DccfCond type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DccfCond{}
-
 // DccfCond Subscription to a set of NF Instances (DCCFs), identified by NF types, NF Set Id(s) or DCCF Serving Area information, i.e. list of TAIs served by the DCCF
 type DccfCond struct {
 	ConditionType      string     `json:"conditionType"`
@@ -163,7 +160,7 @@ func (o *DccfCond) HasServingNfTypeList() bool {
 	return false
 }
 
-// SetServingNfTypeList gets a reference to the given []NFType and assigns it to the ServingNfTypeList field.
+// SetServingNfTypeList gets a reference to the given []NfType and assigns it to the ServingNfTypeList field.
 func (o *DccfCond) SetServingNfTypeList(v []NfType) {
 	o.ServingNfTypeList = v
 }

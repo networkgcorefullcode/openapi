@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the SnssaiExtension type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SnssaiExtension{}
-
 // SnssaiExtension Extensions to the Snssai data type, sdRanges and wildcardSd shall not be present simultaneously
 type SnssaiExtension struct {
 	// When present, it shall contain the range(s) of Slice Differentiator values supported for the Slice/Service Type value indicated in the sst attribute of the Snssai data type

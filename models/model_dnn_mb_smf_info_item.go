@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the DnnMbSmfInfoItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DnnMbSmfInfoItem{}
-
 // DnnMbSmfInfoItem Parameters supported by an MB-SMF for a given DNN
 type DnnMbSmfInfoItem struct {
 	Dnn DnnSmfInfoItemDnn `json:"dnn"`

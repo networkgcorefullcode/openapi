@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the NFProfileRegistrationError type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NFProfileRegistrationError{}
-
 // NFProfileRegistrationError NF Profile Registration Error.
 type NFProfileRegistrationError struct {
 	// String providing an URI formatted according to RFC 3986.

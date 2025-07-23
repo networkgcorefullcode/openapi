@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the SnssaiEasdfInfoItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SnssaiEasdfInfoItem{}
-
 // SnssaiEasdfInfoItem Set of parameters supported by EASDF for a given S-NSSAI
 type SnssaiEasdfInfoItem struct {
 	SNssai           ExtSnssai          `json:"sNssai"`

@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the ExtSnssai type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ExtSnssai{}
-
 // ExtSnssai The sdRanges and wildcardSd attributes shall be exclusive from each other. If one of these attributes is present,  the sd attribute shall also be present and it shall contain one Slice Differentiator value within the range of SD  (if the sdRanges attribute is present) or with any value (if the wildcardSd attribute is present).
 type ExtSnssai struct {
 	// Unsigned integer, within the range 0 to 255, representing the Slice/Service Type.  It indicates the expected Network Slice behaviour in terms of features and services. Values 0 to 127 correspond to the standardized SST range. Values 128 to 255 correspond  to the Operator-specific range. See clause 28.4.2 of 3GPP TS 23.003. Standardized values are defined in clause 5.15.2.2 of 3GPP TS 23.501.
@@ -77,25 +74,25 @@ func (o *ExtSnssai) SetSst(v int32) {
 
 // GetSd returns the Sd field value if set, zero value otherwise.
 func (o *ExtSnssai) GetSd() string {
-	if o == nil || IsNil(o.Sd) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Sd
+	return o.Sd
 }
 
 // GetSdOk returns a tuple with the Sd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ExtSnssai) GetSdOk() (*string, bool) {
-	if o == nil || IsNil(o.Sd) {
+	if o == nil || o.Sd == "" {
 		return nil, false
 	}
-	return o.Sd, true
+	return &o.Sd, true
 }
 
 // HasSd returns a boolean if a field has been set.
 func (o *ExtSnssai) HasSd() bool {
-	if o != nil && !IsNil(o.Sd) {
+	if o != nil && o.Sd != "" {
 		return true
 	}
 
@@ -104,7 +101,7 @@ func (o *ExtSnssai) HasSd() bool {
 
 // SetSd gets a reference to the given string and assigns it to the Sd field.
 func (o *ExtSnssai) SetSd(v string) {
-	o.Sd = &v
+	o.Sd = v
 }
 
 // GetSdRanges returns the SdRanges field value if set, zero value otherwise.
@@ -182,7 +179,7 @@ func (o ExtSnssai) MarshalJSON() ([]byte, error) {
 func (o ExtSnssai) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["sst"] = o.Sst
-	if !IsNil(o.Sd) {
+	if o.Sd != "" {
 		toSerialize["sd"] = o.Sd
 	}
 	if !IsNil(o.SdRanges) {

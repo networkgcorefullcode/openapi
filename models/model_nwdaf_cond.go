@@ -16,17 +16,14 @@ import (
 	"fmt"
 )
 
-// checks if the NwdafCond type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NwdafCond{}
-
 // NwdafCond Subscription to a set of NF Instances (NWDAFs), identified by Analytics ID(s), S-NSSAI(s) or NWDAF Serving Area information, i.e. list of TAIs for which the NWDAF can provide analytics.
 type NwdafCond struct {
 	ConditionType      string            `json:"conditionType"`
 	AnalyticsIds       []string          `json:"analyticsIds,omitempty"`
-	SnssaiList         []Snssai          `json:"snssaiList,omitempty"`
+	SnssaiList         []ExtSnssai       `json:"snssaiList,omitempty"`
 	TaiList            []Tai             `json:"taiList,omitempty"`
 	TaiRangeList       []TaiRange        `json:"taiRangeList,omitempty"`
-	ServingNfTypeList  []NFType          `json:"servingNfTypeList,omitempty"`
+	ServingNfTypeList  []NfType          `json:"servingNfTypeList,omitempty"`
 	ServingNfSetIdList []string          `json:"servingNfSetIdList,omitempty"`
 	MlAnalyticsList    []MlAnalyticsInfo `json:"mlAnalyticsList,omitempty"`
 }
@@ -108,9 +105,9 @@ func (o *NwdafCond) SetAnalyticsIds(v []string) {
 }
 
 // GetSnssaiList returns the SnssaiList field value if set, zero value otherwise.
-func (o *NwdafCond) GetSnssaiList() []Snssai {
+func (o *NwdafCond) GetSnssaiList() []ExtSnssai {
 	if o == nil || IsNil(o.SnssaiList) {
-		var ret []Snssai
+		var ret []ExtSnssai
 		return ret
 	}
 	return o.SnssaiList
@@ -118,7 +115,7 @@ func (o *NwdafCond) GetSnssaiList() []Snssai {
 
 // GetSnssaiListOk returns a tuple with the SnssaiList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NwdafCond) GetSnssaiListOk() ([]Snssai, bool) {
+func (o *NwdafCond) GetSnssaiListOk() ([]ExtSnssai, bool) {
 	if o == nil || IsNil(o.SnssaiList) {
 		return nil, false
 	}
@@ -134,8 +131,8 @@ func (o *NwdafCond) HasSnssaiList() bool {
 	return false
 }
 
-// SetSnssaiList gets a reference to the given []Snssai and assigns it to the SnssaiList field.
-func (o *NwdafCond) SetSnssaiList(v []Snssai) {
+// SetSnssaiList gets a reference to the given []ExtSnssai and assigns it to the SnssaiList field.
+func (o *NwdafCond) SetSnssaiList(v []ExtSnssai) {
 	o.SnssaiList = v
 }
 
@@ -204,9 +201,9 @@ func (o *NwdafCond) SetTaiRangeList(v []TaiRange) {
 }
 
 // GetServingNfTypeList returns the ServingNfTypeList field value if set, zero value otherwise.
-func (o *NwdafCond) GetServingNfTypeList() []NFType {
+func (o *NwdafCond) GetServingNfTypeList() []NfType {
 	if o == nil || IsNil(o.ServingNfTypeList) {
-		var ret []NFType
+		var ret []NfType
 		return ret
 	}
 	return o.ServingNfTypeList
@@ -214,7 +211,7 @@ func (o *NwdafCond) GetServingNfTypeList() []NFType {
 
 // GetServingNfTypeListOk returns a tuple with the ServingNfTypeList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NwdafCond) GetServingNfTypeListOk() ([]NFType, bool) {
+func (o *NwdafCond) GetServingNfTypeListOk() ([]NfType, bool) {
 	if o == nil || IsNil(o.ServingNfTypeList) {
 		return nil, false
 	}
@@ -230,8 +227,8 @@ func (o *NwdafCond) HasServingNfTypeList() bool {
 	return false
 }
 
-// SetServingNfTypeList gets a reference to the given []NFType and assigns it to the ServingNfTypeList field.
-func (o *NwdafCond) SetServingNfTypeList(v []NFType) {
+// SetServingNfTypeList gets a reference to the given []NfType and assigns it to the ServingNfTypeList field.
+func (o *NwdafCond) SetServingNfTypeList(v []NfType) {
 	o.ServingNfTypeList = v
 }
 

@@ -27,6 +27,6 @@ type RegistrationContextContainer struct {
 	AnN2IPv6Addr        string             `json:"anN2IPv6Addr,omitempty"`
 	AllowedNssai        *AllowedNssai      `json:"allowedNssai,omitempty"`
 	ConfiguredNssai     []ConfiguredSnssai `json:"configuredNssai,omitempty"`
-	RejectedNssaiInPlmn []Snssai           `json:"rejectedNssaiInPlmn,omitempty"`
-	RejectedNssaiInTa   []Snssai           `json:"rejectedNssaiInTa,omitempty"`
+	RejectedNssaiInPlmn []ExtSnssai        `json:"rejectedNssaiInPlmn,omitempty"`
+	RejectedNssaiInTa   []ExtSnssai        `json:"rejectedNssaiInTa,omitempty"`
 }

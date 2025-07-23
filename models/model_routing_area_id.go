@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the RoutingAreaId type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RoutingAreaId{}
-
 // RoutingAreaId Contains a Routing Area Identification as defined in 3GPP TS 23.003, clause 4.2.
 type RoutingAreaId struct {
 	PlmnId PlmnId `json:"plmnId"`

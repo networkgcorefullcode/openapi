@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the Tmgi type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Tmgi{}
-
 // Tmgi Temporary Mobile Group Identity
 type Tmgi struct {
 	// MBS Service ID

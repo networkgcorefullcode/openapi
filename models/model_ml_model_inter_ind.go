@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the MlModelInterInd type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MlModelInterInd{}
-
 // MlModelInterInd ML Model Interoperability Indicator per Analytics Id
 type MlModelInterInd struct {
 	AnalyticsId NwdafEvent `json:"analyticsId"`

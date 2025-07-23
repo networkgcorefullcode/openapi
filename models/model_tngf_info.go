@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the TngfInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TngfInfo{}
-
 // TngfInfo Infomation of the TNGF endpoints
 type TngfInfo struct {
 	Ipv4EndpointAddresses []string   `json:"ipv4EndpointAddresses,omitempty"`

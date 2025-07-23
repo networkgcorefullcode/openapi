@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ProSeCapability type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ProSeCapability{}
-
 // ProSeCapability Indicate the supported ProSe Capability by the PCF.
 type ProSeCapability struct {
 	ProseDirectDiscovey      *bool `json:"proseDirectDiscovey,omitempty"`

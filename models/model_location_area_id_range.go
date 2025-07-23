@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the LocationAreaIdRange type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LocationAreaIdRange{}
-
 // LocationAreaIdRange Location Area ID Range.
 type LocationAreaIdRange struct {
 	PlmnId   PlmnId `json:"plmnId"`

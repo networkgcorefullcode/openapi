@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the NsacfCapability type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NsacfCapability{}
-
 // NsacfCapability NSACF service capabilities (e.g. to monitor and control the number of registered UEs or established PDU sessions per network slice)
 type NsacfCapability struct {
 	// Indicates the service capability of the NSACF to monitor and control the number of registered UEs per network slice for the network slice that is subject to NSAC   true: Supported   false (default): Not Supported

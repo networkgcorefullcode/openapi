@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the UriList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UriList{}
-
 // UriList Represents a set of URIs following the 3GPP hypermedia format (containing a \"_links\" attribute).
 type UriList struct {
 	// List of the URI of NF instances. It has two members whose names are item and self. The item attribute contains an array of URIs.

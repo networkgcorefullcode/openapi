@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the MbsServiceAreaInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MbsServiceAreaInfo{}
-
 // MbsServiceAreaInfo MBS Service Area Information for location dependent MBS session
 type MbsServiceAreaInfo struct {
 	// Integer where the allowed values correspond to the value range of an unsigned 16-bit integer.

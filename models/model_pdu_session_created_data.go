@@ -25,7 +25,7 @@ type PduSessionCreatedData struct {
 	QosFlowsSetupList             []QosFlowSetupItem            `json:"qosFlowsSetupList"`
 	HSmfInstanceId                string                        `json:"hSmfInstanceId"`
 	PduSessionId                  int32                         `json:"pduSessionId,omitempty"`
-	SNssai                        *Snssai                       `json:"sNssai,omitempty"`
+	SNssai                        *ExtSnssai                    `json:"sNssai,omitempty"`
 	EnablePauseCharging           bool                          `json:"enablePauseCharging,omitempty"`
 	UeIpv4Address                 string                        `json:"ueIpv4Address,omitempty"`
 	UeIpv6Prefix                  string                        `json:"ueIpv6Prefix,omitempty"`

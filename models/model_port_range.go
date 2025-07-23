@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the PortRange type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PortRange{}
-
 // PortRange Range of port numbers
 type PortRange struct {
 	Start int32 `json:"start"`

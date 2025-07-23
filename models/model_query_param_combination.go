@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the QueryParamCombination type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &QueryParamCombination{}
-
 // QueryParamCombination Contains a list of Query Parameters
 type QueryParamCombination struct {
 	QueryParams []QueryParameter `json:"queryParams"`

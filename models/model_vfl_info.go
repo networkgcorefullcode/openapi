@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the VflInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &VflInfo{}
-
 // VflInfo Vertical Federated Learning information
 type VflInfo struct {
 	MlAnalyticsIds    []NwdafEvent      `json:"mlAnalyticsIds"`

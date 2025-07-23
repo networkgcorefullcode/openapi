@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the NoProfileMatchInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NoProfileMatchInfo{}
-
 // NoProfileMatchInfo Provides the reason for not finding NF matching the search criteria
 type NoProfileMatchInfo struct {
 	Reason                    NoProfileMatchReason    `json:"reason"`

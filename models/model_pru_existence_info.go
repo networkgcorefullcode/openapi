@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PruExistenceInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PruExistenceInfo{}
-
 // PruExistenceInfo PRU Existence Information
 type PruExistenceInfo struct {
 	TaiList      []Tai      `json:"taiList,omitempty"`

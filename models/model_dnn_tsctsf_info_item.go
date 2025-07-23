@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the DnnTsctsfInfoItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DnnTsctsfInfoItem{}
-
 // DnnTsctsfInfoItem Parameters supported by an TSCTSF for a given DNN
 type DnnTsctsfInfoItem struct {
 	Dnn DnnSmfInfoItemDnn `json:"dnn"`

@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the DnnInfoItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DnnInfoItem{}
-
 // DnnInfoItem Set of parameters supported by NF for a given DNN
 type DnnInfoItem struct {
 	Dnn DnnSmfInfoItemDnn `json:"dnn"`

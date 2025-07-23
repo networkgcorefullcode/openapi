@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the NfGroupListCond type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NfGroupListCond{}
-
 // NfGroupListCond Subscription to a set of NFs based on their Group Ids
 type NfGroupListCond struct {
 	ConditionType string   `json:"conditionType"`

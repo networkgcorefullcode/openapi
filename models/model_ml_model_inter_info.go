@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the MlModelInterInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MlModelInterInfo{}
-
 // MlModelInterInfo ML Model Interoperability Information
 type MlModelInterInfo struct {
 	VendorList []string `json:"vendorList,omitempty"`

@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the ServiceNameListCond type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServiceNameListCond{}
-
 // ServiceNameListCond Subscription to a set of NFs based on their support for a Service Name in the Servic Name list
 type ServiceNameListCond struct {
 	ConditionType   string        `json:"conditionType"`

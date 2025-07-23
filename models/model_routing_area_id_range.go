@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the RoutingAreaIdRange type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &RoutingAreaIdRange{}
-
 // RoutingAreaIdRange Routing Area ID Range.
 type RoutingAreaIdRange struct {
 	PlmnId   PlmnId `json:"plmnId"`

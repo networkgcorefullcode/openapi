@@ -16,14 +16,11 @@ import (
 	"fmt"
 )
 
-// checks if the NefCond type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NefCond{}
-
 // NefCond Subscription to a set of NF Instances (NEFs), identified by Event ID(s) provided by AF, S-NSSAI(s), AF Instance ID, Application Identifier, External Identifier, External Group Identifier, or domain name.
 type NefCond struct {
 	ConditionType                  string          `json:"conditionType"`
 	AfEvents                       []AfEvent       `json:"afEvents,omitempty"`
-	SnssaiList                     []Snssai        `json:"snssaiList,omitempty"`
+	SnssaiList                     []ExtSnssai     `json:"snssaiList,omitempty"`
 	PfdData                        *PfdData        `json:"pfdData,omitempty"`
 	GpsiRanges                     []IdentityRange `json:"gpsiRanges,omitempty"`
 	ExternalGroupIdentifiersRanges []IdentityRange `json:"externalGroupIdentifiersRanges,omitempty"`
@@ -107,9 +104,9 @@ func (o *NefCond) SetAfEvents(v []AfEvent) {
 }
 
 // GetSnssaiList returns the SnssaiList field value if set, zero value otherwise.
-func (o *NefCond) GetSnssaiList() []Snssai {
+func (o *NefCond) GetSnssaiList() []ExtSnssai {
 	if o == nil || IsNil(o.SnssaiList) {
-		var ret []Snssai
+		var ret []ExtSnssai
 		return ret
 	}
 	return o.SnssaiList
@@ -117,7 +114,7 @@ func (o *NefCond) GetSnssaiList() []Snssai {
 
 // GetSnssaiListOk returns a tuple with the SnssaiList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NefCond) GetSnssaiListOk() ([]Snssai, bool) {
+func (o *NefCond) GetSnssaiListOk() ([]ExtSnssai, bool) {
 	if o == nil || IsNil(o.SnssaiList) {
 		return nil, false
 	}
@@ -134,7 +131,7 @@ func (o *NefCond) HasSnssaiList() bool {
 }
 
 // SetSnssaiList gets a reference to the given []Snssai and assigns it to the SnssaiList field.
-func (o *NefCond) SetSnssaiList(v []Snssai) {
+func (o *NefCond) SetSnssaiList(v []ExtSnssai) {
 	o.SnssaiList = v
 }
 

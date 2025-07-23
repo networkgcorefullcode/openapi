@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the CallbackUriPrefixItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CallbackUriPrefixItem{}
-
 // CallbackUriPrefixItem callback URI prefix value to be used for specific notification types
 type CallbackUriPrefixItem struct {
 	CallbackUriPrefix string   `json:"callbackUriPrefix"`

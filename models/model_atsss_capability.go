@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the AtsssCapability type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AtsssCapability{}
-
 // AtsssCapability Containes Capability to support procedures related to Access Traffic Steering, Switching, Splitting.
 type AtsssCapability struct {
 	// Indicates the support of Access Traffic Steering, Switching and Splitting procedures  using the ATSSS-LL steering functionality (see clauses 4.2.10, 5.32 of 3GPP TS 23.501). true: Supported false (default): Not Supported

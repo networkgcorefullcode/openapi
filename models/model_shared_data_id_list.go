@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the SharedDataIdList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SharedDataIdList{}
-
 // SharedDataIdList Shared Data IDs
 type SharedDataIdList struct {
 	SharedDataIds []string `json:"sharedDataIds"`

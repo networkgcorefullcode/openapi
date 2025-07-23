@@ -34,7 +34,7 @@ type _PlmnSnssai PlmnSnssai
 // will change when the set of required properties is changed
 func NewPlmnSnssai(plmnId PlmnId, sNssaiList []ExtSnssai) *PlmnSnssai {
 	this := PlmnSnssai{}
-	this.PlmnId = plmnId
+	this.PlmnId = &plmnId
 	this.SNssaiList = sNssaiList
 	return &this
 }
@@ -49,26 +49,26 @@ func NewPlmnSnssaiWithDefaults() *PlmnSnssai {
 
 // GetPlmnId returns the PlmnId field value
 func (o *PlmnSnssai) GetPlmnId() PlmnId {
-	if o == nil {
+	if o == nil || o.PlmnId == nil {
 		var ret PlmnId
 		return ret
 	}
 
-	return o.PlmnId
+	return *o.PlmnId
 }
 
 // GetPlmnIdOk returns a tuple with the PlmnId field value
 // and a boolean to check if the value has been set.
 func (o *PlmnSnssai) GetPlmnIdOk() (*PlmnId, bool) {
-	if o == nil {
+	if o == nil || o.PlmnId == nil {
 		return nil, false
 	}
-	return &o.PlmnId, true
+	return o.PlmnId, true
 }
 
 // SetPlmnId sets field value
 func (o *PlmnSnssai) SetPlmnId(v PlmnId) {
-	o.PlmnId = v
+	o.PlmnId = &v
 }
 
 // GetSNssaiList returns the SNssaiList field value

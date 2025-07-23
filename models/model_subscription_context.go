@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the SubscriptionContext type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SubscriptionContext{}
-
 // SubscriptionContext Context data related to a created subscription, to be included in notifications sent by NRF
 type SubscriptionContext struct {
 	SubscriptionId string      `json:"subscriptionId"`

@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the MbsServiceArea type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MbsServiceArea{}
-
 // MbsServiceArea MBS Service Area
 type MbsServiceArea struct {
 	// List of NR cell Ids

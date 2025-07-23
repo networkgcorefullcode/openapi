@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ConditionItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ConditionItem{}
-
 // ConditionItem A ConditionItem consists of a number of attributes representing individual conditions (e.g. a SUPI range, or a TAI list). If several attributes/conditions are present, the evaluation of the ConditionItem is <true> if all attributes/conditions are evaluated as <true> (i.e., it follows the AND logical relationship).
 type ConditionItem struct {
 	ConsumerNfTypes  []NfType        `json:"consumerNfTypes,omitempty"`
@@ -75,7 +72,7 @@ func (o *ConditionItem) HasConsumerNfTypes() bool {
 	return false
 }
 
-// SetConsumerNfTypes gets a reference to the given []NFType and assigns it to the ConsumerNfTypes field.
+// SetConsumerNfTypes gets a reference to the given []NfType and assigns it to the ConsumerNfTypes field.
 func (o *ConditionItem) SetConsumerNfTypes(v []NfType) {
 	o.ConsumerNfTypes = v
 }

@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ScpDomainInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ScpDomainInfo{}
-
 // ScpDomainInfo SCP Domain specific information
 type ScpDomainInfo struct {
 	// Fully Qualified Domain Name

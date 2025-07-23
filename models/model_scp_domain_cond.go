@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the ScpDomainCond type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ScpDomainCond{}
-
 // ScpDomainCond Subscription to a set of NF or SCP or SEPP instances belonging to certain SCP domains
 type ScpDomainCond struct {
 	ScpDomains []string `json:"scpDomains"`

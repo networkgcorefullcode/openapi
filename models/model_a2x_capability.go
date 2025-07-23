@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the A2xCapability type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &A2xCapability{}
-
 // A2xCapability Indicate the supported A2X Capability by the PCF.
 type A2xCapability struct {
 	LteA2x *bool `json:"lteA2x,omitempty"`

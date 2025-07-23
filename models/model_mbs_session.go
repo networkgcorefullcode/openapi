@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the MbsSession type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MbsSession{}
-
 // MbsSession MBS Session currently served by an MB-SMF
 type MbsSession struct {
 	MbsSessionId NullableMbsSessionId `json:"mbsSessionId"`

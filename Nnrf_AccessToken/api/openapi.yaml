@@ -77,9 +77,9 @@ components:
           format: uuid
           type: string
         nfType:
-          $ref: '#/components/schemas/NFType'
+          $ref: '#/components/schemas/NfType'
         targetNfType:
-          $ref: '#/components/schemas/NFType'
+          $ref: '#/components/schemas/NfType'
         scope:
           pattern: ^([a-zA-Z0-9_-]+)( [a-zA-Z0-9_-]+)*$
           type: string
@@ -126,7 +126,7 @@ components:
           type: string
         audience:
           anyOf:
-          - $ref: '#/components/schemas/NFType'
+          - $ref: '#/components/schemas/NfType'
           - items:
               $ref: '#/components/schemas/NfInstanceId'
             minItems: 1
@@ -165,7 +165,7 @@ components:
     NfInstanceId:
       format: uuid
       type: string
-    NFType:
+    NfType:
       enum:
       - NRF
       - UDM

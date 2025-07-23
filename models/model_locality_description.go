@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the LocalityDescription type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LocalityDescription{}
-
 // LocalityDescription Locality description
 type LocalityDescription struct {
 	LocalityType      LocalityType              `json:"localityType"`

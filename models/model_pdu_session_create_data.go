@@ -23,7 +23,7 @@ type PduSessionCreateData struct {
 	Pei                     string                    `json:"pei,omitempty"`
 	PduSessionId            int32                     `json:"pduSessionId,omitempty"`
 	Dnn                     string                    `json:"dnn"`
-	SNssai                  *Snssai                   `json:"sNssai,omitempty"`
+	SNssai                  *ExtSnssai                `json:"sNssai,omitempty"`
 	VsmfId                  string                    `json:"vsmfId"`
 	ServingNetwork          *PlmnId                   `json:"servingNetwork"`
 	RequestType             RequestType               `json:"requestType,omitempty"`

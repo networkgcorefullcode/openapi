@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the PlmnOauth2 type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PlmnOauth2{}
-
 // PlmnOauth2 Oauth2.0 required indication for a given PLMN ID
 type PlmnOauth2 struct {
 	Oauth2RequiredPlmnIdList    []PlmnId `json:"oauth2RequiredPlmnIdList,omitempty"`

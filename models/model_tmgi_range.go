@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the TmgiRange type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TmgiRange{}
-
 // TmgiRange Range of TMGIs
 type TmgiRange struct {
 	MbsServiceIdStart string `json:"mbsServiceIdStart"`

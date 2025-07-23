@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the Ssm type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Ssm{}
-
 // Ssm Source specific IP multicast address
 type Ssm struct {
 	SourceIpAddr NullableIpAddr `json:"sourceIpAddr"`

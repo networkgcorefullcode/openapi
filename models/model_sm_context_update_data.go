@@ -43,7 +43,7 @@ type SmContextUpdateData struct {
 	Cause              Cause                     `json:"cause,omitempty"`
 	NgApCause          *NgApCause                `json:"ngApCause,omitempty"`
 	Var5gMmCauseValue  int32                     `json:"5gMmCauseValue,omitempty"`
-	SNssai             *Snssai                   `json:"sNssai,omitempty"`
+	SNssai             *ExtSnssai                `json:"sNssai,omitempty"`
 	TraceData          *TraceData                `json:"traceData,omitempty"`
 	EpsInterworkingInd EpsInterworkingIndication `json:"epsInterworkingInd,omitempty"`
 	AnTypeCanBeChanged bool                      `json:"anTypeCanBeChanged,omitempty"`

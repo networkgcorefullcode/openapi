@@ -31,7 +31,7 @@ paths:
         name: nf-type
         required: false
         schema:
-          $ref: '#/components/schemas/NFType'
+          $ref: '#/components/schemas/NfType'
         style: form
       - description: How many items to return at one time
         explode: true
@@ -399,10 +399,10 @@ paths:
   /subscriptions:
     post:
       callbacks:
-        onNFStatusEvent:
+        onNfStatusEvent:
           '{$request.body#/nfStatusNotificationUri}':
             post:
-              operationId: onNFStatusEvent_Post
+              operationId: onNfStatusEvent_Post
               requestBody:
                 content:
                   application/json:
@@ -1435,9 +1435,9 @@ components:
           format: uuid
           type: string
         nfType:
-          $ref: '#/components/schemas/NFType'
+          $ref: '#/components/schemas/NfType'
         nfStatus:
-          $ref: '#/components/schemas/NFStatus'
+          $ref: '#/components/schemas/NfStatus'
         heartBeatTimer:
           format: int32
           type: integer
@@ -1477,7 +1477,7 @@ components:
           type: array
         allowedNfTypes:
           items:
-            $ref: '#/components/schemas/NFType'
+            $ref: '#/components/schemas/NfType'
           minItems: 1
           type: array
         allowedNfDomains:
@@ -1629,7 +1629,7 @@ components:
           type: array
         allowedNfTypes:
           items:
-            $ref: '#/components/schemas/NFType'
+            $ref: '#/components/schemas/NfType'
           minItems: 1
           type: array
         allowedNfDomains:
@@ -1672,7 +1672,7 @@ components:
       - serviceName
       - versions
       type: object
-    NFType:
+    NfType:
       enum:
       - NRF
       - UDM
@@ -1767,7 +1767,7 @@ components:
         notifCondition:
           $ref: '#/components/schemas/NotifCondition'
         reqNfType:
-          $ref: '#/components/schemas/NFType'
+          $ref: '#/components/schemas/NfType'
         reqNfFqdn:
           type: string
       required:
@@ -1785,7 +1785,7 @@ components:
     NfTypeCond:
       properties:
         nfType:
-          $ref: '#/components/schemas/NFType'
+          $ref: '#/components/schemas/NfType'
       required:
       - nfType
       type: object
@@ -2641,7 +2641,7 @@ components:
       - event
       - nfInstanceUri
       type: object
-    NFStatus:
+    NfStatus:
       enum:
       - REGISTERED
       - SUSPENDED

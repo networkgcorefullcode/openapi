@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the ImsiRange type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ImsiRange{}
-
 // ImsiRange A range of IMSIs (subscriber identities), either based on a numeric range, or based on regular-expression matching
 type ImsiRange struct {
 	Start   *string `json:"start,omitempty"`

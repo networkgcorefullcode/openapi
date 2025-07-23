@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the SharedScope type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SharedScope{}
-
 // SharedScope Authorized Scope for a Shared Data
 type SharedScope struct {
 	NfSetIdList []string `json:"nfSetIdList,omitempty"`

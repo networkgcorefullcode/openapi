@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the DefSubServiceInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DefSubServiceInfo{}
-
 // DefSubServiceInfo Service Specific information for Default Notification Subscription.
 type DefSubServiceInfo struct {
 	Versions []string `json:"versions,omitempty"`

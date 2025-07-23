@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the NfInstanceIdListCond type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NfInstanceIdListCond{}
-
 // NfInstanceIdListCond Subscription to a list of NF Instances
 type NfInstanceIdListCond struct {
 	NfInstanceIdList []string `json:"nfInstanceIdList"`

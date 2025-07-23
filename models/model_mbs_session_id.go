@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the MbsSessionId type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &MbsSessionId{}
-
 // MbsSessionId MBS Session Identifier
 type MbsSessionId struct {
 	Tmgi *Tmgi `json:"tmgi,omitempty"`

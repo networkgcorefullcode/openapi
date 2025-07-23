@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the EpdgInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &EpdgInfo{}
-
 // EpdgInfo Information of the ePDG end-points
 type EpdgInfo struct {
 	Ipv4EndpointAddresses []string   `json:"ipv4EndpointAddresses,omitempty"`

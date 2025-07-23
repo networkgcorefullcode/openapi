@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the TwifInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TwifInfo{}
-
 // TwifInfo Addressing information (IP addresses, FQDN) of the TWIF
 type TwifInfo struct {
 	Ipv4EndpointAddresses []string   `json:"ipv4EndpointAddresses,omitempty"`

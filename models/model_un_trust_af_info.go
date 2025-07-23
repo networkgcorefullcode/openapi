@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the UnTrustAfInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UnTrustAfInfo{}
-
 // UnTrustAfInfo Information of a untrusted AF Instance
 type UnTrustAfInfo struct {
 	AfId           string           `json:"afId"`

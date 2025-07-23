@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the DnnEasdfInfoItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &DnnEasdfInfoItem{}
-
 // DnnEasdfInfoItem Set of parameters supported by EASDF for a given DNN
 type DnnEasdfInfoItem struct {
 	Dnn      DnnSmfInfoItemDnn `json:"dnn"`

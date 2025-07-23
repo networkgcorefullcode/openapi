@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the SnssaiMbSmfInfoItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SnssaiMbSmfInfoItem{}
-
 // SnssaiMbSmfInfoItem Parameters supported by an MB-SMF for a given S-NSSAI
 type SnssaiMbSmfInfoItem struct {
 	SNssai      ExtSnssai          `json:"sNssai"`

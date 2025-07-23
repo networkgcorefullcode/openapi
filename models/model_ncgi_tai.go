@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the NcgiTai type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &NcgiTai{}
-
 // NcgiTai List of NR cell ids, with their pertaining TAIs
 type NcgiTai struct {
 	Tai Tai `json:"tai"`

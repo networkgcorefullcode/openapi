@@ -14,10 +14,7 @@ import (
 	"encoding/json"
 )
 
-// checks if the ConditionGroup type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ConditionGroup{}
-
-// ConditionGroup List (array) of conditions (joined by the \"and\" or \"or\" logical relationship), under which an NF Instance with an NFStatus or NFServiceStatus value set to, \"CANARY_RELEASE\", or with a \"canaryRelease\" attribute set to true, shall be selected by an NF Service Consumer.
+// ConditionGroup List (array) of conditions (joined by the \"and\" or \"or\" logical relationship), under which an NF Instance with an NfStatus or NFServiceStatus value set to, \"CANARY_RELEASE\", or with a \"canaryRelease\" attribute set to true, shall be selected by an NF Service Consumer.
 type ConditionGroup struct {
 	And []SelectionConditions `json:"and,omitempty"`
 	Or  []SelectionConditions `json:"or,omitempty"`

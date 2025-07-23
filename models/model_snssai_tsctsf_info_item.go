@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the SnssaiTsctsfInfoItem type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SnssaiTsctsfInfoItem{}
-
 // SnssaiTsctsfInfoItem Set of parameters supported by TSCTSF for a given S-NSSAI
 type SnssaiTsctsfInfoItem struct {
 	SNssai      ExtSnssai           `json:"sNssai"`

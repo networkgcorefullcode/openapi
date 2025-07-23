@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the WAgfInfo type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &WAgfInfo{}
-
 // WAgfInfo Information of the W-AGF end-points
 type WAgfInfo struct {
 	Ipv4EndpointAddresses []string   `json:"ipv4EndpointAddresses,omitempty"`

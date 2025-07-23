@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the UpfCond type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &UpfCond{}
-
 // UpfCond Subscription to a set of NF Instances (UPFs), able to serve a certain service area (i.e. SMF serving area or TAI list)
 type UpfCond struct {
 	ConditionType  string   `json:"conditionType"`

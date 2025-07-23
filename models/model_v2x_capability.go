@@ -14,9 +14,6 @@ import (
 	"encoding/json"
 )
 
-// checks if the V2xCapability type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &V2xCapability{}
-
 // V2xCapability Indicate the supported V2X Capability by the PCF.
 type V2xCapability struct {
 	LteV2x *bool `json:"lteV2x,omitempty"`

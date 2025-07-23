@@ -16,9 +16,6 @@ import (
 	"fmt"
 )
 
-// checks if the LocationAreaId type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LocationAreaId{}
-
 // LocationAreaId Contains a Location area identification as defined in 3GPP TS 23.003, clause 4.1.
 type LocationAreaId struct {
 	PlmnId PlmnId `json:"plmnId"`
