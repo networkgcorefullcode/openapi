@@ -13,6 +13,11 @@
 
 package models
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 type NfType string
 
 // List of NFType
@@ -39,3 +44,58 @@ const (
 	NfType_CHF      NfType = "CHF"
 	NfType_NWDAF    NfType = "NWDAF"
 )
+
+// Unmarshal JSON data into any of the pointers in the struct
+func (dst *NfType) UnmarshalJSON(data []byte) error {
+	var err error
+	var str string
+	// try to unmarshal JSON data into string
+	err = json.Unmarshal(data, &str)
+	if err == nil {
+		*dst = NfType(str)
+		return nil
+	}
+
+	return fmt.Errorf("data failed to match schemas in anyOf(NFType)")
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src NfType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(string(src))
+}
+
+type NullableNfType struct {
+	value *NfType
+	isSet bool
+}
+
+func (v NullableNfType) Get() *NfType {
+	return v.value
+}
+
+func (v *NullableNfType) Set(val *NfType) {
+	v.value = val
+	v.isSet = true
+}
+
+func (v NullableNfType) IsSet() bool {
+	return v.isSet
+}
+
+func (v *NullableNfType) Unset() {
+	v.value = nil
+	v.isSet = false
+}
+
+func NewNullableNfType(val *NfType) *NullableNfType {
+	return &NullableNfType{value: val, isSet: true}
+}
+
+func (v NullableNfType) MarshalJSON() ([]byte, error) {
+	return json.Marshal(v.value)
+}
+
+func (v *NullableNfType) UnmarshalJSON(src []byte) error {
+	v.isSet = true
+	return json.Unmarshal(src, &v.value)
+}

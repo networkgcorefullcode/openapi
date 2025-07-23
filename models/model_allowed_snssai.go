@@ -14,7 +14,7 @@
 package models
 
 type AllowedSnssai struct {
-	AllowedSnssai      *Snssai          `json:"allowedSnssai"`
+	AllowedSnssai      *ExtSnssai       `json:"allowedSnssai"`
 	NsiInformationList []NsiInformation `json:"nsiInformationList,omitempty"`
-	MappedHomeSnssai   *Snssai          `json:"mappedHomeSnssai,omitempty"`
+	MappedHomeSnssai   *ExtSnssai       `json:"mappedHomeSnssai,omitempty"`
 }

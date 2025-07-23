@@ -13,6 +13,11 @@
 
 package models
 
+import (
+	"encoding/json"
+	"fmt"
+)
+
 type DataSetId string
 
 // List of DataSetId
@@ -22,3 +27,67 @@ const (
 	DataSetId_EXPOSURE     DataSetId = "EXPOSURE"
 	DataSetId_APPLICATION  DataSetId = "APPLICATION"
 )
+
+// Unmarshal JSON data into any of the pointers in the struct
+func (dst *DataSetId) UnmarshalJSON(data []byte) error {
+	var err error
+	// try to unmarshal JSON data into string
+	err = json.Unmarshal(data, &dst.string)
+	if err == nil {
+		jsonstring, _ := json.Marshal(dst.string)
+		if string(jsonstring) == "{}" { // empty struct
+			dst.string = nil
+		} else {
+			return nil // data stored in dst.string, return on the first match
+		}
+	} else {
+		dst.string = nil
+	}
+
+	return fmt.Errorf("data failed to match schemas in anyOf(DataSetId)")
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src *DataSetId) MarshalJSON() ([]byte, error) {
+	if src.string != nil {
+		return json.Marshal(&src.string)
+	}
+
+	return nil, nil // no data in anyOf schemas
+}
+
+type NullableDataSetId struct {
+	value *DataSetId
+	isSet bool
+}
+
+func (v NullableDataSetId) Get() *DataSetId {
+	return v.value
+}
+
+func (v *NullableDataSetId) Set(val *DataSetId) {
+	v.value = val
+	v.isSet = true
+}
+
+func (v NullableDataSetId) IsSet() bool {
+	return v.isSet
+}
+
+func (v *NullableDataSetId) Unset() {
+	v.value = nil
+	v.isSet = false
+}
+
+func NewNullableDataSetId(val *DataSetId) *NullableDataSetId {
+	return &NullableDataSetId{value: val, isSet: true}
+}
+
+func (v NullableDataSetId) MarshalJSON() ([]byte, error) {
+	return json.Marshal(v.value)
+}
+
+func (v *NullableDataSetId) UnmarshalJSON(src []byte) error {
+	v.isSet = true
+	return json.Unmarshal(src, &v.value)
+}

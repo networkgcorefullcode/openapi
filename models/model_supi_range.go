@@ -13,8 +13,169 @@
 
 package models
 
+import "encoding/json"
+
 type SupiRange struct {
 	Start   string `json:"start,omitempty" yaml:"start" bson:"start" mapstructure:"Start"`
 	End     string `json:"end,omitempty" yaml:"end" bson:"end" mapstructure:"End"`
 	Pattern string `json:"pattern,omitempty" yaml:"pattern" bson:"pattern" mapstructure:"Pattern"`
+}
+
+// NewSupiRange instantiates a new SupiRange object
+// This constructor will assign default values to properties that have it defined,
+// and makes sure properties required by API are set, but the set of arguments
+// will change when the set of required properties is changed
+func NewSupiRange() *SupiRange {
+	this := SupiRange{}
+	return &this
+}
+
+// NewSupiRangeWithDefaults instantiates a new SupiRange object
+// This constructor will only assign default values to properties that have it defined,
+// but it doesn't guarantee that properties required by API are set
+func NewSupiRangeWithDefaults() *SupiRange {
+	this := SupiRange{}
+	return &this
+}
+
+// GetStart returns the Start field value if set, zero value otherwise.
+func (o *SupiRange) GetStart() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+	return o.Start
+}
+
+// GetStartOk returns a tuple with the Start field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SupiRange) GetStartOk() (string, bool) {
+	if o == nil {
+		return "", false
+	}
+	return o.Start, true
+}
+
+// HasStart returns a boolean if a field has been set.
+func (o *SupiRange) HasStart() bool {
+	return o != nil && o.Start != ""
+}
+
+// SetStart gets a reference to the given string and assigns it to the Start field.
+func (o *SupiRange) SetStart(v string) {
+	o.Start = v
+}
+
+// GetEnd returns the End field value if set, zero value otherwise.
+func (o *SupiRange) GetEnd() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+	return o.End
+}
+
+// GetEndOk returns a tuple with the End field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SupiRange) GetEndOk() (string, bool) {
+	if o == nil {
+		return "", false
+	}
+	return o.End, true
+}
+
+// HasEnd returns a boolean if a field has been set.
+func (o *SupiRange) HasEnd() bool {
+	return o != nil && o.End != ""
+}
+
+// SetEnd gets a reference to the given string and assigns it to the End field.
+func (o *SupiRange) SetEnd(v string) {
+	o.End = v
+}
+
+// GetPattern returns the Pattern field value if set, zero value otherwise.
+func (o *SupiRange) GetPattern() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+	return o.Pattern
+}
+
+// GetPatternOk returns a tuple with the Pattern field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SupiRange) GetPatternOk() (string, bool) {
+	if o == nil {
+		return "", false
+	}
+	return o.Pattern, true
+}
+
+// HasPattern returns a boolean if a field has been set.
+func (o *SupiRange) HasPattern() bool {
+	return o != nil && o.Pattern != ""
+}
+
+// SetPattern gets a reference to the given string and assigns it to the Pattern field.
+func (o *SupiRange) SetPattern(v string) {
+	o.Pattern = v
+}
+
+func (o SupiRange) MarshalJSON() ([]byte, error) {
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
+	}
+	return json.Marshal(toSerialize)
+}
+
+func (o SupiRange) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if o.Start != "" {
+		toSerialize["start"] = o.Start
+	}
+	if o.End != "" {
+		toSerialize["end"] = o.End
+	}
+	if o.Pattern != "" {
+		toSerialize["pattern"] = o.Pattern
+	}
+	return toSerialize, nil
+}
+
+type NullableSupiRange struct {
+	value *SupiRange
+	isSet bool
+}
+
+func (v NullableSupiRange) Get() *SupiRange {
+	return v.value
+}
+
+func (v *NullableSupiRange) Set(val *SupiRange) {
+	v.value = val
+	v.isSet = true
+}
+
+func (v NullableSupiRange) IsSet() bool {
+	return v.isSet
+}
+
+func (v *NullableSupiRange) Unset() {
+	v.value = nil
+	v.isSet = false
+}
+
+func NewNullableSupiRange(val *SupiRange) *NullableSupiRange {
+	return &NullableSupiRange{value: val, isSet: true}
+}
+
+func (v NullableSupiRange) MarshalJSON() ([]byte, error) {
+	return json.Marshal(v.value)
+}
+
+func (v *NullableSupiRange) UnmarshalJSON(src []byte) error {
+	v.isSet = true
+	return json.Unmarshal(src, &v.value)
 }

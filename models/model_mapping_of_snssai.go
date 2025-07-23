@@ -14,7 +14,7 @@
 package models
 
 type MappingOfSnssai struct {
-	ServingSnssai *Snssai `json:"servingSnssai" bson:"servingSnssai" yaml:"servingSnssai"`
+	ServingSnssai *ExtSnssai `json:"servingSnssai" bson:"servingSnssai" yaml:"servingSnssai"`
 
-	HomeSnssai *Snssai `json:"homeSnssai" bson:"homeSnssai" yaml:"homeSnssai"`
+	HomeSnssai *ExtSnssai `json:"homeSnssai" bson:"homeSnssai" yaml:"homeSnssai"`
 }

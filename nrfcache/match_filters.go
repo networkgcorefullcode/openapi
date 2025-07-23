@@ -57,7 +57,7 @@ func MatchSmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 		matchCount := 0
 
 		for _, reqSnssai := range reqSnssais {
-			var snssai models.Snssai
+			var snssai models.ExtSnssai
 			err := json.Unmarshal([]byte(reqSnssai), &snssai)
 			if err != nil {
 				logger.NrfcacheLog.Errorf("error Unmarshaling nssai: %+v", err)

@@ -17,6 +17,32 @@ type UpfInfo struct {
 	SNssaiUpfInfoList    []SnssaiUpfInfoItem    `json:"sNssaiUpfInfoList" yaml:"sNssaiUpfInfoList" bson:"sNssaiUpfInfoList" mapstructure:"SNssaiUpfInfoList"`
 	SmfServingArea       []string               `json:"smfServingArea,omitempty" yaml:"smfServingArea" bson:"smfServingArea" mapstructure:"SmfServingArea"`
 	InterfaceUpfInfoList []InterfaceUpfInfoItem `json:"interfaceUpfInfoList,omitempty" yaml:"interfaceUpfInfoList" bson:"interfaceUpfInfoList" mapstructure:"InterfaceUpfInfoList"`
-	IwkEpsInd            bool                   `json:"iwkEpsInd,omitempty" yaml:"iwkEpsInd" bson:"iwkEpsInd" mapstructure:"IwkEpsInd"`
-	PduSessionTypes      []PduSessionType       `json:"pduSessionTypes,omitempty" yaml:"pduSessionTypes" bson:"pduSessionTypes" mapstructure:"PduSessionTypes"`
+	// A map of InterfaceUpfInfoItems containing the N6 tunnelling information for establishing  a N6 tunnel between the V-UPF and the V-EASDF, where a valid JSON string serves as key.
+	N6TunnelInfoList                *map[string]InterfaceUpfInfoItem   `json:"n6TunnelInfoList,omitempty" yaml:"n6TunnelInfoList" bson:"n6TunnelInfoList" mapstructure:"N6TunnelInfoList"`
+	IwkEpsInd                       *bool                              `json:"iwkEpsInd,omitempty" yaml:"iwkEpsInd" bson:"iwkEpsInd" mapstructure:"IwkEpsInd"`
+	SxaInd                          *bool                              `json:"sxaInd,omitempty" yaml:"sxaInd" bson:"sxaInd" mapstructure:"SxaInd"`
+	PduSessionTypes                 []PduSessionType                   `json:"pduSessionTypes,omitempty" yaml:"pduSessionTypes" bson:"pduSessionTypes" mapstructure:"PduSessionTypes"`
+	AtsssCapability                 *AtsssCapability                   `json:"atsssCapability,omitempty" yaml:"atsssCapability" bson:"atsssCapability" mapstructure:"AtsssCapability"`
+	UeIpAddrInd                     *bool                              `json:"ueIpAddrInd,omitempty" yaml:"ueIpAddrInd" bson:"ueIpAddrInd" mapstructure:"UeIpAddrInd"`
+	TaiList                         []Tai                              `json:"taiList,omitempty" yaml:"taiList" bson:"taiList" mapstructure:"TaiList"`
+	TaiRangeList                    []TaiRange                         `json:"taiRangeList,omitempty" yaml:"taiRangeList" bson:"taiRangeList" mapstructure:"TaiRangeList"`
+	WAgfInfo                        NullableWAgfInfo                   `json:"wAgfInfo,omitempty" yaml:"wAgfInfo" bson:"wAgfInfo" mapstructure:"WAgfInfo"`
+	TngfInfo                        NullableTngfInfo                   `json:"tngfInfo,omitempty" yaml:"tngfInfo" bson:"tngfInfo" mapstructure:"TngfInfo"`
+	TwifInfo                        NullableTwifInfo                   `json:"twifInfo,omitempty" yaml:"twifInfo" bson:"twifInfo" mapstructure:"TwifInfo"`
+	PreferredEpdgInfoList           []EpdgInfo                         `json:"preferredEpdgInfoList,omitempty" yaml:"preferredEpdgInfoList" bson:"preferredEpdgInfoList" mapstructure:"PreferredEpdgInfoList"`
+	PreferredWAgfInfoList           []WAgfInfo                         `json:"preferredWAgfInfoList,omitempty" yaml:"preferredWAgfInfoList" bson:"preferredWAgfInfoList" mapstructure:"PreferredWAgfInfoList"`
+	PreferredTngfInfoList           []TngfInfo                         `json:"preferredTngfInfoList,omitempty" yaml:"preferredTngfInfoList" bson:"preferredTngfInfoList" mapstructure:"PreferredTngfInfoList"`
+	PreferredTwifInfoList           []TwifInfo                         `json:"preferredTwifInfoList,omitempty" yaml:"preferredTwifInfoList" bson:"preferredTwifInfoList" mapstructure:"PreferredTwifInfoList"`
+	Priority                        *int32                             `json:"priority,omitempty" yaml:"priority" bson:"priority" mapstructure:"Priority"`
+	RedundantGtpu                   *bool                              `json:"redundantGtpu,omitempty" yaml:"redundantGtpu" bson:"redundantGtpu" mapstructure:"RedundantGtpu"`
+	Ipups                           *bool                              `json:"ipups,omitempty" yaml:"ipups" bson:"ipups" mapstructure:"Ipups"`
+	DataForwarding                  *bool                              `json:"dataForwarding,omitempty" yaml:"dataForwarding" bson:"dataForwarding" mapstructure:"DataForwarding"`
+	SupportedPfcpFeatures           *string                            `json:"supportedPfcpFeatures,omitempty" yaml:"supportedPfcpFeatures" bson:"supportedPfcpFeatures" mapstructure:"SupportedPfcpFeatures"`
+	UpfEvents                       []EventType                        `json:"upfEvents,omitempty" yaml:"upfEvents" bson:"upfEvents" mapstructure:"UpfEvents"`
+	OpConfigCaps                    []string                           `json:"opConfigCaps,omitempty" yaml:"opConfigCaps" bson:"opConfigCaps" mapstructure:"OpConfigCaps"`
+	PacketInspectionFunctionalities []UpfPacketInspectionFunctionality `json:"packetInspectionFunctionalities,omitempty" yaml:"packetInspectionFunctionalities" bson:"packetInspectionFunctionalities" mapstructure:"PacketInspectionFunctionalities"`
+	N6DelayMeastProtocs             []N6DelayMeasurementProtocol       `json:"n6DelayMeastProtocs,omitempty" yaml:"n6DelayMeastProtocs" bson:"n6DelayMeastProtocs" mapstructure:"N6DelayMeastProtocs"`
+	GeranUtranInd                   *bool                              `json:"geranUtranInd,omitempty" yaml:"geranUtranInd" bson:"geranUtranInd" mapstructure:"GeranUtranInd"`
+	Var2g3gLocationAreaList         []Model2G3GLocationArea            `json:"2g3gLocationAreaList,omitempty" yaml:"2g3gLocationAreaList" bson:"2g3gLocationAreaList" mapstructure:"2g3gLocationAreaList"`
+	Var2g3gLocationAreaRangeList    []Model2G3GLocationAreaRange       `json:"2g3gLocationAreaRangeList,omitempty" yaml:"2g3gLocationAreaRangeList" bson:"2g3gLocationAreaRangeList" mapstructure:"2g3gLocationAreaRangeList"`
 }

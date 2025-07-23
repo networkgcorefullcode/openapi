@@ -24,7 +24,7 @@ type SdmSubscription struct {
 	CallbackReference     string      `json:"callbackReference" yaml:"callbackReference" bson:"callbackReference" mapstructure:"CallbackReference"`
 	AmfServiceName        ServiceName `json:"amfServiceName,omitempty" yaml:"amfServiceName" bson:"amfServiceName" mapstructure:"AmfServiceName"`
 	MonitoredResourceUris []string    `json:"monitoredResourceUris" yaml:"monitoredResourceUris" bson:"monitoredResourceUris" mapstructure:"MonitoredResourceUris"`
-	SingleNssai           *Snssai     `json:"singleNssai,omitempty" yaml:"singleNssai" bson:"singleNssai" mapstructure:"SingleNssai"`
+	SingleNssai           *ExtSnssai  `json:"singleNssai,omitempty" yaml:"singleNssai" bson:"singleNssai" mapstructure:"SingleNssai"`
 	Dnn                   string      `json:"dnn,omitempty" yaml:"dnn" bson:"dnn" mapstructure:"Dnn"`
 	SubscriptionId        string      `json:"subscriptionId,omitempty" yaml:"subscriptionId" bson:"subscriptionId" mapstructure:"SubscriptionId"`
 	PlmnId                *PlmnId     `json:"plmnId,omitempty" yaml:"plmnId" bson:"plmnId" mapstructure:"PlmnId"`

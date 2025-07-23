@@ -514,7 +514,7 @@ func nrfDbCallback(nrfUri string, targetNfType, requestNfType models.NfType,
 			if param.Snssais.IsSet() {
 				snssais := param.Snssais.Value().([]string)
 
-				var snssai models.Snssai
+				var snssai models.ExtSnssai
 				err = json.Unmarshal([]byte(snssais[0]), &snssai)
 				if err != nil {
 					err = fmt.Errorf("snssai invalid %s", snssais[0])
@@ -558,7 +558,7 @@ func TestCacheMissAndHits(t *testing.T) {
 	param := Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
 		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
 		Dnn:          optional.NewString("internet"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
+		Snssais:      optional.NewInterface(MarshToJsonString([]models.ExtSnssai{{Sst: 1, Sd: "010203"}})),
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
@@ -590,7 +590,7 @@ func TestCacheMissAndHits(t *testing.T) {
 	param = Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
 		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
 		Dnn:          optional.NewString("ims"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
+		Snssais:      optional.NewInterface(MarshToJsonString([]models.ExtSnssai{{Sst: 1, Sd: "010203"}})),
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
@@ -610,7 +610,7 @@ func TestCacheMissAndHits(t *testing.T) {
 	param = Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
 		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
 		Dnn:          optional.NewString("internet"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "0a0b0c"}})),
+		Snssais:      optional.NewInterface(MarshToJsonString([]models.ExtSnssai{{Sst: 1, Sd: "0a0b0c"}})),
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
@@ -659,7 +659,7 @@ func TestCacheMissOnTTlExpiry(t *testing.T) {
 	param := Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
 		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
 		Dnn:          optional.NewString("internet"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "0a0b0c"}})),
+		Snssais:      optional.NewInterface(MarshToJsonString([]models.ExtSnssai{{Sst: 1, Sd: "0a0b0c"}})),
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
@@ -702,7 +702,7 @@ func TestCacheEviction(t *testing.T) {
 	param := Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
 		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
 		Dnn:          optional.NewString("internet"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
+		Snssais:      optional.NewInterface(MarshToJsonString([]models.ExtSnssai{{Sst: 1, Sd: "010203"}})),
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
@@ -714,7 +714,7 @@ func TestCacheEviction(t *testing.T) {
 	param = Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
 		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
 		Dnn:          optional.NewString("ims"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
+		Snssais:      optional.NewInterface(MarshToJsonString([]models.ExtSnssai{{Sst: 1, Sd: "010203"}})),
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
@@ -726,7 +726,7 @@ func TestCacheEviction(t *testing.T) {
 	param = Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
 		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
 		Dnn:          optional.NewString("internet"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "0a0b0c"}})),
+		Snssais:      optional.NewInterface(MarshToJsonString([]models.ExtSnssai{{Sst: 1, Sd: "0a0b0c"}})),
 	}
 
 	result, err = SearchNFInstances("testNrf", models.NfType_SMF, models.NfType_AMF, &param)
@@ -756,7 +756,7 @@ func TestCacheConcurrency(t *testing.T) {
 	param := Nnrf_NFDiscovery.SearchNFInstancesParamOpts{
 		ServiceNames: optional.NewInterface([]models.ServiceName{models.ServiceName_NSMF_PDUSESSION}),
 		Dnn:          optional.NewString("internet"),
-		Snssais:      optional.NewInterface(MarshToJsonString([]models.Snssai{{Sst: 1, Sd: "010203"}})),
+		Snssais:      optional.NewInterface(MarshToJsonString([]models.ExtSnssai{{Sst: 1, Sd: "010203"}})),
 	}
 
 	expectedCallCount := nrfDbCallbackCallCount + 1

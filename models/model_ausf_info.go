@@ -17,4 +17,5 @@ type AusfInfo struct {
 	GroupId           string      `json:"groupId,omitempty" yaml:"groupId" bson:"groupId" mapstructure:"GroupId"`
 	SupiRanges        []SupiRange `json:"supiRanges,omitempty" yaml:"supiRanges" bson:"supiRanges" mapstructure:"SupiRanges"`
 	RoutingIndicators []string    `json:"routingIndicators,omitempty" yaml:"routingIndicators" bson:"routingIndicators" mapstructure:"RoutingIndicators"`
+	SuciInfos         []SuciInfo  `json:"suciInfos,omitempty" yaml:"suciInfos" bson:"suciInfos" mapstructure:"SuciInfos"`
 }
