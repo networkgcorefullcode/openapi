@@ -20,7 +20,7 @@ import (
 type SmContextCreatedData struct {
 	HSmfUri              string           `json:"hSmfUri,omitempty"`
 	PduSessionId         int32            `json:"pduSessionId,omitempty"`
-	SNssai               *ExtSnssai       `json:"sNssai,omitempty"`
+	SNssai               *Snssai          `json:"sNssai,omitempty"`
 	UpCnxState           UpCnxState       `json:"upCnxState,omitempty"`
 	N2SmInfo             *RefToBinaryData `json:"n2SmInfo,omitempty"`
 	N2SmInfoType         N2SmInfoType     `json:"n2SmInfoType,omitempty"`

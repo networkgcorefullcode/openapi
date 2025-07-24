@@ -16,7 +16,7 @@ package models
 type PduSessionContext struct {
 	PduSessionId     int32           `json:"pduSessionId"`
 	SmContextRef     string          `json:"smContextRef"`
-	SNssai           *ExtSnssai      `json:"sNssai"`
+	SNssai           *Snssai         `json:"sNssai"`
 	Dnn              string          `json:"dnn"`
 	AccessType       AccessType      `json:"accessType"`
 	AllocatedEbiList []EbiArpMapping `json:"allocatedEbiList"`

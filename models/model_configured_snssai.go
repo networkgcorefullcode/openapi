@@ -14,6 +14,6 @@
 package models
 
 type ConfiguredSnssai struct {
-	ConfiguredSnssai *ExtSnssai `json:"configuredSnssai"`
-	MappedHomeSnssai *ExtSnssai `json:"mappedHomeSnssai,omitempty"`
+	ConfiguredSnssai *Snssai `json:"configuredSnssai"`
+	MappedHomeSnssai *Snssai `json:"mappedHomeSnssai,omitempty"`
 }

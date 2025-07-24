@@ -18,7 +18,7 @@ import (
 
 // SnssaiTsctsfInfoItem Set of parameters supported by TSCTSF for a given S-NSSAI
 type SnssaiTsctsfInfoItem struct {
-	SNssai      ExtSnssai           `json:"sNssai"`
+	SNssai      Snssai              `json:"sNssai"`
 	DnnInfoList []DnnTsctsfInfoItem `json:"dnnInfoList"`
 }
 
@@ -28,7 +28,7 @@ type _SnssaiTsctsfInfoItem SnssaiTsctsfInfoItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSnssaiTsctsfInfoItem(sNssai ExtSnssai, dnnInfoList []DnnTsctsfInfoItem) *SnssaiTsctsfInfoItem {
+func NewSnssaiTsctsfInfoItem(sNssai Snssai, dnnInfoList []DnnTsctsfInfoItem) *SnssaiTsctsfInfoItem {
 	this := SnssaiTsctsfInfoItem{}
 	this.SNssai = sNssai
 	this.DnnInfoList = dnnInfoList
@@ -44,9 +44,9 @@ func NewSnssaiTsctsfInfoItemWithDefaults() *SnssaiTsctsfInfoItem {
 }
 
 // GetSNssai returns the SNssai field value
-func (o *SnssaiTsctsfInfoItem) GetSNssai() ExtSnssai {
+func (o *SnssaiTsctsfInfoItem) GetSNssai() Snssai {
 	if o == nil {
-		var ret ExtSnssai
+		var ret Snssai
 		return ret
 	}
 
@@ -55,7 +55,7 @@ func (o *SnssaiTsctsfInfoItem) GetSNssai() ExtSnssai {
 
 // GetSNssaiOk returns a tuple with the SNssai field value
 // and a boolean to check if the value has been set.
-func (o *SnssaiTsctsfInfoItem) GetSNssaiOk() (*ExtSnssai, bool) {
+func (o *SnssaiTsctsfInfoItem) GetSNssaiOk() (*Snssai, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *SnssaiTsctsfInfoItem) GetSNssaiOk() (*ExtSnssai, bool) {
 }
 
 // SetSNssai sets field value
-func (o *SnssaiTsctsfInfoItem) SetSNssai(v ExtSnssai) {
+func (o *SnssaiTsctsfInfoItem) SetSNssai(v Snssai) {
 	o.SNssai = v
 }
 

@@ -20,7 +20,7 @@ import (
 type NefCond struct {
 	ConditionType                  string          `json:"conditionType"`
 	AfEvents                       []AfEvent       `json:"afEvents,omitempty"`
-	SnssaiList                     []ExtSnssai     `json:"snssaiList,omitempty"`
+	SnssaiList                     []Snssai        `json:"snssaiList,omitempty"`
 	PfdData                        *PfdData        `json:"pfdData,omitempty"`
 	GpsiRanges                     []IdentityRange `json:"gpsiRanges,omitempty"`
 	ExternalGroupIdentifiersRanges []IdentityRange `json:"externalGroupIdentifiersRanges,omitempty"`
@@ -104,9 +104,9 @@ func (o *NefCond) SetAfEvents(v []AfEvent) {
 }
 
 // GetSnssaiList returns the SnssaiList field value if set, zero value otherwise.
-func (o *NefCond) GetSnssaiList() []ExtSnssai {
+func (o *NefCond) GetSnssaiList() []Snssai {
 	if o == nil || IsNil(o.SnssaiList) {
-		var ret []ExtSnssai
+		var ret []Snssai
 		return ret
 	}
 	return o.SnssaiList
@@ -114,7 +114,7 @@ func (o *NefCond) GetSnssaiList() []ExtSnssai {
 
 // GetSnssaiListOk returns a tuple with the SnssaiList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NefCond) GetSnssaiListOk() ([]ExtSnssai, bool) {
+func (o *NefCond) GetSnssaiListOk() ([]Snssai, bool) {
 	if o == nil || IsNil(o.SnssaiList) {
 		return nil, false
 	}
@@ -131,7 +131,7 @@ func (o *NefCond) HasSnssaiList() bool {
 }
 
 // SetSnssaiList gets a reference to the given []Snssai and assigns it to the SnssaiList field.
-func (o *NefCond) SetSnssaiList(v []ExtSnssai) {
+func (o *NefCond) SetSnssaiList(v []Snssai) {
 	o.SnssaiList = v
 }
 

@@ -27,7 +27,7 @@ type TrafficInfluData struct {
 	Dnn     string `json:"dnn,omitempty" bson:"dnn"`
 	// Identifies Ethernet packet filters.Either \"trafficFilters\" or \"ethTrafficFilters\" shall be included if applicable.
 	EthTrafficFilters []EthFlowDescription `json:"ethTrafficFilters,omitempty" bson:"ethTrafficFilters"`
-	Snssai            *ExtSnssai           `json:"snssai,omitempty" bson:"snssai"`
+	Snssai            *Snssai              `json:"snssai,omitempty" bson:"snssai"`
 	// Identifies a group of users.
 	InterGroupId string `json:"interGroupId,omitempty" bson:"interGroupId"`
 	Supi         string `json:"supi,omitempty" bson:"supi"`

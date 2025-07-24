@@ -29,8 +29,8 @@ type AppSessionContextReqData struct {
 	// indication of MPS service request
 	MpsId string `json:"mpsId,omitempty" yaml:"mpsId" bson:"mpsId" mapstructure:"MpsId"`
 	// string providing an URI formatted according to IETF RFC 3986.
-	NotifUri  string     `json:"notifUri" yaml:"notifUri" bson:"notifUri" mapstructure:"NotifUri"`
-	SliceInfo *ExtSnssai `json:"sliceInfo,omitempty" yaml:"sliceInfo" bson:"sliceInfo" mapstructure:"SliceInfo"`
+	NotifUri  string  `json:"notifUri" yaml:"notifUri" bson:"notifUri" mapstructure:"NotifUri"`
+	SliceInfo *Snssai `json:"sliceInfo,omitempty" yaml:"sliceInfo" bson:"sliceInfo" mapstructure:"SliceInfo"`
 	// Contains an identity of a sponsor.
 	SponId     string           `json:"sponId,omitempty" yaml:"sponId" bson:"sponId" mapstructure:"SponId"`
 	SponStatus SponsoringStatus `json:"sponStatus,omitempty" yaml:"sponStatus" bson:"sponStatus" mapstructure:"SponStatus"`

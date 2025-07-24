@@ -51,7 +51,7 @@ type SmPolicyContextData struct {
 	// If it is included and set to true, the reflective QoS is supported by the UE.
 	RefQosIndication bool               `json:"refQosIndication,omitempty" yaml:"refQosIndication" bson:"refQosIndication" mapstructure:"RefQosIndication"`
 	TraceReq         *TraceData         `json:"traceReq,omitempty" yaml:"traceReq" bson:"traceReq" mapstructure:"TraceReq"`
-	SliceInfo        *ExtSnssai         `json:"sliceInfo" yaml:"sliceInfo" bson:"sliceInfo" mapstructure:"SliceInfo"`
+	SliceInfo        *Snssai            `json:"sliceInfo" yaml:"sliceInfo" bson:"sliceInfo" mapstructure:"SliceInfo"`
 	QosFlowUsage     QosFlowUsage       `json:"qosFlowUsage,omitempty" yaml:"qosFlowUsage" bson:"qosFlowUsage" mapstructure:"QosFlowUsage"`
 	ServNfId         *ServingNfIdentity `json:"servNfId,omitempty" yaml:"servNfId" bson:"servNfId" mapstructure:"ServNfId"`
 	SuppFeat         string             `json:"suppFeat,omitempty" yaml:"suppFeat" bson:"suppFeat" mapstructure:"SuppFeat"`

@@ -22,7 +22,7 @@ import (
 // NsacfInfo represents NSACF information
 type NsacfInfo struct {
 	NsacfCapability         NsacfCapability `json:"nsacfCapability"`
-	SnssaiListForEntirePlmn []ExtSnssai     `json:"snssaiListForEntirePlmn,omitempty"`
+	SnssaiListForEntirePlmn []Snssai        `json:"snssaiListForEntirePlmn,omitempty"`
 	TaiList                 []Tai           `json:"taiList,omitempty"`
 	TaiRangeList            []TaiRange      `json:"taiRangeList,omitempty"`
 	NsacSaiList             []string        `json:"nsacSaiList,omitempty"`
@@ -73,9 +73,9 @@ func (o *NsacfInfo) SetNsacfCapability(v NsacfCapability) {
 }
 
 // GetSnssaiListForEntirePlmn returns the SnssaiListForEntirePlmn field value if set, zero value otherwise.
-func (o *NsacfInfo) GetSnssaiListForEntirePlmn() []ExtSnssai {
+func (o *NsacfInfo) GetSnssaiListForEntirePlmn() []Snssai {
 	if o == nil || IsNil(o.SnssaiListForEntirePlmn) {
-		var ret []ExtSnssai
+		var ret []Snssai
 		return ret
 	}
 	return o.SnssaiListForEntirePlmn
@@ -83,7 +83,7 @@ func (o *NsacfInfo) GetSnssaiListForEntirePlmn() []ExtSnssai {
 
 // GetSnssaiListForEntirePlmnOk returns a tuple with the SnssaiListForEntirePlmn field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NsacfInfo) GetSnssaiListForEntirePlmnOk() ([]ExtSnssai, bool) {
+func (o *NsacfInfo) GetSnssaiListForEntirePlmnOk() ([]Snssai, bool) {
 	if o == nil || IsNil(o.SnssaiListForEntirePlmn) {
 		return nil, false
 	}
@@ -99,8 +99,8 @@ func (o *NsacfInfo) HasSnssaiListForEntirePlmn() bool {
 	return false
 }
 
-// SetSnssaiListForEntirePlmn gets a reference to the given []ExtSnssai and assigns it to the SnssaiListForEntirePlmn field.
-func (o *NsacfInfo) SetSnssaiListForEntirePlmn(v []ExtSnssai) {
+// SetSnssaiListForEntirePlmn gets a reference to the given []Snssai and assigns it to the SnssaiListForEntirePlmn field.
+func (o *NsacfInfo) SetSnssaiListForEntirePlmn(v []Snssai) {
 	o.SnssaiListForEntirePlmn = v
 }
 

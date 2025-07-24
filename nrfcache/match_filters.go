@@ -21,8 +21,8 @@ import (
 	"github.com/omec-project/openapi/models"
 )
 
-// compareExtSnssai compares two ExtSnssai structs for equality, ignoring slice fields that cannot be compared directly.
-func compareExtSnssai(a, b models.ExtSnssai) bool {
+// compareExtSnssai compares two Snssai structs for equality, ignoring slice fields that cannot be compared directly.
+func compareExtSnssai(a, b models.Snssai) bool {
 	// Compare Sst and Sd fields (add more fields if needed)
 	if a.Sst != b.Sst {
 		return false
@@ -70,7 +70,7 @@ func MatchSmfProfile(profile *models.NfProfile, opts *Nnrf_NFDiscovery.SearchNFI
 		matchCount := 0
 
 		for _, reqSnssai := range reqSnssais {
-			var snssai models.ExtSnssai
+			var snssai models.Snssai
 			err := json.Unmarshal([]byte(reqSnssai), &snssai)
 			if err != nil {
 				logger.NrfcacheLog.Errorf("error Unmarshaling nssai: %+v", err)

@@ -20,7 +20,7 @@ import (
 type NwdafCond struct {
 	ConditionType      string            `json:"conditionType"`
 	AnalyticsIds       []string          `json:"analyticsIds,omitempty"`
-	SnssaiList         []ExtSnssai       `json:"snssaiList,omitempty"`
+	SnssaiList         []Snssai          `json:"snssaiList,omitempty"`
 	TaiList            []Tai             `json:"taiList,omitempty"`
 	TaiRangeList       []TaiRange        `json:"taiRangeList,omitempty"`
 	ServingNfTypeList  []NfType          `json:"servingNfTypeList,omitempty"`
@@ -105,9 +105,9 @@ func (o *NwdafCond) SetAnalyticsIds(v []string) {
 }
 
 // GetSnssaiList returns the SnssaiList field value if set, zero value otherwise.
-func (o *NwdafCond) GetSnssaiList() []ExtSnssai {
+func (o *NwdafCond) GetSnssaiList() []Snssai {
 	if o == nil || IsNil(o.SnssaiList) {
-		var ret []ExtSnssai
+		var ret []Snssai
 		return ret
 	}
 	return o.SnssaiList
@@ -115,7 +115,7 @@ func (o *NwdafCond) GetSnssaiList() []ExtSnssai {
 
 // GetSnssaiListOk returns a tuple with the SnssaiList field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *NwdafCond) GetSnssaiListOk() ([]ExtSnssai, bool) {
+func (o *NwdafCond) GetSnssaiListOk() ([]Snssai, bool) {
 	if o == nil || IsNil(o.SnssaiList) {
 		return nil, false
 	}
@@ -131,8 +131,8 @@ func (o *NwdafCond) HasSnssaiList() bool {
 	return false
 }
 
-// SetSnssaiList gets a reference to the given []ExtSnssai and assigns it to the SnssaiList field.
-func (o *NwdafCond) SetSnssaiList(v []ExtSnssai) {
+// SetSnssaiList gets a reference to the given []Snssai and assigns it to the SnssaiList field.
+func (o *NwdafCond) SetSnssaiList(v []Snssai) {
 	o.SnssaiList = v
 }
 

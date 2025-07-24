@@ -16,5 +16,5 @@ package models
 type RestrictedSnssai struct {
 	HomePlmnId *PlmnId `json:"homePlmnId" bson:"homePlmnId" yaml:"homePlmnId"`
 
-	SNssaiList []ExtSnssai `json:"sNssaiList" bson:"sNssaiList" yaml:"sNssaiList"`
+	SNssaiList []Snssai `json:"sNssaiList" bson:"sNssaiList" yaml:"sNssaiList"`
 }

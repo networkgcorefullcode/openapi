@@ -17,7 +17,7 @@ type UdrTrafficInfluSub struct {
 	// Each element identifies a DNN.
 	Dnns []string `json:"dnns,omitempty" bson:"dnns"`
 	// Each element identifies a slice.
-	Snssais []ExtSnssai `json:"snssais,omitempty" bson:"snssais"`
+	Snssais []Snssai `json:"snssais,omitempty" bson:"snssais"`
 	// Each element identifies a group of users.
 	InternalGroupIds []string `json:"internalGroupIds,omitempty" bson:"internalGroupIds"`
 	// Each element identifies the user.

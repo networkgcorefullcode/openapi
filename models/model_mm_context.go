@@ -20,7 +20,7 @@ type MmContext struct {
 	NasUplinkCount        int32               `json:"nasUplinkCount,omitempty"`
 	UeSecurityCapability  string              `json:"ueSecurityCapability,omitempty"`
 	S1UeNetworkCapability string              `json:"s1UeNetworkCapability,omitempty"`
-	AllowedNssai          []ExtSnssai         `json:"allowedNssai,omitempty"`
+	AllowedNssai          []Snssai            `json:"allowedNssai,omitempty"`
 	NssaiMappingList      []NssaiMapping      `json:"nssaiMappingList,omitempty"`
 	NsInstanceList        []string            `json:"nsInstanceList,omitempty"`
 	ExpectedUEbehavior    *ExpectedUeBehavior `json:"expectedUEbehavior,omitempty"`

@@ -22,9 +22,9 @@ type AuthorizedNetworkSliceInfo struct {
 
 	CandidateAmfList []string `json:"candidateAmfList,omitempty" bson:"candidateAmfList"`
 
-	RejectedNssaiInPlmn []ExtSnssai `json:"rejectedNssaiInPlmn,omitempty" bson:"rejectedNssaiInPlmn"`
+	RejectedNssaiInPlmn []Snssai `json:"rejectedNssaiInPlmn,omitempty" bson:"rejectedNssaiInPlmn"`
 
-	RejectedNssaiInTa []ExtSnssai `json:"rejectedNssaiInTa,omitempty" bson:"rejectedNssaiInTa"`
+	RejectedNssaiInTa []Snssai `json:"rejectedNssaiInTa,omitempty" bson:"rejectedNssaiInTa"`
 
 	NsiInformation *NsiInformation `json:"nsiInformation,omitempty" bson:"nsiInformation"`
 

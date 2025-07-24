@@ -26,7 +26,7 @@ type RuleSet struct {
 	Snpns       []PlmnIdNid   `json:"snpns,omitempty" yaml:"snpns" bson:"snpns" mapstructure:"Snpns"`
 	NfTypes     []NfType      `json:"nfTypes,omitempty" yaml:"nfTypes" bson:"nfTypes" mapstructure:"NfTypes"`
 	NfDomains   []string      `json:"nfDomains,omitempty" yaml:"nfDomains" bson:"nfDomains" mapstructure:"NfDomains"`
-	Nssais      []ExtSnssai   `json:"nssais,omitempty" yaml:"nssais" bson:"nssais" mapstructure:"Nssais"`
+	Nssais      []Snssai      `json:"nssais,omitempty" yaml:"nssais" bson:"nssais" mapstructure:"Nssais"`
 	NfInstances []string      `json:"nfInstances,omitempty" yaml:"nfInstances" bson:"nfInstances" mapstructure:"NfInstances"`
 	Scopes      []string      `json:"scopes,omitempty" yaml:"scopes" bson:"scopes" mapstructure:"Scopes"`
 	Action      RuleSetAction `json:"action" yaml:"action" bson:"action" mapstructure:"Action"`
@@ -206,9 +206,9 @@ func (o *RuleSet) SetNfDomains(v []string) {
 }
 
 // GetNssais returns the Nssais field value if set, zero value otherwise.
-func (o *RuleSet) GetNssais() []ExtSnssai {
+func (o *RuleSet) GetNssais() []Snssai {
 	if o == nil || IsNil(o.Nssais) {
-		var ret []ExtSnssai
+		var ret []Snssai
 		return ret
 	}
 	return o.Nssais
@@ -216,7 +216,7 @@ func (o *RuleSet) GetNssais() []ExtSnssai {
 
 // GetNssaisOk returns a tuple with the Nssais field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *RuleSet) GetNssaisOk() ([]ExtSnssai, bool) {
+func (o *RuleSet) GetNssaisOk() ([]Snssai, bool) {
 	if o == nil || IsNil(o.Nssais) {
 		return nil, false
 	}
@@ -232,8 +232,8 @@ func (o *RuleSet) HasNssais() bool {
 	return false
 }
 
-// SetNssais gets a reference to the given []ExtSnssai and assigns it to the Nssais field.
-func (o *RuleSet) SetNssais(v []ExtSnssai) {
+// SetNssais gets a reference to the given []Snssai and assigns it to the Nssais field.
+func (o *RuleSet) SetNssais(v []Snssai) {
 	o.Nssais = v
 }
 

@@ -20,9 +20,9 @@ type SliceInfoForRegistration struct {
 
 	AllowedNssaiOtherAccess *AllowedNssai `json:"allowedNssaiOtherAccess,omitempty" bson:"allowedNssaiOtherAccess"`
 
-	SNssaiForMapping []ExtSnssai `json:"sNssaiForMapping,omitempty" bson:"sNssaiForMapping"`
+	SNssaiForMapping []Snssai `json:"sNssaiForMapping,omitempty" bson:"sNssaiForMapping"`
 
-	RequestedNssai []ExtSnssai `json:"requestedNssai,omitempty" bson:"requestedNssai"`
+	RequestedNssai []Snssai `json:"requestedNssai,omitempty" bson:"requestedNssai"`
 
 	DefaultConfiguredSnssaiInd bool `json:"defaultConfiguredSnssaiInd,omitempty" bson:"defaultConfiguredSnssaiInd"`
 

@@ -20,7 +20,7 @@ import (
 )
 
 type SnssaiUpfInfoItem struct {
-	SNssai               *ExtSnssai             `json:"sNssai" yaml:"sNssai" bson:"sNssai" mapstructure:"SNssai"`
+	SNssai               *Snssai                `json:"sNssai" yaml:"sNssai" bson:"sNssai" mapstructure:"SNssai"`
 	DnnUpfInfoList       []DnnUpfInfoItem       `json:"dnnUpfInfoList" yaml:"dnnUpfInfoList" bson:"dnnUpfInfoList" mapstructure:"DnnUpfInfoList"`
 	RedundantTransport   *bool                  `json:"redundantTransport,omitempty"`
 	InterfaceUpfInfoList []InterfaceUpfInfoItem `json:"interfaceUpfInfoList,omitempty"`
@@ -33,7 +33,7 @@ type _SnssaiUpfInfoItem SnssaiUpfInfoItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSnssaiUpfInfoItem(sNssai ExtSnssai) *SnssaiUpfInfoItem {
+func NewSnssaiUpfInfoItem(sNssai Snssai) *SnssaiUpfInfoItem {
 	this := SnssaiUpfInfoItem{}
 	return &this
 }
@@ -49,9 +49,9 @@ func NewSnssaiUpfInfoItemWithDefaults() *SnssaiUpfInfoItem {
 }
 
 // GetSNssai returns the SNssai field value
-func (o *SnssaiUpfInfoItem) GetSNssai() *ExtSnssai {
+func (o *SnssaiUpfInfoItem) GetSNssai() *Snssai {
 	if o == nil {
-		var ret ExtSnssai
+		var ret Snssai
 		return &ret
 	}
 
@@ -60,7 +60,7 @@ func (o *SnssaiUpfInfoItem) GetSNssai() *ExtSnssai {
 
 // GetSNssaiOk returns a tuple with the SNssai field value
 // and a boolean to check if the value has been set.
-func (o *SnssaiUpfInfoItem) GetSNssaiOk() (*ExtSnssai, bool) {
+func (o *SnssaiUpfInfoItem) GetSNssaiOk() (*Snssai, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *SnssaiUpfInfoItem) GetSNssaiOk() (*ExtSnssai, bool) {
 }
 
 // SetSNssai sets field value
-func (o *SnssaiUpfInfoItem) SetSNssai(v ExtSnssai) {
+func (o *SnssaiUpfInfoItem) SetSNssai(v Snssai) {
 	o.SNssai = &v
 }
 

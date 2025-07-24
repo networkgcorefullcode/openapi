@@ -18,7 +18,7 @@ import (
 
 // SnssaiMbSmfInfoItem Parameters supported by an MB-SMF for a given S-NSSAI
 type SnssaiMbSmfInfoItem struct {
-	SNssai      ExtSnssai          `json:"sNssai"`
+	SNssai      Snssai             `json:"sNssai"`
 	DnnInfoList []DnnMbSmfInfoItem `json:"dnnInfoList"`
 }
 
@@ -28,7 +28,7 @@ type _SnssaiMbSmfInfoItem SnssaiMbSmfInfoItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSnssaiMbSmfInfoItem(sNssai ExtSnssai, dnnInfoList []DnnMbSmfInfoItem) *SnssaiMbSmfInfoItem {
+func NewSnssaiMbSmfInfoItem(sNssai Snssai, dnnInfoList []DnnMbSmfInfoItem) *SnssaiMbSmfInfoItem {
 	this := SnssaiMbSmfInfoItem{}
 	this.SNssai = sNssai
 	this.DnnInfoList = dnnInfoList
@@ -44,9 +44,9 @@ func NewSnssaiMbSmfInfoItemWithDefaults() *SnssaiMbSmfInfoItem {
 }
 
 // GetSNssai returns the SNssai field value
-func (o *SnssaiMbSmfInfoItem) GetSNssai() ExtSnssai {
+func (o *SnssaiMbSmfInfoItem) GetSNssai() Snssai {
 	if o == nil {
-		var ret ExtSnssai
+		var ret Snssai
 		return ret
 	}
 
@@ -55,7 +55,7 @@ func (o *SnssaiMbSmfInfoItem) GetSNssai() ExtSnssai {
 
 // GetSNssaiOk returns a tuple with the SNssai field value
 // and a boolean to check if the value has been set.
-func (o *SnssaiMbSmfInfoItem) GetSNssaiOk() (*ExtSnssai, bool) {
+func (o *SnssaiMbSmfInfoItem) GetSNssaiOk() (*Snssai, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *SnssaiMbSmfInfoItem) GetSNssaiOk() (*ExtSnssai, bool) {
 }
 
 // SetSNssai sets field value
-func (o *SnssaiMbSmfInfoItem) SetSNssai(v ExtSnssai) {
+func (o *SnssaiMbSmfInfoItem) SetSNssai(v Snssai) {
 	o.SNssai = v
 }
 

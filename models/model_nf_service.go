@@ -31,7 +31,7 @@ type NfService struct {
 	AllowedPlmns                     *[]PlmnId                         `json:"allowedPlmns,omitempty" yaml:"allowedPlmns" bson:"allowedPlmns" mapstructure:"AllowedPlmns"`
 	AllowedNfTypes                   []NfType                          `json:"allowedNfTypes,omitempty" yaml:"allowedNfTypes" bson:"allowedNfTypes" mapstructure:"AllowedNfTypes"`
 	AllowedNfDomains                 []string                          `json:"allowedNfDomains,omitempty" yaml:"allowedNfDomains" bson:"allowedNfDomains" mapstructure:"AllowedNfDomains"`
-	AllowedNssais                    *[]ExtSnssai                      `json:"allowedNssais,omitempty" yaml:"allowedNssais" bson:"allowedNssais" mapstructure:"AllowedNssais"`
+	AllowedNssais                    *[]Snssai                         `json:"allowedNssais,omitempty" yaml:"allowedNssais" bson:"allowedNssais" mapstructure:"AllowedNssais"`
 	Priority                         int32                             `json:"priority,omitempty" yaml:"priority" bson:"priority" mapstructure:"Priority"`
 	Capacity                         int32                             `json:"capacity,omitempty" yaml:"capacity" bson:"capacity" mapstructure:"Capacity"`
 	Load                             int32                             `json:"load,omitempty" yaml:"load" bson:"load" mapstructure:"Load"`

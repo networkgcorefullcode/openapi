@@ -18,7 +18,7 @@ import (
 
 // SnssaiEasdfInfoItem Set of parameters supported by EASDF for a given S-NSSAI
 type SnssaiEasdfInfoItem struct {
-	SNssai           ExtSnssai          `json:"sNssai"`
+	SNssai           Snssai             `json:"sNssai"`
 	DnnEasdfInfoList []DnnEasdfInfoItem `json:"dnnEasdfInfoList"`
 }
 
@@ -28,7 +28,7 @@ type _SnssaiEasdfInfoItem SnssaiEasdfInfoItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSnssaiEasdfInfoItem(sNssai ExtSnssai, dnnEasdfInfoList []DnnEasdfInfoItem) *SnssaiEasdfInfoItem {
+func NewSnssaiEasdfInfoItem(sNssai Snssai, dnnEasdfInfoList []DnnEasdfInfoItem) *SnssaiEasdfInfoItem {
 	this := SnssaiEasdfInfoItem{}
 	this.SNssai = sNssai
 	this.DnnEasdfInfoList = dnnEasdfInfoList
@@ -44,9 +44,9 @@ func NewSnssaiEasdfInfoItemWithDefaults() *SnssaiEasdfInfoItem {
 }
 
 // GetSNssai returns the SNssai field value
-func (o *SnssaiEasdfInfoItem) GetSNssai() ExtSnssai {
+func (o *SnssaiEasdfInfoItem) GetSNssai() Snssai {
 	if o == nil {
-		var ret ExtSnssai
+		var ret Snssai
 		return ret
 	}
 
@@ -55,7 +55,7 @@ func (o *SnssaiEasdfInfoItem) GetSNssai() ExtSnssai {
 
 // GetSNssaiOk returns a tuple with the SNssai field value
 // and a boolean to check if the value has been set.
-func (o *SnssaiEasdfInfoItem) GetSNssaiOk() (*ExtSnssai, bool) {
+func (o *SnssaiEasdfInfoItem) GetSNssaiOk() (*Snssai, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +63,7 @@ func (o *SnssaiEasdfInfoItem) GetSNssaiOk() (*ExtSnssai, bool) {
 }
 
 // SetSNssai sets field value
-func (o *SnssaiEasdfInfoItem) SetSNssai(v ExtSnssai) {
+func (o *SnssaiEasdfInfoItem) SetSNssai(v Snssai) {
 	o.SNssai = v
 }
 

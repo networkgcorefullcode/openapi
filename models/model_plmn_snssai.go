@@ -20,8 +20,8 @@ import (
 )
 
 type PlmnSnssai struct {
-	PlmnId     *PlmnId     `json:"plmnId" yaml:"plmnId" bson:"plmnId" mapstructure:"PlmnId"`
-	SNssaiList []ExtSnssai `json:"sNssaiList" yaml:"sNssaiList" bson:"sNssaiList" mapstructure:"SNssaiList"`
+	PlmnId     *PlmnId  `json:"plmnId" yaml:"plmnId" bson:"plmnId" mapstructure:"PlmnId"`
+	SNssaiList []Snssai `json:"sNssaiList" yaml:"sNssaiList" bson:"sNssaiList" mapstructure:"SNssaiList"`
 	// This represents the Network Identifier, which together with a PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501 clause 5.30.2.1).
 	Nid *string `json:"nid,omitempty"`
 }
@@ -32,7 +32,7 @@ type _PlmnSnssai PlmnSnssai
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlmnSnssai(plmnId PlmnId, sNssaiList []ExtSnssai) *PlmnSnssai {
+func NewPlmnSnssai(plmnId PlmnId, sNssaiList []Snssai) *PlmnSnssai {
 	this := PlmnSnssai{}
 	this.PlmnId = &plmnId
 	this.SNssaiList = sNssaiList
@@ -72,9 +72,9 @@ func (o *PlmnSnssai) SetPlmnId(v PlmnId) {
 }
 
 // GetSNssaiList returns the SNssaiList field value
-func (o *PlmnSnssai) GetSNssaiList() []ExtSnssai {
+func (o *PlmnSnssai) GetSNssaiList() []Snssai {
 	if o == nil {
-		var ret []ExtSnssai
+		var ret []Snssai
 		return ret
 	}
 
@@ -83,7 +83,7 @@ func (o *PlmnSnssai) GetSNssaiList() []ExtSnssai {
 
 // GetSNssaiListOk returns a tuple with the SNssaiList field value
 // and a boolean to check if the value has been set.
-func (o *PlmnSnssai) GetSNssaiListOk() ([]ExtSnssai, bool) {
+func (o *PlmnSnssai) GetSNssaiListOk() ([]Snssai, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -91,7 +91,7 @@ func (o *PlmnSnssai) GetSNssaiListOk() ([]ExtSnssai, bool) {
 }
 
 // SetSNssaiList sets field value
-func (o *PlmnSnssai) SetSNssaiList(v []ExtSnssai) {
+func (o *PlmnSnssai) SetSNssaiList(v []Snssai) {
 	o.SNssaiList = v
 }
 

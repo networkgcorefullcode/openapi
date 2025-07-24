@@ -23,7 +23,7 @@ type NfProfileNotificationData struct {
 	NfStatus                         NfStatus                          `json:"nfStatus" yaml:"nfStatus" bson:"nfStatus" mapstructure:"NfStatus"`
 	HeartBeatTimer                   int32                             `json:"heartBeatTimer,omitempty" yaml:"heartBeatTimer" bson:"heartBeatTimer" mapstructure:"HeartBeatTimer"`
 	PlmnList                         []PlmnId                          `json:"plmnList,omitempty" yaml:"plmnList" bson:"plmnList" mapstructure:"PlmnList"`
-	SNssais                          []ExtSnssai                       `json:"sNssais,omitempty" yaml:"sNssais" bson:"sNssais" mapstructure:"SNssais"`
+	SNssais                          []Snssai                          `json:"sNssais,omitempty" yaml:"sNssais" bson:"sNssais" mapstructure:"SNssais"`
 	PerPlmnSnssaiList                []PlmnSnssai                      `json:"perPlmnSnssaiList,omitempty" yaml:"perPlmnSnssaiList" bson:"perPlmnSnssaiList" mapstructure:"PerPlmnSnssaiList"`
 	NsiList                          []string                          `json:"nsiList,omitempty" yaml:"nsiList" bson:"nsiList" mapstructure:"NsiList"`
 	Fqdn                             string                            `json:"fqdn,omitempty" yaml:"fqdn" bson:"fqdn" mapstructure:"Fqdn"`
@@ -33,7 +33,7 @@ type NfProfileNotificationData struct {
 	AllowedPlmns                     []PlmnId                          `json:"allowedPlmns,omitempty" yaml:"allowedPlmns" bson:"allowedPlmns" mapstructure:"AllowedPlmns"`
 	AllowedNfTypes                   []NfType                          `json:"allowedNfTypes,omitempty" yaml:"allowedNfTypes" bson:"allowedNfTypes" mapstructure:"AllowedNfTypes"`
 	AllowedNfDomains                 []string                          `json:"allowedNfDomains,omitempty" yaml:"allowedNfDomains" bson:"allowedNfDomains" mapstructure:"AllowedNfDomains"`
-	AllowedNssais                    []ExtSnssai                       `json:"allowedNssais,omitempty" yaml:"allowedNssais" bson:"allowedNssais" mapstructure:"AllowedNssais"`
+	AllowedNssais                    []Snssai                          `json:"allowedNssais,omitempty" yaml:"allowedNssais" bson:"allowedNssais" mapstructure:"AllowedNssais"`
 	Priority                         int32                             `json:"priority,omitempty" yaml:"priority" bson:"priority" mapstructure:"Priority"`
 	Capacity                         int32                             `json:"capacity,omitempty" yaml:"capacity" bson:"capacity" mapstructure:"Capacity"`
 	Load                             int32                             `json:"load,omitempty" yaml:"load" bson:"load" mapstructure:"Load"`
