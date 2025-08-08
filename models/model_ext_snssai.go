@@ -23,9 +23,9 @@ type Snssai struct {
 	// 3-octet string, representing the Slice Differentiator, in hexadecimal representation. Each character in the string shall take a value of \"0\" to \"9\", \"a\" to \"f\" or \"A\" to \"F\" and shall represent 4 bits. The most significant character representing the 4 most significant bits of the SD shall appear first in the string, and the character representing the 4 least significant bit of the SD shall appear last in the string. This is an optional parameter that complements the Slice/Service type(s) to allow to  differentiate amongst multiple Network Slices of the same Slice/Service type. This IE shall be absent if no SD value is associated with the SST.
 	Sd string `json:"sd,omitempty"`
 	// When present, it shall contain the range(s) of Slice Differentiator values supported for the Slice/Service Type value indicated in the sst attribute of the Snssai data type
-	SdRanges []SdRange `json:"sdRanges,omitempty"`
+	// SdRanges []SdRange `json:"sdRanges,omitempty"`
 	// When present, it shall be set to true, to indicate that all SD values are supported for the Slice/Service Type value indicated in the sst attribute of the Snssai data type.
-	WildcardSd *bool `json:"wildcardSd,omitempty"`
+	// WildcardSd *bool `json:"wildcardSd,omitempty"`
 }
 
 type _ExtSnssai Snssai
@@ -105,91 +105,91 @@ func (o *Snssai) SetSd(v string) {
 }
 
 // GetSdRanges returns the SdRanges field value if set, zero value otherwise.
-func (o *Snssai) GetSdRanges() []SdRange {
-	if o == nil || IsNil(o.SdRanges) {
-		var ret []SdRange
-		return ret
-	}
-	return o.SdRanges
-}
+// func (o *Snssai) GetSdRanges() []SdRange {
+// 	if o == nil || IsNil(o.SdRanges) {
+// 		var ret []SdRange
+// 		return ret
+// 	}
+// 	return o.SdRanges
+// }
 
 // GetSdRangesOk returns a tuple with the SdRanges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Snssai) GetSdRangesOk() ([]SdRange, bool) {
-	if o == nil || IsNil(o.SdRanges) {
-		return nil, false
-	}
-	return o.SdRanges, true
-}
+// func (o *Snssai) GetSdRangesOk() ([]SdRange, bool) {
+// 	if o == nil || IsNil(o.SdRanges) {
+// 		return nil, false
+// 	}
+// 	return o.SdRanges, true
+// }
 
 // HasSdRanges returns a boolean if a field has been set.
-func (o *Snssai) HasSdRanges() bool {
-	if o != nil && !IsNil(o.SdRanges) {
-		return true
-	}
+// func (o *Snssai) HasSdRanges() bool {
+// 	if o != nil && !IsNil(o.SdRanges) {
+// 		return true
+// 	}
 
-	return false
-}
+// 	return false
+// }
 
 // SetSdRanges gets a reference to the given []SdRange and assigns it to the SdRanges field.
-func (o *Snssai) SetSdRanges(v []SdRange) {
-	o.SdRanges = v
-}
+// func (o *Snssai) SetSdRanges(v []SdRange) {
+// 	o.SdRanges = v
+// }
 
 // GetWildcardSd returns the WildcardSd field value if set, zero value otherwise.
-func (o *Snssai) GetWildcardSd() bool {
-	if o == nil || IsNil(o.WildcardSd) {
-		var ret bool
-		return ret
-	}
-	return *o.WildcardSd
-}
+// func (o *Snssai) GetWildcardSd() bool {
+// 	if o == nil || IsNil(o.WildcardSd) {
+// 		var ret bool
+// 		return ret
+// 	}
+// 	return *o.WildcardSd
+// }
 
 // GetWildcardSdOk returns a tuple with the WildcardSd field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Snssai) GetWildcardSdOk() (*bool, bool) {
-	if o == nil || IsNil(o.WildcardSd) {
-		return nil, false
-	}
-	return o.WildcardSd, true
-}
+// func (o *Snssai) GetWildcardSdOk() (*bool, bool) {
+// 	if o == nil || IsNil(o.WildcardSd) {
+// 		return nil, false
+// 	}
+// 	return o.WildcardSd, true
+// }
 
 // HasWildcardSd returns a boolean if a field has been set.
-func (o *Snssai) HasWildcardSd() bool {
-	if o != nil && !IsNil(o.WildcardSd) {
-		return true
-	}
+// func (o *Snssai) HasWildcardSd() bool {
+// 	if o != nil && !IsNil(o.WildcardSd) {
+// 		return true
+// 	}
 
-	return false
-}
+// 	return false
+// }
 
 // SetWildcardSd gets a reference to the given bool and assigns it to the WildcardSd field.
-func (o *Snssai) SetWildcardSd(v bool) {
-	o.WildcardSd = &v
-}
+// func (o *Snssai) SetWildcardSd(v bool) {
+// 	o.WildcardSd = &v
+// }
 
-func (o Snssai) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
+// func (o Snssai) MarshalJSON() ([]byte, error) {
+// 	toSerialize, err := o.ToMap()
+// 	if err != nil {
+// 		return []byte{}, err
+// 	}
+// 	return json.Marshal(toSerialize)
+// }
 
-func (o Snssai) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["sst"] = o.Sst
-	if o.Sd != "" {
-		toSerialize["sd"] = o.Sd
-	}
-	if !IsNil(o.SdRanges) {
-		toSerialize["sdRanges"] = o.SdRanges
-	}
-	if !IsNil(o.WildcardSd) {
-		toSerialize["wildcardSd"] = o.WildcardSd
-	}
-	return toSerialize, nil
-}
+// func (o Snssai) ToMap() (map[string]interface{}, error) {
+// 	toSerialize := map[string]interface{}{}
+// 	toSerialize["sst"] = o.Sst
+// 	if o.Sd != "" {
+// 		toSerialize["sd"] = o.Sd
+// 	}
+// 	if !IsNil(o.SdRanges) {
+// 		toSerialize["sdRanges"] = o.SdRanges
+// 	}
+// 	if !IsNil(o.WildcardSd) {
+// 		toSerialize["wildcardSd"] = o.WildcardSd
+// 	}
+// 	return toSerialize, nil
+// }
 
 func (o *Snssai) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
