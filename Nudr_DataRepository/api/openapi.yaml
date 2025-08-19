@@ -5859,6 +5859,9 @@ components:
           $ref: '#/components/schemas/Topc'
         sharedAuthenticationSubscriptionId:
           $ref: '#/components/schemas/SharedData_2'
+        encryptedKi: # Nuevo campo
+          type: string 
+          format: byte # El formato 'byte' indica que es una cadena codificada en Base64
       required:
       - authenticationMethod
       - permanentKey

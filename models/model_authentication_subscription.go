@@ -24,4 +24,10 @@ type AuthenticationSubscription struct {
 	Opc                                *Opc            `json:"opc,omitempty" bson:"opc"`
 	Topc                               *Topc           `json:"topc,omitempty" bson:"topc"`
 	SharedAuthenticationSubscriptionId *SharedData     `json:"sharedAuthenticationSubscriptionId,omitempty" bson:"sharedAuthenticationSubscriptionId"`
+
+	// --- CAMPO AÑADIDO ---
+	// El tipo []byte es para datos binarios. Las etiquetas `json` y `bson`
+	// le dicen a Go cómo (de)serializar este campo desde/hacia JSON y MongoDB.
+	// `omitempty` significa que el campo no se incluirá si está vacío.
+	EncryptedKi []byte `json:"encryptedKi,omitempty" bson:"encryptedKi,omitempty"`
 }
