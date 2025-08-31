@@ -21,6 +21,7 @@ type AuthenticationSubscription struct {
 	VectorAlgorithm                    VectorAlgorithm `json:"vectorAlgorithm,omitempty" bson:"vectorAlgorithm"`
 	Milenage                           *Milenage       `json:"milenage,omitempty" bson:"milenage"`
 	Tuak                               *Tuak           `json:"tuak,omitempty" bson:"tuak"`
+	K4_SNO                             byte            `json:"k4_sno,omitempty" bson:"k4_sno"`
 	Opc                                *Opc            `json:"opc,omitempty" bson:"opc"`
 	Topc                               *Topc           `json:"topc,omitempty" bson:"topc"`
 	SharedAuthenticationSubscriptionId *SharedData     `json:"sharedAuthenticationSubscriptionId,omitempty" bson:"sharedAuthenticationSubscriptionId"`
