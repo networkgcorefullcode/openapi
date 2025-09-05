@@ -14,7 +14,7 @@
 package models
 
 type PermanentKey struct {
-	PermanentKeyValue   string `json:"permanentKeyValue" bson:"permanentKeyValue"`
-	EncryptionKey       string `json:"encryptionKey" bson:"encryptionKey"`
-	EncryptionAlgorithm int32  `json:"encryptionAlgorithm" bson:"encryptionAlgorithm"`
+	PermanentKeyValue   string `json:"permanentKeyValue" bson:"permanentKeyValue" mapstructure:"permanentKeyValue"`
+	EncryptionKey       string `json:"encryptionKey" bson:"encryptionKey" mapstructure:"encryptionKey"`
+	EncryptionAlgorithm int32  `json:"encryptionAlgorithm" bson:"encryptionAlgorithm" mapstructure:"encryptionAlgorithm"`
 }

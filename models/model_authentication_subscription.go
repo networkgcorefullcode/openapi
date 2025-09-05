@@ -14,15 +14,15 @@
 package models
 
 type AuthenticationSubscription struct {
-	AuthenticationMethod               AuthMethod      `json:"authenticationMethod" bson:"authenticationMethod"`
-	PermanentKey                       *PermanentKey   `json:"permanentKey" bson:"permanentKey"`
-	SequenceNumber                     string          `json:"sequenceNumber" bson:"sequenceNumber"`
-	AuthenticationManagementField      string          `json:"authenticationManagementField,omitempty" bson:"authenticationManagementField"`
-	VectorAlgorithm                    VectorAlgorithm `json:"vectorAlgorithm,omitempty" bson:"vectorAlgorithm"`
-	Milenage                           *Milenage       `json:"milenage,omitempty" bson:"milenage"`
-	Tuak                               *Tuak           `json:"tuak,omitempty" bson:"tuak"`
-	K4_SNO                             byte            `json:"k4_sno,omitempty" bson:"k4_sno"`
-	Opc                                *Opc            `json:"opc,omitempty" bson:"opc"`
-	Topc                               *Topc           `json:"topc,omitempty" bson:"topc"`
-	SharedAuthenticationSubscriptionId *SharedData     `json:"sharedAuthenticationSubscriptionId,omitempty" bson:"sharedAuthenticationSubscriptionId"`
+	AuthenticationMethod               AuthMethod      `json:"authenticationMethod" bson:"authenticationMethod" mapstructure:"authenticationMethod"`
+	PermanentKey                       *PermanentKey   `json:"permanentKey" bson:"permanentKey" mapstructure:"permanentKey"`
+	SequenceNumber                     string          `json:"sequenceNumber" bson:"sequenceNumber" mapstructure:"sequenceNumber"`
+	AuthenticationManagementField      string          `json:"authenticationManagementField,omitempty" bson:"authenticationManagementField" mapstructure:"authenticationManagementField"`
+	VectorAlgorithm                    VectorAlgorithm `json:"vectorAlgorithm,omitempty" bson:"vectorAlgorithm" mapstructure:"vectorAlgorithm"`
+	Milenage                           *Milenage       `json:"milenage,omitempty" bson:"milenage" mapstructure:"milenage"`
+	Tuak                               *Tuak           `json:"tuak,omitempty" bson:"tuak" mapstructure:"tuak"`
+	K4_SNO                             byte            `json:"k4_sno,omitempty" bson:"k4_sno" mapstructure:"k4_sno"`
+	Opc                                *Opc            `json:"opc,omitempty" bson:"opc" mapstructure:"opc"`
+	Topc                               *Topc           `json:"topc,omitempty" bson:"topc" mapstructure:"topc"`
+	SharedAuthenticationSubscriptionId *SharedData     `json:"sharedAuthenticationSubscriptionId,omitempty" bson:"sharedAuthenticationSubscriptionId" mapstructure:"sharedAuthenticationSubscriptionId"`
 }
