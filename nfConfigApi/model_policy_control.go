@@ -21,11 +21,14 @@ import (
 	"fmt"
 )
 
+// checks if the PolicyControl type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PolicyControl{}
+
 // PolicyControl struct for PolicyControl
 type PolicyControl struct {
 	PlmnId   PlmnId    `json:"plmnId"`
 	Snssai   Snssai    `json:"snssai"`
-	DnnQos   []DnnQos  `json:"dnnQos,omitempty"`
+	Dnns     []string  `json:"dnns"`
 	PccRules []PccRule `json:"pccRules"`
 }
 
@@ -35,10 +38,11 @@ type _PolicyControl PolicyControl
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPolicyControl(plmnId PlmnId, snssai Snssai, pccRules []PccRule) *PolicyControl {
+func NewPolicyControl(plmnId PlmnId, snssai Snssai, dnns []string, pccRules []PccRule) *PolicyControl {
 	this := PolicyControl{}
 	this.PlmnId = plmnId
 	this.Snssai = snssai
+	this.Dnns = dnns
 	this.PccRules = pccRules
 	return &this
 }
@@ -99,36 +103,28 @@ func (o *PolicyControl) SetSnssai(v Snssai) {
 	o.Snssai = v
 }
 
-// GetDnnQos returns the DnnQos field value if set, zero value otherwise.
-func (o *PolicyControl) GetDnnQos() []DnnQos {
-	if o == nil || IsNil(o.DnnQos) {
-		var ret []DnnQos
+// GetDnns returns the Dnns field value
+func (o *PolicyControl) GetDnns() []string {
+	if o == nil {
+		var ret []string
 		return ret
 	}
-	return o.DnnQos
+
+	return o.Dnns
 }
 
-// GetDnnQosOk returns a tuple with the DnnQos field value if set, nil otherwise
+// GetDnnsOk returns a tuple with the Dnns field value
 // and a boolean to check if the value has been set.
-func (o *PolicyControl) GetDnnQosOk() ([]DnnQos, bool) {
-	if o == nil || IsNil(o.DnnQos) {
+func (o *PolicyControl) GetDnnsOk() ([]string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DnnQos, true
+	return o.Dnns, true
 }
 
-// HasDnnQos returns a boolean if a field has been set.
-func (o *PolicyControl) HasDnnQos() bool {
-	if o != nil && !IsNil(o.DnnQos) {
-		return true
-	}
-
-	return false
-}
-
-// SetDnnQos gets a reference to the given []DnnQos and assigns it to the DnnQos field.
-func (o *PolicyControl) SetDnnQos(v []DnnQos) {
-	o.DnnQos = v
+// SetDnns sets field value
+func (o *PolicyControl) SetDnns(v []string) {
+	o.Dnns = v
 }
 
 // GetPccRules returns the PccRules field value
@@ -167,9 +163,7 @@ func (o PolicyControl) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["plmnId"] = o.PlmnId
 	toSerialize["snssai"] = o.Snssai
-	if !IsNil(o.DnnQos) {
-		toSerialize["dnnQos"] = o.DnnQos
-	}
+	toSerialize["dnns"] = o.Dnns
 	toSerialize["pccRules"] = o.PccRules
 	return toSerialize, nil
 }
@@ -181,6 +175,7 @@ func (o *PolicyControl) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"plmnId",
 		"snssai",
+		"dnns",
 		"pccRules",
 	}
 
