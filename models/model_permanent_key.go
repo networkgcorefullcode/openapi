@@ -19,4 +19,5 @@ type PermanentKey struct {
 	EncryptionAlgorithm int32  `json:"encryptionAlgorithm" bson:"encryptionAlgorithm"`
 	IV                  string `json:"iv,omitempty" bson:"iv"`
 	Tag 			    string `json:"tag,omitempty" bson:"tag"`
+	Aad 	  			string `json:"aad,omitempty" bson:"tag"`
 }
